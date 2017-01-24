@@ -6,6 +6,7 @@ flags coding=utf8 ;
 
 lincat
   Inflection = {t : Str; s1,s2,s3 : Str} ;
+  Definition = {s : Str} ;
   Document   = {s : Str} ;
   Tag        = {s : Str} ;
 
@@ -390,7 +391,12 @@ oper
   pp : Str -> Str = \s -> "&lt;"+s+"&gt;";
 
 lin
-  MkDocument b i e = {s = i.s1 ++ "<p style=\"font-size:20px\">"++b.s++"</p>" ++ i.s2 ++ i.s3 ++ e.s} ;
+  NoDefinition   t     = {s=t.s};
+  MkDefinition   t d   = {s="<p><b>Дефиниция:</b>"++t.s++d.s++"</p>"};
+  MkDefinitionEx t d e = {s="<p><b>Дефиниция:</b>"++t.s++d.s++"</p><p><b>Пример:</b>"++e.s++"</p>"};
+
+lin
+  MkDocument d i e = {s = i.s1 ++ d.s ++ i.s2 ++ i.s3 ++ e.s} ;
   MkTag i = {s = i.t} ;
 
 }

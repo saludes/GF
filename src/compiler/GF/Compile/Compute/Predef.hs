@@ -2,7 +2,6 @@
 {-# LANGUAGE TypeSynonymInstances, FlexibleInstances #-}
 module GF.Compile.Compute.Predef(predef,predefName,delta) where
 
-import GF.Text.Pretty(render,hang)
 import qualified Data.Map as Map
 import Data.Array(array,(!))
 import Data.List (isInfixOf)
@@ -15,7 +14,6 @@ import GF.Compile.Compute.Value
 import GF.Infra.Ident (Ident,showIdent) --,varX
 import GF.Data.Operations(Err) -- ,err
 import GF.Grammar.Predef
---import PGF.Data(BindType(..))
 
 --------------------------------------------------------------------------------
 class Predef a where
@@ -75,7 +73,7 @@ predefList =
      (cIsUpper,IsUpper),(cLength,Length),(cPlus,Plus),(cEqInt,EqInt),
      (cLessInt,LessInt),
      -- cShow, cRead, cMapStr, cEqVal
-     (cError,Error),
+     (cError,Error),(cTrace,Trace),
      -- Canonical values:
      (cPBool,PBool),(cPFalse,PFalse),(cPTrue,PTrue),(cInt,Int),
      (cInts,Ints),(cNonExist,NonExist)
@@ -101,6 +99,7 @@ delta f vs =
       LessInt -> ap2 ((<)::Int->Int->Bool)
     {- -- | Show | Read | ToStr | MapStr | EqVal -}
       Error   -> ap1 VError
+      Trace   -> ap2 vtrace
       -- Canonical values:
       PBool   -> canonical
       Int     -> canonical
@@ -129,6 +128,9 @@ delta f vs =
       | null [v | v@(VApp NonExist _) <- vs] = b
       | otherwise                            = return (toValue a)
 
+    vtrace :: Value -> Value -> Value
+    vtrace x y = y -- tracing is implemented elsewhere
+
 --  unimpl id = bug $ "unimplemented predefined function: "++showIdent id
 --  problem id vs = bug $ "unexpected arguments: Predef."++showIdent id++" "++show vs
 
@@ -146,11 +148,11 @@ norm v =
                   (VString s1,VString s2) -> VString (s1++" "++s2)
                   (v1,v2) -> VC v1 v2
     _ -> v
-
+{-
 strict v = case v of
              VError err -> Left err
              _ -> Right v
-
+-}
 string s = case words s of
              [] -> VString ""
              ss -> foldr1 VC (map VString ss)
@@ -158,7 +160,8 @@ string s = case words s of
 ---
 
 swap (x,y) = (y,x)
-
+{-
 bug msg = ppbug msg
 ppbug doc = error $ render $
                     hang "Internal error in Compute.Predef:" 4 doc
+-}

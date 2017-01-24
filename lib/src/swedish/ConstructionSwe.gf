@@ -8,6 +8,11 @@ flags coding=utf8 ;
 lin
   hungry_VP = mkVP (mkA "hungrig") ;
   thirsty_VP = mkVP (mkA "törstig") ;
+  tired_VP = mkVP (mkA "trött") ;
+  scared_VP = mkVP (mkA "rädd") ;
+  ill_VP = mkVP (mkA "sjuk") ;
+  ready_VP = mkVP (mkA "färdig") ;
+
   has_age_VP card = mkVP (lin AP (mkAP (lin AdA (mkUtt (mkNP <lin Card card : Card> L.year_N))) L.old_A)) ;
 
   have_name_Cl x y = mkCl (lin NP x) (mkV2 (mkV "heta" "hette" "hetat")) (lin NP y) ;
@@ -53,7 +58,7 @@ lin
   weekdayPunctualAdv w = SyntaxSwe.mkAdv on_Prep (mkNP w) ;         -- på söndag
   weekdayHabitualAdv w = SyntaxSwe.mkAdv on_Prep (mkNP aPl_Det w) ; -- på söndagar
   weekdayLastAdv w = SyntaxSwe.mkAdv in_Prep (mkNP (E.GenNP (mkNP w))) ; -- i söndags
-  weekdayNextAdv w = SyntaxSwe.mkAdv (mkPrep "nästa") (mkNP w) ; -- nästa söndag --- can mean a week later than Swelish "next Sunday"
+  weekdayNextAdv w = SyntaxSwe.mkAdv (mkPrep "nästa") (mkNP w) ; -- nästa söndag --- can mean a week later than English "next Sunday"
 
   monthAdv m = SyntaxSwe.mkAdv in_Prep (mkNP m) ;
   yearAdv y = SyntaxSwe.mkAdv (mkPrep "år") y ;

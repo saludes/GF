@@ -22,7 +22,7 @@ abstract App =
   -- Extensions
     PassVPSlash, PassAgentVPSlash -- not reachable anyway
   ]
-  ,Phrasebook
+--P  ,Phrasebook
 
               ** {
 flags
@@ -30,19 +30,20 @@ flags
   heuristic_search_factor=0.80; -- doesn't seem to affect speed or quality much
 
 fun
-  PhrasePhr : Phrase -> Phr ;
-  Phrase_Chunk : Phrase -> Chunk ;
+--P  PhrasePhr : Phrase -> Phr ;
+--P  Phrase_Chunk : Phrase -> Chunk ;
 
-  ComplV2 : V2 -> NP -> VP ;
-  PassV2 : V2 -> VP ;
+  ComplV2 : V2 -> NP -> VP ;  -- sees him
   
+  ComplV2V : V2V -> NP -> VP -> VP ;  -- forces him to leave
+--  ComplV2A : V2A -> NP -> AP -> VP ;
+--  ComplV2Q : V2Q -> NP -> QS -> VP ;
+--  ComplV2S : V2S -> NP -> S  -> VP ;
+  ComplV3  : V3  -> NP -> NP -> VP ;  -- gives him an apple
 
-{-
-  ComplV2V : V2V -> NP -> VP -> VP ;
-  ComplV2A : V2A -> NP -> AP -> VP ;
-  ComplV2Q : V2Q -> NP -> QS -> VP ;
-  ComplV2S : V2S -> NP -> S  -> VP ;
-  ComplV3  : V3  -> NP -> NP -> VP ;
--}
+  PassV2       : V2 -> VP ;  -- is seen
+  PassAgentV2  : V2 -> NP -> VP ;  -- is seen by her
+  RelV2        : RP -> NP -> V2 -> RCl ; -- that she sees
+  QuestV2      : IP -> NP -> V2 -> QCl ; -- whom does she see
 
 }

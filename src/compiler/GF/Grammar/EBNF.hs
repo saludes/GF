@@ -18,8 +18,6 @@ import GF.Data.Operations
 import GF.Grammar.CFG
 import PGF (mkCId)
 
-import Data.List
-
 type EBNF = [ERule]
 type ERule = (ECat, ERHS)
 type ECat = (String,[Int])
@@ -35,23 +33,23 @@ data ERHS =
  | EOpt  ERHS
  | EEmpty
 
-type CFRHS = [CFSymbol]
-type CFJustRule = (Cat, CFRHS)
+type CFRHS = [ParamCFSymbol]
+type CFJustRule = ((Cat,[Param]), CFRHS)
 
-ebnf2cf :: EBNF -> [CFRule]
+ebnf2cf :: EBNF -> [ParamCFRule]
 ebnf2cf ebnf = 
-  [CFRule cat items (mkCFF i cat) | (i,(cat,items)) <- zip [0..] (normEBNF ebnf)]
+  [Rule cat items (mkCFF i cat) | (i,(cat,items)) <- zip [0..] (normEBNF ebnf)]
   where
-    mkCFF i c = CFObj (mkCId ("Mk" ++ c ++ "_" ++ show i)) []
+    mkCFF i (c,_) = CFObj (mkCId ("Mk" ++ c ++ "_" ++ show i)) []
 
 normEBNF :: EBNF -> [CFJustRule]
 normEBNF erules = let
   erules1 = [normERule ([i],r) | (i,r) <- zip [0..] erules]
   erules2 = erules1 ---refreshECats erules1 --- this seems to be just bad !
   erules3 = concat (map pickERules erules2)
-  erules4 = nubERules erules3
+--erules4 = nubERules erules3
  in [(mkCFCatE cat, map eitem2cfitem its) | (cat,itss) <- erules3, its <- itss]
-
+{-
 refreshECats :: [NormERule] -> [NormERule]
 refreshECats rules = [recas [i] rule | (i,rule) <- zip [0..] rules] where
  recas ii (cat,its) = (updECat ii cat, [recss ii 0 s | s <- its])
@@ -63,7 +61,7 @@ refreshECats rules = [recas [i] rule | (i,rule) <- zip [0..] rules] where
    EIPlus (cat,t) -> EIPlus (updECat ii cat, [recss ii 0 s | s <- t])
    EIOpt  (cat,t) -> EIOpt  (updECat ii cat, [recss ii 0 s | s <- t])
    _ -> it
-  
+-}
 pickERules :: NormERule -> [NormERule]
 pickERules rule@(cat,alts) = rule : concat (map pics (concat alts)) where
  pics it = case it of
@@ -77,7 +75,7 @@ pickERules rule@(cat,alts) = rule : concat (map pics (concat alts)) where
                                         where cat' = mkNewECat cat "Plus"
  mkEOptRules cat  = [(cat', [[],[EINonTerm cat]])] 
                                         where cat' = mkNewECat cat "Opt"
-
+{-
 nubERules :: [NormERule] -> [NormERule]
 nubERules rules = nub optim where 
   optim = map (substERules (map mkSubst replaces)) irreducibles
@@ -100,8 +98,8 @@ substERules g (cat,itss) = (cat, map sub itss) where
   sub (EIStar r : ii) = EIStar (substERules g r) : ii
   sub (EIPlus r : ii) = EIPlus (substERules g r) : ii
   sub (EIOpt r : ii)  = EIOpt  (substERules g r) : ii
-
-eitem2cfitem :: EItem -> CFSymbol
+-}
+eitem2cfitem :: EItem -> ParamCFSymbol
 eitem2cfitem it = case it of
   EITerm a       -> Terminal a
   EINonTerm cat  -> NonTerminal (mkCFCatE cat)
@@ -143,10 +141,10 @@ mkECat ints = ("C", ints)
 prECat (c,[]) = c
 prECat (c,ints) = c ++ "_" ++ prTList "_" (map show ints)
 
-mkCFCatE :: ECat -> Cat
-mkCFCatE = prECat
-
+mkCFCatE :: ECat -> (Cat,[Param])
+mkCFCatE c = (prECat c,[0])
+{-
 updECat _ (c,[]) = (c,[])
 updECat ii (c,_) = (c,ii)
-
+-}
 mkNewECat (c,ii) str = (c ++ str,ii)

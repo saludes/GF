@@ -3,14 +3,19 @@ package org.grammaticalframework.pgf;
 import java.util.Collections;
 import java.util.Iterator;
 
+/** A callback for recognizing words that are not in the lexicon.
+ * For such words the callback returns the expression (MkSymb "&lt;word&gt;").
+ */
 public class UnknownLiteralCallback implements LiteralCallback {
 	private Concr concr;
+	private String sentence;
 
-	public UnknownLiteralCallback(Concr concr) {
+	public UnknownLiteralCallback(Concr concr, String sentence) {
 		this.concr = concr;
+		this.sentence = sentence;
 	}
 
-	public CallbackResult match(int lin_idx, String sentence, int offset) {
+	public CallbackResult match(int lin_idx, int offset) {
 		if (offset < sentence.length() &&
 		    !Character.isUpperCase(sentence.charAt(offset))) {
 			int start_offset = offset;

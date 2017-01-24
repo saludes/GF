@@ -100,7 +100,6 @@ lin ablative_A = mkA "离格" ; -- open-multilingual-wordnet
 lin ablative_N = mkN "奪格" | mkN "夺格" | {-mwn-} mkN "离格" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin ablaut_N = mkN "元音变换" ; -- open-multilingual-wordnet
 lin ablaze_A = mkA "燃燒" | mkA "燃烧" | mkA "起火" | mkA "著火" | mkA "着火" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
-lin ablaze_Adv = mkAdv "熾" | mkAdv "炽" ; -- status=guess -- status=guess
 lin able_A = mkA "硬" | mkA "能" | mkA "能力" | {-HSK-} mkA "能够" ;
 lin ablepharia_N = mkN "没有眼睑" ; -- open-multilingual-wordnet
 lin abloom_A = mkA "开花" ; -- open-multilingual-wordnet
@@ -216,7 +215,6 @@ lin abyss_N = mkN "深淵" | mkN "深渊" | {-mwn-} mkN "无底洞" ; -- status=
 lin academia_N = mkN "学术界" ; -- open-multilingual-wordnet
 lin academic_A = mkA "学术" | {-HSK-} mkA "学者" ;
 lin academic_N = mkN "学术" "個" | {-HSK-} mkN "学者" "位" ;
-lin academically_Adv = mkAdv "学术" ;
 lin academicianFem_N = mkN "专科院校的" | mkN "专科院校的教育者" | mkN "学会会员" ; -- open-multilingual-wordnet
 lin academicianMasc_N = mkN "专科院校的" | mkN "专科院校的教育者" | mkN "学会会员" ; -- open-multilingual-wordnet
 lin academy_N = mkN "学院" ;
@@ -397,8 +395,7 @@ lin ackee_N = mkN "西非荔枝果" | mkN "阿开木果" ; -- open-multilingual-
 lin acknowledge_V2 = mkV2 "承认" ;
 lin acknowledge_VS = mkVS "确认" ;
 lin acknowledgeable_A = mkA "有知识" ; -- open-multilingual-wordnet
-lin acknowledgement_N = mkN "承认" ;
-lin acknowledgment_N = mkN "感谢" | mkN "致謝" ; -- open-multilingual-wordnet
+lin acknowledgement_N = mkN "承认" | mkN "感谢" | mkN "致謝" ; -- open-multilingual-wordnet
 lin acne_N = mkN "痤疮" ;
 lin acneiform_A = mkA "痤疮样" ; -- open-multilingual-wordnet
 lin acold_A = mkA "寒冷" ; -- open-multilingual-wordnet
@@ -898,7 +895,7 @@ lin agedness_N = mkN "老年" "个" ;
 lin ageing_N = mkN "成熟的过程" | mkN "老龄化" ; -- open-multilingual-wordnet
 lin ageism_N = mkN "年龄歧视" ; -- open-multilingual-wordnet
 lin ageless_A = mkA "不停" | mkA "不断" | mkA "持久" | mkA "无止境" | mkA "无穷" | mkA "无穷尽" | mkA "永久" | mkA "永恒" | mkA "永远" ; -- open-multilingual-wordnet
-lin agelong_A = mkA "持久" ; -- open-multilingual-wordnet
+lin age_long_A = mkA "持久" ; -- open-multilingual-wordnet
 lin agency_N = mkN "中介" | {-HSK-} mkN "机构" ;
 lin agenda_N = mkN "议程" ;
 lin agenesis_N = mkN "发育不全" | mkN "无生殖力" ; -- open-multilingual-wordnet
@@ -1042,11 +1039,11 @@ lin airmail_N = mkN "航空信" ; -- status=guess
 lin airmailer_N = mkN "航空邮件" ; -- open-multilingual-wordnet
 lin airman_N = mkN "空军" ;
 lin airplane_N = L.airplane_N | {-HSK-} mkN "飞机" " " ;
-lin airport_N = mkN "机场" | {-HSK-} mkN "机场" "家" ;
+lin airport_N = mkN "机场" "家" ;
 lin airscrew_N = mkN "空气螺旋桨" | mkN "螺旋桨" ; -- open-multilingual-wordnet
 lin airship_N = mkN "飞船" | mkN "飞艇" ; -- open-multilingual-wordnet
-lin airsick_A = mkA "晕机" | mkA "晕船" | mkA "晕车" | mkA "空晕病" ; -- open-multilingual-wordnet
-lin airsickness_N = mkN "晕机" ; -- open-multilingual-wordnet
+lin air_sick_A = mkA "晕机" | mkA "晕船" | mkA "晕车" | mkA "空晕病" ; -- open-multilingual-wordnet
+lin air_sickness_N = mkN "晕机" ; -- open-multilingual-wordnet
 lin airspace_N = mkN "領空" | mkN "空域" | mkN "上空" | {-mwn-} mkN "领空" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin airspeed_N = mkN "空速" ; -- open-multilingual-wordnet
 lin airway_N = mkN "导气管" "条" ;
@@ -1337,7 +1334,7 @@ lin alsatianMasc_N = variants {} ; ---- sense to be split
 lin also_AdV = mkAdV "也" ;
 lin also_Adv = mkAdv "下载" | mkAdv "也" | mkAdv "又" | mkAdv "痛快" | mkAdv "血" | mkAdv "还" ;
 lin altar_N = mkN "祭坛" ;
-lin altarpiece_N = mkN "圣坛装饰画" ; -- open-multilingual-wordnet
+lin altar_piece_N = mkN "圣坛装饰画" ; -- open-multilingual-wordnet
 lin altazimuth_N = mkN "地平经纬仪" | mkN "经纬仪" ; -- open-multilingual-wordnet
 lin alter_V = mkV "修改" | mkV "改变" ;
 lin alter_V2 = mkV2 "修改" | mkV2 "改变" ;
@@ -1414,9 +1411,8 @@ lin amber_A = mkA "棕黄色" | mkA "琥珀色" | mkA "褐黄色" | mkA "黄褐�
 lin amber_N = mkN "琥珀色" | mkN "淡黃色" ; -- status=guess -- status=guess
 lin ambergris_N = mkN "龍涎香" | mkN "龙涎香" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin amberjack_N = mkN "大頭魚" | mkN "大头鱼" | {-mwn-} mkN "鰤" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin ambiance_N = mkN "氣氛" | mkN "气氛" | {-mwn-} mkN "格调" | mkN "环境" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin ambidextrous_A = mkA "雙手靈巧" | {-mwn-} mkA "双手灵巧" ; -- status=guess -- open-multilingual-wordnet
-lin ambience_N = mkN "格调" | mkN "气氛" | mkN "环境" ; -- open-multilingual-wordnet
+lin ambience_N = mkN "格调" | mkN "环境" | mkN "氣氛" ; -- open-multilingual-wordnet
 lin ambient_A = mkA "环境" | {-mwn-} mkA "四周" | mkA "环抱" ; -- open-multilingual-wordnet
 lin ambiguity_N = mkN "双关" ;
 lin ambiguous_A = mkA "模糊不清" | {-HSK-} mkA "暧昧" ;
@@ -1509,7 +1505,7 @@ lin amniote_N = mkN "羊膜动物" | mkN "羊膜的" | mkN "脊椎动物" ; -- o
 lin amniotic_A = mkA "有羊膜" | mkA "羊膜" ; -- open-multilingual-wordnet
 lin amoeba_N = mkN "變形蟲" | mkN "变形虫" | mkN "阿米巴" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin amoebic_A = mkA "阿米巴" | mkA "阿米巴性" ; -- open-multilingual-wordnet
-lin amok_Adv = mkAdv "疯狂地" ;
+lin amuck_Adv = mkAdv "疯狂地" ;
 lin among_Prep = mkPrep "在" "其中" ;
 lin amongst_Prep = mkPrep "在之中" ;
 lin amoralism_N = mkN "非道德论" ; -- open-multilingual-wordnet
@@ -1614,7 +1610,6 @@ lin analogous_A = mkA "类似" ;
 lin analogy_N = mkN "比喻" ;
 lin analphabet_N = mkN "文盲" | mkN "目不识丁者" ; -- open-multilingual-wordnet
 lin analysand_N = mkN "接受精神分析的人" ; -- open-multilingual-wordnet
-lin analyse_V2 = mkV2 "分析" ;
 lin analysis_N = mkN "分析" | {-HSK-} mkN "分析" "個" ;
 lin analyst_N = mkN "分析人士" ;
 lin analytic_A = mkA "分析" ;
@@ -1638,7 +1633,6 @@ lin anaplasmosis_N = mkN "边虫病" ; -- open-multilingual-wordnet
 lin anaplastic_A = mkA "还原成形术" | mkA "退行发育术" ; -- open-multilingual-wordnet
 lin anapsid_N = mkN "缺弓爬行动物" ; -- open-multilingual-wordnet
 lin anarchic_A = mkA "无政府" | mkA "无法" | mkA "无秩序" ; -- open-multilingual-wordnet
-lin anarchically_Adv = mkAdv "无政府主义" ;
 lin anarchism_N = mkN "無政府主義" | mkN "无政府主义" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin anarchistFem_N = mkN "无政府主义者" ; -- open-multilingual-wordnet
 lin anarchistMasc_N = mkN "无政府主义者" ; -- open-multilingual-wordnet
@@ -1723,7 +1717,6 @@ lin anew_Adv = mkAdv "重新" ;
 lin anfractuous_A = mkA "多弯曲" | mkA "曲折" ; -- open-multilingual-wordnet
 lin angel_N = mkN "天使" ;
 lin angela_PN = foreignPN "Angela" ; -- comment=src=eng status=guess
-lin angelically_Adv = mkAdv "绝顶聪明" ;
 lin angelim_N = mkN "瓣豆" ; -- open-multilingual-wordnet
 lin angelology_N = mkN "天使学" ; -- open-multilingual-wordnet
 lin anger_N = mkN "愤怒" [] ;
@@ -1747,7 +1740,7 @@ lin angiopathy_N = mkN "血管疾病" ; -- open-multilingual-wordnet
 lin angiosarcoma_N = mkN "血管肉瘤" ; -- open-multilingual-wordnet
 lin angiosperm_N = mkN "被子植物" ; -- open-multilingual-wordnet
 lin angle_N = mkN "天使" | {-HSK-} mkN "角" "個" | mkN "角度" ;
-lin angledozer_N = mkN "一种推土机" | mkN "万能推土机" | mkN "侧推式推土机" | mkN "侧铲推土机" | mkN "斜角推土机" ; -- open-multilingual-wordnet
+lin angle_dozer_N = mkN "一种推土机" | mkN "万能推土机" | mkN "侧推式推土机" | mkN "侧铲推土机" | mkN "斜角推土机" ; -- open-multilingual-wordnet
 lin anglicism_N = mkN "英國英語" | mkN "英国英语" | mkN "英式用語" | mkN "英式用语" | mkN "英國特色" | mkN "英国特色" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin angling_N = mkN "钓鱼" ;
 lin anglophilFem_N = mkN "亲英派的人" ; -- open-multilingual-wordnet
@@ -1811,7 +1804,6 @@ lin anisometric_A = mkA "不均匀" | mkA "不调和" | mkA "非对称" ; -- ope
 lin anisometropia_N = mkN "两眼屈光不等" | mkN "屈光参差" ; -- open-multilingual-wordnet
 lin anisometropic_A = mkA "屈光参差" ; -- open-multilingual-wordnet
 lin anisotropic_A = mkA "各向异性" ; -- open-multilingual-wordnet
-lin anisotropically_Adv = mkAdv "各向异性" | mkAdv "非匀质的" ; -- open-multilingual-wordnet
 lin anisotropy_N = mkN "各项异性" ; -- status=guess
 lin anita_PN = foreignPN "Anita" ; -- comment=src=eng status=guess
 lin anjou_N = mkN "安茹梨" ; -- open-multilingual-wordnet
@@ -1917,7 +1909,7 @@ lin antagonize_V2 = mkV2 "对抗" ;
 lin antapex_N = mkN "背点" ; -- open-multilingual-wordnet
 lin antbird_N = mkN "蚁鸟" ; -- open-multilingual-wordnet
 lin ante_N = mkN "赌注" ;
-lin anteater_N = mkN "食蟻獸" | mkN "食蚁兽" ; -- status=guess -- status=guess
+lin ant_eater_N = mkN "食蟻獸" | mkN "食蚁兽" ; -- status=guess -- status=guess
 lin antecedent_N = mkN "前情" ;
 lin antechamber_N = mkN "休息室" | mkN "前厅" | mkN "前庭" | mkN "大厅" | mkN "接待室" | mkN "门厅" ; -- open-multilingual-wordnet
 lin antecubital_A = mkA "肘前" ; -- open-multilingual-wordnet
@@ -1937,7 +1929,7 @@ lin antheral_A = mkA "有雄性花蕊" ; -- open-multilingual-wordnet
 lin antheridial_A = mkA "精子囊" ; -- open-multilingual-wordnet
 lin antheridiophore_N = mkN "精子器柄" ; -- open-multilingual-wordnet
 lin antherozoid_N = mkN "游动精子" ; -- open-multilingual-wordnet
-lin anthill_N = mkN "蟻丘" | mkN "蚁丘" | {-mwn-} mkN "蚁窝" ; -- status=guess -- status=guess -- open-multilingual-wordnet
+lin ant_hill_N = mkN "蟻丘" | mkN "蚁丘" | {-mwn-} mkN "蚁窝" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin anthologist_N = mkN "选集的编者" ; -- open-multilingual-wordnet
 lin anthology_N = mkN "选集" ;
 lin anthony_PN = foreignPN "Anthony" ; -- comment=src=geonames status=guess
@@ -1965,11 +1957,10 @@ lin anthropophagous_A = mkA "食人" ; -- open-multilingual-wordnet
 lin anthurium_N = mkN "球心花饰" | mkN "白星海" ; -- open-multilingual-wordnet
 lin anti_A = mkA "反戰" | mkA "反战" | {-mwn-} mkA "反" | mkA "反对" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin anti_N = mkN "反美" | mkN "反美勢力" | mkN "反美势力" ; -- status=guess -- status=guess -- status=guess
-lin anti_aircraft_A = mkA "反飞机" ;
+lin anti_aircraft_A = mkA "反飞机" | mkA "防空" ; -- open-multilingual-wordnet
+lin anti_aircraft_N = mkN "防空兵器" | mkN "高射炮" ; -- open-multilingual-wordnet
 lin anti_semitic_A = mkA "反犹主义" ;
 lin antiadrenergic_A = mkA "抗肾上腺素能" ; -- open-multilingual-wordnet
-lin antiaircraft_A = mkA "防空" ; -- open-multilingual-wordnet
-lin antiaircraft_N = mkN "防空兵器" | mkN "高射炮" ; -- open-multilingual-wordnet
 lin antialiasing_N = mkN "反图像失真" | mkN "反混淆" ; -- open-multilingual-wordnet
 lin antiapartheid_A = mkA "反种族隔离" ; -- open-multilingual-wordnet
 lin antibacterial_A = mkA "抗菌" ; -- open-multilingual-wordnet
@@ -2016,7 +2007,7 @@ lin antifungal_N = mkN "抗真菌药" | mkN "抗霉菌药" | mkN "杀真菌药" 
 lin antigen_N = mkN "抗原" ; -- open-multilingual-wordnet
 lin antigenic_A = mkA "抗原" | mkA "抗原性" ; -- open-multilingual-wordnet
 lin antigua_PN = foreignPN "Antigua" ; -- comment=src=geonames status=guess
-lin antihero_N = mkN "反英雄" ; -- open-multilingual-wordnet
+lin anti_hero_N = mkN "反英雄" ; -- open-multilingual-wordnet
 lin antihistamine_N = mkN "抗組織胺藥" | mkN "抗组织胺药" | {-mwn-} mkN "抗组织胺剂" | mkN "抗组胺剂" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin antihypertensive_N = mkN "抗高血压的药" | mkN "抗高血压药" | mkN "降压药" ; -- open-multilingual-wordnet
 lin antiknock_A = mkA "抗爆" | mkA "抗震" ; -- open-multilingual-wordnet
@@ -2046,7 +2037,7 @@ lin antiparallel_A = mkA "反平行" ; -- open-multilingual-wordnet
 lin antiparticle_N = mkN "反粒子" ; -- open-multilingual-wordnet
 lin antipasto_N = mkN "意大利式餐前小吃" | mkN "拼盤" | mkN "拼盘 ， 冷盤" | mkN "冷盘" | {-mwn-} mkN "前菜" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin antipathetic_A = mkA "厌恶" | mkA "反感" ; -- open-multilingual-wordnet
-lin antipersonnel_A = mkA "杀伤性" ; -- open-multilingual-wordnet
+lin anti_personnel_A = mkA "杀伤性" ; -- open-multilingual-wordnet
 lin antiperspirant_N = mkN "止汗剂" | mkN "腋下除汗剂" ; -- open-multilingual-wordnet
 lin antiphlogistic_A = mkA "抗发炎" | mkA "消炎" ; -- open-multilingual-wordnet
 lin antiphon_N = mkN "交互轮唱的歌" | mkN "唱和" ; -- open-multilingual-wordnet
@@ -2122,7 +2113,6 @@ lin aoristic_A = mkA "不定过去时" ; -- open-multilingual-wordnet
 lin aorta_N = mkN "大動脈" | mkN "大动脉" ; -- status=guess -- status=guess
 lin aortal_A = mkA "主动脉" | mkA "大动脉" ; -- open-multilingual-wordnet
 lin aortitis_N = mkN "主动脉动脉炎" ; -- open-multilingual-wordnet
-lin apanage_N = mkN "俸禄" | mkN "封禄" ; -- open-multilingual-wordnet
 lin apart_Adv = mkAdv "隔开" ;
 lin apart_from_Prep = mkPrep "除了" ;
 lin apartheid_N = mkN "种族隔离" [] ;
@@ -2195,7 +2185,6 @@ lin apojove_N = mkN "远木星点" ; -- open-multilingual-wordnet
 lin apolemia_N = mkN "管水母" ; -- open-multilingual-wordnet
 lin apolitical_A = mkA "与政治无关" ; -- open-multilingual-wordnet
 lin apologetic_A = mkA "道歉" ; -- open-multilingual-wordnet
-lin apologetically_Adv = mkAdv "抱歉地" ;
 lin apologetics_N = mkN "护教学" | mkN "辨惑学" ; -- open-multilingual-wordnet
 lin apologist_N = mkN "辩护者" "位" ;
 lin apologize_V = mkV "道歉" ;
@@ -2273,7 +2262,7 @@ lin appetizingness_N = mkN "促进食欲" ;
 lin applaud_V = mkV "喝彩" | {-HSK-} mkV "鼓掌" ;
 lin applaud_V2 = mkV2 "鼓掌" ;
 lin applause_N = mkN "赞美" | {-HSK-} mkN "鼓掌" ;
-lin apple_N = L.apple_N | {-HSK-} mkN "苹果" "個" ;
+lin apple_N = L.apple_N ;
 lin applejack_N = mkN "苹果白兰地" ; -- open-multilingual-wordnet
 lin applet_N = mkN "小應用程序" | mkN "小应用程序" | mkN "小程序" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin applewood_N = mkN "苹果木" ; -- open-multilingual-wordnet
@@ -2430,8 +2419,6 @@ lin archean_A = mkA "太古代" | mkA "太古化" ; -- open-multilingual-wordnet
 lin archegonial_A = mkA "有颈卵器" | mkA "颈卵器" ; -- open-multilingual-wordnet
 lin archegonium_N = mkN "造卵器" | mkN "颈卵器" ; -- open-multilingual-wordnet
 lin archenteron_N = mkN "原肠" ; -- open-multilingual-wordnet
-lin archeologist_N = mkN "考古学家" ; -- open-multilingual-wordnet
-lin archeology_N = mkN "考古学" ; -- open-multilingual-wordnet
 lin archeozoic_A = mkA "始生代" ; -- open-multilingual-wordnet
 lin archer_N = mkN "射手" | mkN "弓箭手" ; -- status=guess -- status=guess
 lin archery_N = mkN "箭術" | mkN "箭术" | mkN "射箭" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -2546,16 +2533,14 @@ lin armature_N = mkN "电枢" ; -- open-multilingual-wordnet
 lin armchair_N = {-mwn-} mkN "扶手椅" | mkN "扶手椅子" ; -- open-multilingual-wordnet
 lin armed_A = variants {} ;
 lin armful_N = mkN "抱" | mkN "滿懷的" | mkN "满怀的" ; -- status=guess -- status=guess -- status=guess
-lin armhole_N = mkN "袖孔" | mkN "袖窿" | mkN "袖笼" ; -- open-multilingual-wordnet
+lin arm_hole_N = mkN "袖孔" | mkN "袖窿" | mkN "袖笼" ; -- open-multilingual-wordnet
 lin armilla_N = mkN "腕带" | mkN "腕环" ; -- open-multilingual-wordnet
 lin armillary_A = mkA "手镯" ; -- open-multilingual-wordnet
 lin armistice_N = mkN "停戰協定" | mkN "停战协定" | {-mwn-} mkN "缓和" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin armlet_N = mkN "臂环" | mkN "臂章" | mkN "袖章" ; -- open-multilingual-wordnet
 lin armoire_N = mkN "大型衣橱" ; -- open-multilingual-wordnet
-lin armor_N = mkN "鎧甲" | mkN "铠甲" ; -- status=guess -- status=guess
-lin armorer_N = mkN "武器制造者" ; -- open-multilingual-wordnet
+lin armour_N = mkN "鎧甲" | mkN "铠甲" ; -- status=guess -- status=guess
 lin armorial_A = mkA "纹章学" | mkA "纹章盾徽" ; -- open-multilingual-wordnet
-lin armory_N = mkN "兵工厂" | mkN "军械厂" | mkN "军械库" | mkN "军火库" ; -- open-multilingual-wordnet
 lin armourer_N = mkN "武器制造者" ; -- open-multilingual-wordnet
 lin armoury_N = mkN "兵工厂" | mkN "军械厂" | mkN "军械库" | mkN "军火库" ; -- open-multilingual-wordnet
 lin armpit_N = mkN "腋窝" ;
@@ -3154,7 +3139,6 @@ lin autolytic_A = mkA "自溶" ; -- open-multilingual-wordnet
 lin automate_V2 = mkV2 "自动化" ;
 lin automatic_A = mkA "自动" ;
 lin automatic_N = mkN "自动" | {-mwn-} mkN "自动手枪" ; -- open-multilingual-wordnet
-lin automatically_Adv = mkAdv "自动" ;
 lin automation_N = mkN "自动化" [] ;
 lin automobile_N = mkN "汽车" ;
 lin automotive_A = mkA "汽车" ;
@@ -3359,7 +3343,7 @@ lin backstay_N = mkN "后支条" | mkN "后部撑物" ; -- open-multilingual-wor
 lin backstitch_N = mkN "回式针迹" | mkN "回针缝" | mkN "扣针脚倒缝" | mkN "来回针脚" | mkN "返针" ; -- open-multilingual-wordnet
 lin backstroke_N = mkN "仰泳" ; -- status=guess
 lin backsword_N = mkN "单刃剑" ; -- open-multilingual-wordnet
-lin backup_N = mkN "備份" | mkN "备份" ; -- status=guess -- status=guess
+lin back_up_N = mkN "備份" | mkN "备份" ; -- status=guess -- status=guess
 lin backward_A = mkA "落后" | {-HSK-} mkA "逆向" ; -- status=guess
 lin backward_Adv = mkAdv "向后" | {-HSK-} mkAdv "落后" ;
 lin backwards_Adv = mkAdv "向后" ;
@@ -3448,7 +3432,7 @@ lin ball_V2 = mkV2 "使+成球形" ;
 lin ballad_N = mkN "民謠" | mkN "民谣" | mkN "歌謠" | mkN "歌谣" | mkN "短歌" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin ballast_N = mkN "壓載" | mkN "压载" | {-mwn-} mkN "压舱物" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin ballcock_N = mkN "浮球旋塞" | mkN "浮球阀" ; -- open-multilingual-wordnet
-lin balldress_N = mkN "舞会礼服" ; -- open-multilingual-wordnet
+lin ball_dress_N = mkN "舞会礼服" ; -- open-multilingual-wordnet
 lin ballerina_N = mkN "芭蕾舞演員" | mkN "芭蕾舞演员" | mkN "芭蕾舞女演員" | mkN "芭蕾舞女演员" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin ballet_N = mkN "芭蕾舞" "次" ;
 lin balletic_A = mkA "像芭蕾舞" | mkA "芭蕾舞" ; -- open-multilingual-wordnet
@@ -3488,7 +3472,7 @@ lin bandanna_N = mkN "印花丝巾" | mkN "印花大手帕" | mkN "大手帕" | 
 lin bandbox_N = mkN "圆筒形纸板盒" | mkN "硬纸盒" ; -- open-multilingual-wordnet
 lin bandicoot_N = mkN "袋狸" ; -- status=guess
 lin bandit_N = mkN "匪徒" | mkN "土匪" ; -- status=guess -- status=guess
-lin bandsaw_N = mkN "带锯" | mkN "锯" ; -- open-multilingual-wordnet
+lin band_saw_N = mkN "带锯" | mkN "锯" ; -- open-multilingual-wordnet
 lin bandstand_N = mkN "露天音乐台" ; -- open-multilingual-wordnet
 lin bandung_PN = mkPN "萬隆" ; -- comment=src=geonames status=guess
 lin bandwagon_N = mkN "花车" ;
@@ -3508,10 +3492,11 @@ lin banish_V2 = mkV2 "放逐" ;
 lin banishment_N = mkN "流放" ; -- comment="充军" ;
 lin banister_N = mkN "欄杆" | mkN "栏杆" | {-mwn-} mkN "扶手" | mkN "栏杆的支柱" | mkN "楼梯栏杆小柱" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin banjo_N = mkN "班卓琴" ; -- status=guess -- open-multilingual-wordnet
-lin bank_N = L.bank_N | {-HSK-} mkN "岸" "個" | mkN "银行" "家" ;
+lin bank_1_N = mkN "岸" "個" ;
+lin bank_2_N = L.bank_N ;
 lin bank_V = mkV "银行" "家" ;
 lin bank_V2 = mkV2 "将+存入银行" ;
-lin bankbook_N = mkN "银行存折" ; -- open-multilingual-wordnet
+lin bank_book_N = mkN "银行存折" ; -- open-multilingual-wordnet
 lin banker_N = mkN "银行家" ;
 lin banking_N = mkN "银行业" ;
 lin banknote_N = mkN "鈔票" | mkN "钞票" | mkN "莊票" | mkN "庄票" ; -- status=guess -- status=guess -- status=guess -- status=guess
@@ -3534,9 +3519,8 @@ lin banyan_N = mkN "榕" | {-mwn-} mkN "宽松的衬衫" ; -- status=guess -- op
 lin baobab_N = mkN "猴麵包樹" | mkN "猴面包树" | mkN "猢猻樹" | mkN "猢狲树" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin baptism_N = mkN "洗礼" "场" ;
 lin baptismal_A = mkA "洗礼" ; -- open-multilingual-wordnet
-lin bar_1_N = variants {} ;
+lin bar_1_N = mkN "酒吧" ;
 lin bar_2_N = variants {} ;
-lin bar_N = mkN "酒吧" ;
 lin bar_V2 = mkV2 "阻挡" ;
 lin baracaldo_PN = foreignPN "Baracaldo" ; -- comment=src=eng status=guess
 lin barb_N = mkN "倒钩" ;
@@ -3592,7 +3576,7 @@ lin barley_N = mkN "大麦" ;
 lin barn_N = mkN "谷仓" "个" ;
 lin barnacle_N = mkN "藤壶" ;
 lin barnard_castle_PN = foreignPN "Barnard castle" ; -- comment=src=eng status=guess
-lin barndoor_N = mkN "挡光板" ; -- open-multilingual-wordnet
+lin barn_door_N = mkN "挡光板" ; -- open-multilingual-wordnet
 lin barnet_PN = mkPN "巴尼特區" ; -- comment=src=geonames status=guess
 lin barnful_N = mkN "仓库存储量" ; -- open-multilingual-wordnet
 lin barnoldswick_PN = foreignPN "Barnoldswick" ; -- comment=src=geonames status=guess
@@ -3842,7 +3826,8 @@ lin bedwas_PN = foreignPN "Bedwas" ; -- comment=src=geonames status=guess
 lin bee_N = mkN "蜜蜂" | {-HSK-} mkN "蜜蜂" "隻" ;
 lin beebread_N = mkN "蜂的幼虫食料" | mkN "蜜蜂食料" ; -- open-multilingual-wordnet
 lin beech_N = mkN "山毛櫸" | mkN "山毛榉" ; -- status=guess -- status=guess
-lin beef_N = mkN "牛肉" [] ;
+lin beef_1_N = mkN "牛肉" [] ;
+lin beef_2_N = mkN "牛肉" [] ;
 lin beef_V = mkV "抱怨" ;
 lin beefsteak_N = mkN "牛排" ; -- status=guess
 lin beefy_A = mkA "结实" ;
@@ -3850,7 +3835,7 @@ lin beehive_N = mkN "蜂箱" | mkN "蜂巢" ; -- status=guess -- status=guess
 lin beekeeping_N = mkN "養蜂" | mkN "养蜂" | mkN "養蜂業" | mkN "养蜂业" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin beep_N = mkN "哔哔" ;
 lin beeper_N = mkN "BP机" | mkN "呼叫器" | mkN "蜂鸣器" ; -- open-multilingual-wordnet
-lin beer_N = L.beer_N | {-HSK-} mkN "啤酒" "杯" ;
+lin beer_N = L.beer_N ;
 lin beery_A = mkA "啤酒味" ; -- open-multilingual-wordnet
 lin beeswax_N = mkN "蜂蜡" ;
 lin beet_N = mkN "甜菜" ;
@@ -4033,7 +4018,7 @@ lin best_N = mkN "最好" | {-HSK-} mkN "最好的朋友" ; -- status=guess
 lin best_V2 = mkV2 "胜过" ;
 lin bestir_V2 = mkV2 (mkV "振作") ; -- status=guess, src=wikt
 lin bestow_V2 = mkV2 "赐给" ;
-lin bestseller_N = mkN "暢銷書" | mkN "畅销书" | mkN "熱門書籍" | mkN "热门书籍" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin best_seller_N = mkN "暢銷書" | mkN "畅销书" | mkN "熱門書籍" | mkN "热门书籍" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin bestubbled_A = mkA "满是茬" ; -- open-multilingual-wordnet
 lin bet_N = mkN "赌注" ;
 lin bet_V = mkV "打赌" ;
@@ -4457,7 +4442,7 @@ lin blonde_A = mkA "亚麻色" ;
 lin blonde_N = mkN "金发" ;
 lin blood_N = L.blood_N | {-HSK-} mkN "血" "滴" ;
 lin blood_V2 = mkV2 "血" ;
-lin bloodbath_N = mkN "血洗" | mkN "大屠殺" | mkN "大屠杀" ; -- status=guess -- status=guess -- status=guess
+lin blood_bath_N = mkN "血洗" | mkN "大屠殺" | mkN "大屠杀" ; -- status=guess -- status=guess -- status=guess
 lin bloodguilt_N = mkN "杀人罪" ; -- open-multilingual-wordnet
 lin bloodhound_N = mkN "大猎犬" | mkN "大警犬" | mkN "猎犬" | mkN "警犬" ; -- open-multilingual-wordnet
 lin bloodmobile_N = mkN "流动献血车" | mkN "采血巡回车" ; -- open-multilingual-wordnet
@@ -4550,7 +4535,7 @@ lin boastful_A = mkA "自誇" | mkA "自夸" ; -- status=guess -- status=guess
 lin boat_N = L.boat_N ;
 lin boat_V = mkV "划船" ;
 lin boater_N = mkN "硬草帽" "顶" ;
-lin boathouse_N = mkN "停船棚屋" ; -- open-multilingual-wordnet
+lin boat_house_N = mkN "停船棚屋" ; -- open-multilingual-wordnet
 lin boatload_N = mkN "船舶装载量" ; -- open-multilingual-wordnet
 lin bob_PN = foreignPN "Bob" ; -- comment=src=eng status=guess
 lin bobbin_N = mkN "線軸" | mkN "线轴" ; -- status=guess -- status=guess
@@ -4627,9 +4612,9 @@ lin bombay_PN = foreignPN "Bombay" ; -- comment=src=eng status=guess
 lin bomber_N = mkN "轰炸机" "架" ;
 lin bombing_N = mkN "轰炸" "次" ;
 lin bomblet_N = mkN "小炸弹" ; -- open-multilingual-wordnet
-lin bombproof_A = mkA "防弹" | mkA "防炮弹" ; -- open-multilingual-wordnet
+lin bomb_proof_A = mkA "防弹" | mkA "防炮弹" ; -- open-multilingual-wordnet
 lin bombshell_N = mkN "炸弹" ;
-lin bombsight_N = mkN "投弹瞄准器" | mkN "炸弹瞄准器" | mkN "轰炸瞄准器" ; -- open-multilingual-wordnet
+lin bomb_sight_N = mkN "投弹瞄准器" | mkN "炸弹瞄准器" | mkN "轰炸瞄准器" ; -- open-multilingual-wordnet
 lin bombycid_N = mkN "蚕蛾" ; -- open-multilingual-wordnet
 lin bona_fide_A = mkA "善意" ;
 lin bonanza_N = mkN "富矿带" ;
@@ -4666,10 +4651,10 @@ lin book_V2 = mkV2 "预定" ;
 lin book_up_V = mkV "全部预定" | mkV "预定一空" ; -- open-multilingual-wordnet
 lin bookable_A = mkA "供预约" | mkA "可预定" | mkA "可预订" ; -- open-multilingual-wordnet
 lin bookcase_N = mkN "書架" | mkN "书架" | mkN "書櫥" | mkN "书橱" ; -- status=guess -- status=guess -- status=guess -- status=guess
-lin bookend_N = mkN "書擋" | mkN "书挡" | {-mwn-} mkN "书夹" | mkN "书立" | mkN "书靠" | mkN "挡书板" ; -- status=guess -- status=guess -- open-multilingual-wordnet
+lin book_end_N = mkN "書擋" | mkN "书挡" | {-mwn-} mkN "书夹" | mkN "书立" | mkN "书靠" | mkN "挡书板" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin booking_N = mkN "预订" ;
 lin bookish_A = mkA "勤奋" | mkA "好学" | mkA "好读书" | mkA "用功" ; -- open-multilingual-wordnet
-lin bookkeeper_N = mkN "簿记""本" ;
+lin book_keeper_N = mkN "簿记""本" ;
 lin bookkeeping_N = mkN "记账" ;
 lin booklet_N = mkN "册" | {-HSK-} mkN "小册子" ;
 lin bookmaker_N = mkN "賭注登記人" | mkN "赌注登记人" | mkN "賭博業者" | mkN "赌博业者" ; -- status=guess -- status=guess -- status=guess -- status=guess
@@ -4930,7 +4915,7 @@ lin brazilian_A = mkA "巴西" ;
 lin brazilian_N = mkN "巴西人" "名" ;
 lin breach_N = mkN "突破口" ;
 lin breach_V2 = mkV2 "突破" ;
-lin bread_N = L.bread_N | {-HSK-} mkN "面包" "片" ;
+lin bread_N = L.bread_N ;
 lin breadbasket_N = mkN "面包篮" ; -- open-multilingual-wordnet
 lin breadboard_N = mkN "面包板" ; -- open-multilingual-wordnet
 lin breadcrumb_N = mkN "面包屑" | mkN "面包屑" ; -- status=guess -- status=guess
@@ -4971,7 +4956,7 @@ lin breastfeed_V = mkV "餵奶" | mkV "哺乳" | mkV "喂奶" ; -- status=guess,
 lin breastfeed_V2 = mkV2 (mkV "餵奶") | mkV2 (mkV "哺乳") | mkV2 (mkV "喂奶") ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin breastless_A = mkA "无胸" ; -- open-multilingual-wordnet
 lin breaston_PN = foreignPN "Breaston" ; -- comment=src=eng status=guess
-lin breastplate_N = mkN "胸铠" | mkN "腹甲" ; -- open-multilingual-wordnet
+lin breast_plate_N = mkN "胸铠" | mkN "腹甲" ; -- open-multilingual-wordnet
 lin breaststroke_N = mkN "蛙泳" | mkN "俯泳" | mkN "胸泳" ; -- status=guess -- status=guess -- status=guess
 lin breath_N = mkN "呼吸""次" ;
 lin breathalyser_N = mkN "呼吸测醉器" | mkN "酒精测定器" ; -- open-multilingual-wordnet
@@ -4986,7 +4971,7 @@ lin breccia_N = mkN "角砾岩" ; -- open-multilingual-wordnet
 lin brecknock_PN = foreignPN "Brecknock" ; -- comment=src=eng status=guess
 lin breda_PN = mkPN "布雷达" ; -- comment=src=geonames status=guess
 lin breech_N = mkN "后膛" ; -- open-multilingual-wordnet
-lin breechblock_N = mkN "枪闩" | mkN "炮闩" ; -- open-multilingual-wordnet
+lin breech_block_N = mkN "枪闩" | mkN "炮闩" ; -- open-multilingual-wordnet
 lin breechcloth_N = mkN "土人的腰布" | mkN "缠腰布" | mkN "缠腰带" ; -- open-multilingual-wordnet
 lin breeches_N = mkN "五分褲" | mkN "五分裤" | mkN "半長褲" | mkN "半长裤" | mkN "馬褲" | mkN "马裤" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin breechloader_N = mkN "后膛枪" | mkN "后膛炮" ; -- open-multilingual-wordnet
@@ -5254,7 +5239,7 @@ lin build_V2 = mkV2 "修" | mkV2 "建立" | mkV2 "建设" | mkV2 "盖" | {-HSK-}
 lin build_up_V2 = prepV2 OP_build_V OP_up_Prep ; -- guess-p-verb
 lin builder_N = mkN "建设者" ;
 lin building_N = mkN "建筑" | {-HSK-} mkN "建筑" "個" ;
-lin buildup_N = mkN "增强" ;
+lin build_up_N = mkN "增强" ;
 lin built_in_A = mkA "建造" ;
 lin bulb_N = mkN "粉笔" ;
 lin bulbaceous_A = mkA "球根" ; -- open-multilingual-wordnet
@@ -5289,7 +5274,7 @@ lin bullfighter_N = mkN "斗牛" ;
 lin bullfighting_N = mkN "公牛戰鬥" | mkN "公牛战斗" | mkN "鬥牛" | mkN "斗牛" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin bullfrog_N = mkN "牛蛙" | mkN "美國牛蛙" | mkN "美国牛蛙" ; -- status=guess -- status=guess -- status=guess
 lin bullhead_N = mkN "大头鱼" | mkN "杜父鱼" | mkN "美洲鲇鱼" ; -- open-multilingual-wordnet
-lin bullheaded_A = mkA "冥顽不灵" | mkA "顽固" ; -- open-multilingual-wordnet
+lin bull_headed_A = mkA "冥顽不灵" | mkA "顽固" ; -- open-multilingual-wordnet
 lin bullhorn_N = mkN "手提式扩音器" | mkN "扩音器" ; -- open-multilingual-wordnet
 lin bullion_N = mkN "金银" "块" ;
 lin bullnecked_A = mkA "粗颈" ; -- open-multilingual-wordnet
@@ -5298,7 +5283,7 @@ lin bullocky_A = mkA "小公牛似" ; -- open-multilingual-wordnet
 lin bullpen_N = mkN "临时拘留所" ; -- open-multilingual-wordnet
 lin bullring_N = mkN "斗牛场" ; -- open-multilingual-wordnet
 lin bullshit_N = mkN "廢話" | mkN "废话" | mkN "狗屁" | mkN "放屁" ; -- status=guess -- status=guess -- status=guess -- status=guess
-lin bullterrier_N = mkN "叭喇狗" | mkN "布尔得利亚" ; -- open-multilingual-wordnet
+lin bull_terrier_N = mkN "叭喇狗" | mkN "布尔得利亚" ; -- open-multilingual-wordnet
 lin bully_N = mkN "欺凌弱小者" ;
 lin bully_V = mkV "欺負" | mkV "欺负" ; -- status=guess, src=wikt -- status=guess, src=wikt
 lin bully_V2 = mkV2 "欺负" ;
@@ -5382,7 +5367,7 @@ lin burnish_V2 = mkV2 "擦亮" ;
 lin burnley_PN = mkPN "伯恩利" ; -- comment=src=geonames status=guess
 lin burntisland_PN = foreignPN "Burntisland" ; -- comment=src=geonames status=guess
 lin burntwood_PN = foreignPN "Burntwood" ; -- comment=src=geonames status=guess
-lin burnup_N = mkN "燃料消耗" | mkN "燃耗" ; -- open-multilingual-wordnet
+lin burn_up_N = mkN "燃料消耗" | mkN "燃耗" ; -- open-multilingual-wordnet
 lin burp_N = mkN "飽嗝" | mkN "饱嗝" ; -- status=guess -- status=guess
 lin burp_V = mkV "打嗝" | mkV "噯氣" | mkV "嗳气" | mkV "飽嗝" | mkV "饱嗝" | mkV "嗝" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- open-multilingual-wordnet
 lin burp_V2 = mkV2 (mkV "打嗝") | mkV2 (mkV "噯氣") | mkV2 (mkV "嗳气") | mkV2 (mkV "飽嗝") | mkV2 (mkV "饱嗝") | mkV2 (mkV "嗝") ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
@@ -5465,7 +5450,7 @@ lin butyrin_N = mkN "酪脂" ; -- open-multilingual-wordnet
 lin buxton_PN = mkPN "巴克斯頓" ; -- comment=src=geonames status=guess
 lin buy_N = mkN "购买" ;
 lin buy_V = mkV "买" ;
-lin buy_V2 = L.buy_V2 | {-HSK-} mkV2 "买" ;
+lin buy_V2 = L.buy_V2 ;
 lin buy_back_V2 = mkV2 (advV OP_buy_V OP_back_Adv ) ; -- guess-p-verb
 lin buy_in_V2 = prepV2 OP_buy_V OP_in_Prep ; -- guess-p-verb
 lin buy_into_V2 = prepV2 OP_buy_V OP_into_Prep ; -- guess-p-verb
@@ -5511,7 +5496,7 @@ lin cabbage_N = mkN "捲心菜" | mkN "卷心菜" | mkN "高麗菜" | mkN "高�
 lin caber_N = mkN "投棒" | mkN "棒" | mkN "比力棒" ; -- open-multilingual-wordnet
 lin cabin_N = mkN "机舱" "间" ;
 lin cabinet_N = mkN "柜子" ;
-lin cabinetmaker_N = mkN "細木工" | mkN "细木工" | mkN "家具木工" | mkN "細工木匠" | mkN "细工木匠" | mkN "家具師" | mkN "家具师" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
+lin cabinet_maker_N = mkN "細木工" | mkN "细木工" | mkN "家具木工" | mkN "細工木匠" | mkN "细工木匠" | mkN "家具師" | mkN "家具师" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin cable_N = mkN "电缆" ;
 lin caboose_N = mkN "乘务车厢" ; -- open-multilingual-wordnet
 lin cacao_N = mkN "可可樹" | mkN "可可树" ; -- status=guess -- status=guess
@@ -5700,13 +5685,13 @@ lin campanulate_A = mkA "钟状" ; -- open-multilingual-wordnet
 lin campbeltown_PN = foreignPN "Campbeltown" ; -- comment=src=geonames status=guess
 lin camper_N = mkN "露营者" ;
 lin campestral_A = mkA "乡村" | mkA "乡间" | mkA "田野" ; -- open-multilingual-wordnet
-lin campfire_N = mkN "營火" | mkN "营火" ; -- status=guess -- status=guess
+lin camp_fire_N = mkN "營火" | mkN "营火" ; -- status=guess -- status=guess
 lin camphor_N = mkN "樟腦" | mkN "樟脑" | {-mwn-} mkN "莰酮" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin camphoraceous_A = mkA "像樟脑" | mkA "樟脑特有" ; -- open-multilingual-wordnet
 lin camphoric_A = mkA "含樟脑" | mkA "搀有樟脑" ; -- open-multilingual-wordnet
 lin camping_N = mkN "露營" | mkN "露营" ; -- status=guess -- status=guess
 lin campsite_N = mkN "露營地" | mkN "露营地" | mkN "營地" | mkN "营地" ; -- status=guess -- status=guess -- status=guess -- status=guess
-lin campstool_N = mkN "折凳" | mkN "折椅" | mkN "轻便折凳" | mkN "轻便折叠凳" ; -- open-multilingual-wordnet
+lin camp_stool_N = mkN "折凳" | mkN "折椅" | mkN "轻便折凳" | mkN "轻便折叠凳" ; -- open-multilingual-wordnet
 lin campus_N = mkN "校园" ;
 lin camshaft_N = mkN "凸轮轴" ; -- open-multilingual-wordnet
 lin can8know_VV = S.can8know_VV ;
@@ -5882,7 +5867,6 @@ lin carboxyl_A = mkA "含羰基" | mkA "羧基" ; -- open-multilingual-wordnet
 lin carboxyl_N = mkN "羧基" ; -- open-multilingual-wordnet
 lin carboy_N = mkN "小口的大瓶" ; -- open-multilingual-wordnet
 lin carbuncle_N = mkN "痈" | mkN "红疹" ; -- open-multilingual-wordnet
-lin carburetor_N = mkN "化油器" | mkN "汽化器" ; -- open-multilingual-wordnet
 lin carburettor_N = mkN "化油器" | mkN "汽化器" ; -- open-multilingual-wordnet
 lin carcass_N = mkN "尸体" "具" ;
 lin carcinogen_N = mkN "致癌物質" | mkN "致癌物质" ; -- status=guess -- status=guess
@@ -5891,7 +5875,8 @@ lin carcinoid_N = mkN "良性肿瘤" ; -- open-multilingual-wordnet
 lin carcinoma_N = mkN "癌" ; -- open-multilingual-wordnet
 lin carcinomatous_A = mkA "癌性" ; -- open-multilingual-wordnet
 lin carcinosarcoma_N = mkN "癌肉瘤" ; -- open-multilingual-wordnet
-lin card_N = mkN "卡" "张" | {-HSK-} mkN "名片" ;
+lin card_1_N = mkN "卡" "张" | {-HSK-} mkN "名片" ;
+lin card_2_N = mkN "卡" "张" | {-HSK-} mkN "名片" ;
 lin cardamom_N = mkN "小豆蔻" | mkN "豆蔻" ; -- status=guess -- status=guess
 lin cardboard_N = mkN "纸板" ;
 lin cardcase_N = mkN "名片盒" ; -- open-multilingual-wordnet
@@ -6087,8 +6072,9 @@ lin catachrestic_A = mkA "用词不当" ; -- open-multilingual-wordnet
 lin cataclysm_N = mkN "灾难" ;
 lin catacomb_N = mkN "地下墓穴" | {-mwn-} mkN "地下埋葬地" | mkN "陵寝" ; -- status=guess -- open-multilingual-wordnet
 lin catafalque_N = mkN "灵柩台" ; -- open-multilingual-wordnet
-lin catalanFem_N = variants {} ; ---- sense to be split
-lin catalanMasc_N = variants {} ; ---- sense to be split
+lin catalanFem_N = variants {} ;
+lin catalanMasc_N = variants {} ;
+lin catalan_A = mkA "加泰罗尼亚" ;
 lin catalase_N = mkN "接触酵素" | mkN "过氧化氢酶" ; -- open-multilingual-wordnet
 lin catalatic_A = mkA "过氧化氢酶" ; -- open-multilingual-wordnet
 lin catalepsy_N = mkN "全身僵硬症" | mkN "强直性昏厥" ; -- open-multilingual-wordnet
@@ -6372,7 +6358,7 @@ lin chain_N = mkN "连锁" ;
 lin chain_V2 = mkV2 "链起" ;
 lin chair_N = L.chair_N | {-HSK-} mkN "椅子" "把" ;
 lin chair_V2 = mkV2 "使入座" ;
-lin chairlift_N = mkN "空中缆椅" ; -- open-multilingual-wordnet
+lin chair_lift_N = mkN "空中缆椅" ; -- open-multilingual-wordnet
 lin chairman_N = mkN "主席" | {-HSK-} mkN "主席" "個" | mkN "总裁" ;
 lin chairmanship_N = mkN "主席地位" ;
 lin chaise_longue_N = mkN "躺倚" ; -- open-multilingual-wordnet
@@ -6452,7 +6438,6 @@ lin character_1_N = mkN "字符" ;
 lin character_2_N = mkN "字符" ;
 lin characteristic_A = mkA "性质" | mkA "特征" | mkA "特点" | {-HSK-} mkA "特性" ;
 lin characteristic_N = mkN "性质" "個" | mkN "特征" | mkN "特点" "個" | {-HSK-} mkN "特性" ;
-lin characteristically_Adv = mkAdv "典型" ;
 lin characterization_N = mkN "描述" ;
 lin characterize_V2 = mkV2 "表征" ;
 lin characterless_A = mkA "平凡" ;
@@ -6735,7 +6720,7 @@ lin choir_N = mkN "合唱团" ;
 lin choke_N = mkN "阻塞门" ; -- open-multilingual-wordnet
 lin choke_V = mkV "窒息" ;
 lin choke_V2 = mkV2 "呛" | {-HSK-} mkV2 "憋" ;
-lin chokedamp_N = mkN "窒息瓦斯" | mkN "窒息空气" ; -- open-multilingual-wordnet
+lin choke_damp_N = mkN "窒息瓦斯" | mkN "窒息空气" ; -- open-multilingual-wordnet
 lin choker_N = mkN "項鍊" | mkN "项链" | {-mwn-} mkN "一种高硬领" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin choking_N = mkN "堵车" ;
 lin cholangitis_N = mkN "胆管炎" | mkN "胆道炎" ; -- open-multilingual-wordnet
@@ -6811,7 +6796,6 @@ lin chromophore_N = mkN "发色团" ; -- open-multilingual-wordnet
 lin chromosomal_A = mkA "染色体" ; -- open-multilingual-wordnet
 lin chromosome_N = mkN "染色体" ;
 lin chronic_A = mkA "慢性" ;
-lin chronically_Adv = mkAdv "慢性" ;
 lin chronicle_N = mkN "编年史" "本" ;
 lin chronicle_V2 = mkV2 "载入史册" ;
 lin chronograph_N = mkN "記時器" | mkN "记时器" | mkN "計時碼表" | mkN "计时码表" | mkN "記時儀" | mkN "记时仪" | mkN "錄時器" | mkN "录时器" | {-mwn-} mkN "记时计" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -7149,7 +7133,7 @@ lin close_up_V2 = prepV2 OP_close_V OP_up_Prep ; -- guess-p-verb
 lin closed_A = variants {} ;
 lin closeness_N = mkN "亲密" ;
 lin closet_N = mkN "壁橱" ;
-lin closeup_N = mkN "特写镜头" ; -- open-multilingual-wordnet
+lin close_up_N = mkN "特写镜头" ; -- open-multilingual-wordnet
 lin closing_N = mkN "關閉時間" | mkN "关闭时间" ; -- status=guess -- status=guess
 lin closure_N = mkN "关闭" ;
 lin clot_N = mkN "凝块" ;
@@ -7161,7 +7145,7 @@ lin clothes_N = {-HSK-} mkN "服装" "身" | mkN "衣服" "件" | {-HSK-} mkN "�
 lin clothesbrush_N = mkN "衣刷" ; -- open-multilingual-wordnet
 lin clotheshorse_N = mkN "晾衣架" | {-mwn-} mkN "晒衣架" ; -- status=guess -- open-multilingual-wordnet
 lin clothesline_N = mkN "曬衣繩" | mkN "晒衣绳" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin clothespin_N = mkN "晒衣夹" | mkN "衣夹" ; -- open-multilingual-wordnet
+lin clothes_pin_N = mkN "晒衣夹" | mkN "衣夹" ; -- open-multilingual-wordnet
 lin clothier_N = mkN "呢绒商" ;
 lin clothing_N = mkN "服装" "件" | {-HSK-} mkN "服装" "身" | mkN "装" ;
 lin cloud_N = L.cloud_N | {-HSK-} mkN "云" "朵" ;
@@ -7186,7 +7170,7 @@ lin club_V2 = mkV2 "筹集" ;
 lin clubbable_A = mkA "爱好交际" ; -- open-multilingual-wordnet
 lin clubbish_A = mkA "爱交际" ; -- open-multilingual-wordnet
 lin clubfoot_N = mkN "内弯脚" | mkN "弯曲脚" ; -- open-multilingual-wordnet
-lin clubfooted_A = mkA "畸足" ; -- open-multilingual-wordnet
+lin club_footed_A = mkA "畸足" ; -- open-multilingual-wordnet
 lin clubhouse_N = mkN "会所" | mkN "俱乐部会所" ; -- open-multilingual-wordnet
 lin clubroom_N = mkN "俱乐部聚会室" ; -- open-multilingual-wordnet
 lin clue_N = mkN "线索" ;
@@ -7208,7 +7192,6 @@ lin clydebank_PN = foreignPN "Clydebank" ; -- comment=src=geonames status=guess
 lin cm_N = mkN "厘米" ;
 lin co_N = mkN "合作" ;
 lin co_edit_V2 = mkV2 "一氧化碳" ;
-lin co_exist_V = mkV "共存" ;
 lin co_found_V2 = mkV2 "共同创立" ;
 lin co_manage_V2 = mkV2 "共同管理" ;
 lin co_sponsor_V2 = mkV2 "更改命令" ;
@@ -7308,10 +7291,10 @@ lin coercion_N = mkN "强迫" ;
 lin coetaneous_A = mkA "同时代" | mkA "同时期" ; -- open-multilingual-wordnet
 lin coeval_A = mkA "同时代" | mkA "同时期" ; -- open-multilingual-wordnet
 lin coeval_N = mkN "同时代的人" | mkN "同龄人" ; -- open-multilingual-wordnet
-lin coexist_V = mkV "共存" | mkV "和平共处" ; -- open-multilingual-wordnet
+lin co_exist_V = mkV "共存" | mkV "和平共处" ; -- open-multilingual-wordnet
 lin coexistence_N = mkN "兩立" | mkN "两立" | mkN "共存" ; -- status=guess -- status=guess -- status=guess
 lin coexistent_A = mkA "同时共存" ; -- open-multilingual-wordnet
-lin coffee_N = mkN "咖啡" | {-HSK-} mkN "咖啡" "杯" ;
+lin coffee_N = mkN "咖啡" ;
 lin coffeepot_N = mkN "咖啡壶" ; -- open-multilingual-wordnet
 lin coffer_N = mkN "保险箱" ;
 lin coffin_N = mkN "棺材" "具" ;
@@ -7354,7 +7337,7 @@ lin colander_N = mkN "濾器" | mkN "滤器" | mkN "漉鍋" | mkN "漉锅" | mkN
 lin colchester_PN = mkPN "科尔切斯特" ; -- comment=src=geonames status=guess
 lin cold_A = L.cold_A | {-HSK-} mkA "冷" | mkA "感冒" ;
 lin cold_N = mkN "冷" | mkN "感冒" "場" | {-HSK-} mkN "寒冷" ;
-lin coldhearted_A = mkA "冷淡" | mkA "冷淡无情" | mkA "冷酷" | mkA "无情" | mkA "铁石心肠" ; -- open-multilingual-wordnet
+lin cold_hearted_A = mkA "冷淡" | mkA "冷淡无情" | mkA "冷酷" | mkA "无情" | mkA "铁石心肠" ; -- open-multilingual-wordnet
 lin coldness_N = mkN "冷淡" ; -- status=guess
 lin coleshill_PN = foreignPN "Coleshill" ; -- comment=src=eng status=guess
 lin coleslaw_N = mkN "涼拌捲心菜" | mkN "凉拌卷心菜" ; -- status=guess -- status=guess
@@ -7428,23 +7411,20 @@ lin colonoscope_N = mkN "结肠镜" | mkN "结肠镜检查" ; -- open-multilingu
 lin colony_N = mkN "殖民地" ;
 lin colophon_N = mkN "书尾题署" | mkN "出版社商标" | mkN "标记" | mkN "版权页标记" ; -- open-multilingual-wordnet
 lin colophony_N = mkN "松香" | mkN "树脂" ; -- open-multilingual-wordnet
-lin color_A = mkA "彩色" | {-HSK-} mkA "青" | mkA "颜色" ;
-lin color_N = mkN "色盲" | {-HSK-} mkN "青" | mkN "颜色" "個" ; -- status=guess
 lin colorado_PN = foreignPN "Colorado" ; -- comment=src=geonames status=guess
 lin coloratura_N = mkN "花腔" ;
 lin colorectal_A = mkA "结肠直肠" ; -- open-multilingual-wordnet
-lin colored_A = mkA "有色" ; -- status=guess
-lin colorful_A = mkA "丰富多彩" ; -- status=guess
 lin colorimeter_N = mkN "色度计" ; -- open-multilingual-wordnet
 lin colorimetric_A = mkA "比色" | mkA "色度" ; -- open-multilingual-wordnet
 lin colossus_N = mkN "巨像" ;
 lin colostrum_N = mkN "初乳" ; -- status=guess
-lin colour_N = mkN "颜色" ;
+lin colour_A = mkA "彩色" | {-HSK-} mkA "青" | mkA "颜色" ;
+lin colour_N = mkN "色盲" | {-HSK-} mkN "青" | mkN "颜色" "個" ; -- status=guess
 lin colour_V = mkV "颜色" ;
 lin colour_V2 = mkV2 "上色" ;
 lin colour_V2A = mkV2A "颜色" ;
 lin colour_code_V2 = mkV2 "用颜色标记" ;
-lin coloured_A = variants {} ;
+lin coloured_A = mkA "有色" ; -- status=guess
 lin colourful_A = mkA "丰富多彩" ;
 lin colourless_A = mkA "無色" | mkA "无色" ; -- status=guess -- status=guess
 lin colpitis_N = mkN "阴道炎" ; -- open-multilingual-wordnet
@@ -8407,7 +8387,8 @@ lin counsel_N = mkN "法律顾问" ;
 lin counsel_V2 = mkV2 "建议" ;
 lin counselling_N = variants {} ;
 lin counsellor_N = {-mwn-} mkN "律师" | mkN "法律顾问" ; -- open-multilingual-wordnet
-lin count_N = mkN "计数" "次" ;
+lin count_1_N = mkN "计数" "次" ;
+lin count_2_N = mkN "计数" "次" ;
 lin count_V = mkV "计算" ;
 lin count_V2 = L.count_V2 | {-HSK-} mkV2 "计算" ;
 lin count_against_V2 = prepV2 OP_count_V OP_against_Prep ; -- guess-p-verb
@@ -8456,11 +8437,11 @@ lin countertop_N = mkN "工作台面" ; -- open-multilingual-wordnet
 lin countervail_V = mkV "抵销" ;
 lin counterweight_N = mkN "平衡力" ;
 lin countess_N = mkN "伯爵夫人" ; -- status=guess
-lin countinghouse_N = mkN "会计室" | mkN "存帐室" ; -- open-multilingual-wordnet
+lin counting_house_N = mkN "会计室" | mkN "存帐室" ; -- open-multilingual-wordnet
 lin countless_A = mkA "千万" | mkA "无数" ;
 lin country_N = L.country_N | {-HSK-} mkN "国家" "個" ;
 lin countryman_N = mkN "乡下人" ;
-lin countryseat_N = mkN "乡间别墅" | mkN "乡间庄园" | mkN "乡间邸宅" ; -- open-multilingual-wordnet
+lin country_seat_N = mkN "乡间别墅" | mkN "乡间庄园" | mkN "乡间邸宅" ; -- open-multilingual-wordnet
 lin countryside_N = mkN "农村" ;
 lin county_N = mkN "县" ;
 lin coup_N = mkN "政变" ;
@@ -8540,7 +8521,7 @@ lin crab_N = mkN "螃蟹" ;
 lin crack_N = mkN "裂纹" ;
 lin crack_V2 = mkV2 "使+开裂" ;
 lin crackbrained_A = mkA "极端愚蠢" | mkA "白痴" | mkA "精神错乱" ; -- open-multilingual-wordnet
-lin crackdown_N = mkN "鎮壓" | mkN "镇压" | mkN "痛擊" | mkN "痛击" | mkN "彈壓" | mkN "弹压" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
+lin crack_down_N = mkN "鎮壓" | mkN "镇压" | mkN "痛擊" | mkN "痛击" | mkN "彈壓" | mkN "弹压" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin cracker_N = mkN "饼干" "块" | {-HSK-} mkN "饼干" "片" ;
 lin cracking_N = mkN "使爆裂" | mkN "使破裂" | mkN "分裂" | mkN "破裂" ; -- open-multilingual-wordnet
 lin crackle_N = mkN "劈里啪啦的响声" ; -- status=guess
@@ -8624,7 +8605,7 @@ lin credit_N = mkN "信用" | {-HSK-} mkN "荣誉" ;
 lin credit_V2 = mkV2 "信用" ;
 lin creditable_A = mkA "值得称赞" | mkA "可称誉" ; -- open-multilingual-wordnet
 lin creditor_N = mkN "债权人" ;
-lin creditworthy_A = mkA "可信赖" ; -- open-multilingual-wordnet
+lin credit_worthy_A = mkA "可信赖" ; -- open-multilingual-wordnet
 lin credo_N = mkN "信条" ;
 lin credulity_N = mkN "轻信" "" ;
 lin credulous_A = mkA "輕信" | mkA "轻信" ; -- status=guess -- status=guess
@@ -8740,7 +8721,7 @@ lin cross_out_V2 = prepV2 OP_cross_V OP_out_Prep ; -- guess-p-verb
 lin cross_question_V2 = variants {} ; -- guess-p-verb
 lin cross_up_V2 = prepV2 OP_cross_V OP_up_Prep ; -- guess-p-verb
 lin crossbar_N = mkN "橫梁" | mkN "横梁" ; -- status=guess -- status=guess
-lin crossbench_N = mkN "中立议员席" ; -- open-multilingual-wordnet
+lin cross_bench_N = mkN "中立议员席" ; -- open-multilingual-wordnet
 lin crossbow_N = mkN "弩" ; -- status=guess -- open-multilingual-wordnet
 lin crossbreed_N = mkN "杂交品种" | mkN "杂交种" | mkN "杂种" ; -- open-multilingual-wordnet
 lin crossfire_N = mkN "交叉火力" ;
@@ -8927,7 +8908,7 @@ lin cupola_N = mkN "穹顶" ; -- open-multilingual-wordnet
 lin cupping_N = mkN "拔罐" ; -- status=guess
 lin cupric_A = mkA "二价铜" | mkA "含二价铜" ; -- open-multilingual-wordnet
 lin cuprite_N = mkN "赤铜矿" ; -- open-multilingual-wordnet
-lin cupronickel_N = mkN "白铜" | mkN "铜镍合金" ; -- open-multilingual-wordnet
+lin cupro_nickel_N = mkN "白铜" | mkN "铜镍合金" ; -- open-multilingual-wordnet
 lin cupule_N = mkN "杯形器" | mkN "杯形器具" ; -- open-multilingual-wordnet
 lin cur_N = mkN "劣等狗" | mkN "杂种狗" ; -- open-multilingual-wordnet
 lin curate_N = mkN "教区牧师" | mkN "牧师" ; -- open-multilingual-wordnet
@@ -8957,7 +8938,8 @@ lin curling_N = mkN "冰壺" | mkN "冰壶" ; -- status=guess -- status=guess
 lin curly_A = mkA "卷曲" ;
 lin currency_N = mkN "货币" ;
 lin current_A = mkA "当前" | {-HSK-} mkA "现在" | mkA "行" ;
-lin current_N = mkN "当前" | {-HSK-} mkN "现在" | mkN "行" ;
+lin current_1_N = mkN "当前" | {-HSK-} mkN "现在" | mkN "行" ;
+lin current_2_N = mkN "当前" | {-HSK-} mkN "现在" | mkN "行" ;
 lin curricular_A = mkA "课程" ; -- open-multilingual-wordnet
 lin curriculum_N = mkN "课程" "节" ;
 lin curriculum_vitae_N = mkN "履历" "份" ;
@@ -9029,7 +9011,7 @@ lin cutlassfish_N = mkN "带鱼" ; -- open-multilingual-wordnet
 lin cutlery_N = mkN "餐具" | mkN "利器" ; -- status=guess -- status=guess
 lin cutlet_N = mkN "豬排" | mkN "猪排" | mkN "豬扒" | mkN "猪扒" | mkN "炸肉片" | mkN "炸肉排" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin cutoff_N = mkN "截止阀" | mkN "断流器" ; -- open-multilingual-wordnet
-lin cutout_N = mkN "剪贴画" ;
+lin cut_out_N = mkN "剪贴画" ;
 lin cutter_N = mkN "刀" "把" ;
 lin cutting_N = mkN "切割" ;
 lin cuttingly_Adv = mkAdv "尖刻+地" | mkAdv "挖苦+地" ; -- open-multilingual-wordnet
@@ -9324,7 +9306,7 @@ lin death_N = mkN "死亡" ;
 lin deathbed_N = mkN "臨終床" | mkN "临终床" ; -- status=guess -- status=guess
 lin deathly_A = variants {} ;
 lin deathly_Adv = adjAdv deathly_A ; -- derived
-lin deathrate_N = mkN "死亡率" ; -- open-multilingual-wordnet
+lin death_rate_N = mkN "死亡率" ; -- open-multilingual-wordnet
 lin deathtrap_N = mkN "危险的地方" | mkN "危险的建筑物" | mkN "非常危险的场所" ; -- open-multilingual-wordnet
 lin debasement_N = mkN "堕落" ;
 lin debatable_A = mkA "值得商榷" ;
@@ -9620,7 +9602,6 @@ lin demobilize_V2 = mkV2 "遣散" ;
 lin democracy_N = mkN "民主" ;
 lin democrat_N = mkN "民主主义者" ;
 lin democratic_A = mkA "民主" ;
-lin democratically_Adv = mkAdv "民主地" ;
 lin democratization_N = mkN "民主化" [] ;
 lin democratize_V2 = mkV2 "民主化" ;
 lin demographic_A = mkA "人口统计学" ;
@@ -10226,7 +10207,8 @@ lin disclose_V = mkV "透露" ;
 lin disclose_V2 = mkV2 "揭露" ;
 lin disclose_VS = mkVS "透露" ;
 lin disclosure_N = mkN "泄露" ;
-lin disco_N = mkN "迪斯科舞厅" ;
+lin disco_1_N = mkN "迪斯科" ;
+lin disco_2_N = mkN "迪斯科" ;
 lin discoid_A = mkA "圆盘" | mkA "圆盘形" | mkA "平圆形" | mkA "铁饼状" ; -- open-multilingual-wordnet
 lin discoloration_N = mkN "變色" | mkN "变色" ; -- status=guess -- status=guess
 lin discomfit_V2 = mkV2 "扰乱" ;
@@ -10580,7 +10562,7 @@ lin doing_N = variants {} ;
 lin dolabriform_A = mkA "斧形" ; -- open-multilingual-wordnet
 lin dole_V2 = mkV2 "发放救济" ;
 lin doll_N = mkN "洋娃娃" ;
-lin dollar_N = mkN "元" | {-HSK-} mkN "美元" ;
+lin dollar_N = mkN "美元" ;
 lin dollop_N = mkN "一些" | mkN "块" ; -- open-multilingual-wordnet
 lin dolly_N = mkN "娃娃" | mkN "洋娃娃" | mkN "玩偶" ; -- open-multilingual-wordnet
 lin dolly_PN = foreignPN "Dolly" ; -- comment=src=eng status=guess
@@ -10596,7 +10578,6 @@ lin domed_A = mkA "成圆顶状" | mkA "拱状" ; -- open-multilingual-wordnet
 lin domesday_PN = foreignPN "Domesday" ; -- comment=src=eng status=guess
 lin domestic_A = mkA "国内" ;
 lin domestic_N = mkN "家貓" | mkN "家猫" ; -- status=guess -- status=guess
-lin domestically_Adv = mkAdv "合乎国内地" ;
 lin domicile_N = mkN "住所" | mkN "住宅" | {-mwn-} mkN "住处" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin domiciliary_A = mkA "住处" | mkA "住家" ; -- open-multilingual-wordnet
 lin dominance_N = mkN "优势" | {-HSK-} mkN "霸主地位" [] ;
@@ -10699,7 +10680,7 @@ lin double_park_V2 = variants {} ; -- guess-p-verb
 lin double_up_V = advV OP_double_V OP_up_Adv ; -- guess-p-verb
 lin double_up_as_V2 = prepV2 (advV OP_double_V OP_up_Adv ) OP_as_Prep ; -- guess-p-verb
 lin doubler_N = mkN "倍压器" | mkN "倍增器" | mkN "倍频器" ; -- open-multilingual-wordnet
-lin doublethink_N = mkN "雙想" | mkN "双想" | mkN "雙重思想" | mkN "双重思想" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin double_think_N = mkN "雙想" | mkN "双想" | mkN "雙重思想" | mkN "双重思想" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin doubletree_N = mkN "双驾横木" ; -- open-multilingual-wordnet
 lin doubloon_N = mkN "达布隆" | mkN "都布隆" ; -- open-multilingual-wordnet
 lin doubt_N = mkN "怀疑" ;
@@ -10734,7 +10715,7 @@ lin downgrade_V2 = mkV2 "下坡" ;
 lin downhill_Adv = mkAdv "向下" ;
 lin downing_street_PN = foreignPN "Downing street" ; -- comment=src=eng status=guess
 lin download_N = mkN "下載" | mkN "下载" ; -- status=guess -- status=guess
-lin downmarket_A = mkA "价廉质次" | mkA "低端市场" ; -- open-multilingual-wordnet
+lin down_market_A = mkA "价廉质次" | mkA "低端市场" ; -- open-multilingual-wordnet
 lin downplay_V2 = mkV2 "不予重视" ;
 lin downpour_N = mkN "大雨" | mkN "傾盆大雨" | mkN "倾盆大雨" ; -- status=guess -- status=guess -- status=guess
 lin downright_A = mkA "明白" ;
@@ -10788,14 +10769,12 @@ lin drainplug_N = mkN "放泄塞" ; -- open-multilingual-wordnet
 lin dram_N = mkN "微量" ;
 lin drama_N = mkN "戏剧" | {-HSK-} mkN "戏曲" ;
 lin dramatic_A = mkA "戏剧性" ;
-lin dramatically_Adv = mkAdv "显着" ;
 lin dramatization_N = mkN "戏剧" "场" ;
 lin dramaturgic_A = mkA "戏剧作法" | mkA "演出" ; -- open-multilingual-wordnet
 lin dramaturgy_N = mkN "戏剧艺术" | mkN "演出法" | mkN "舞台演出艺术" ; -- open-multilingual-wordnet
 lin drape_N = mkN "窗帘" "块" ;
 lin drape_V2 = mkV2 "悬垂" ;
 lin drastic_A = mkA "激烈" ;
-lin drastically_Adv = mkAdv " 彻底地" ;
 lin draughts_N = mkN "國際跳棋" | mkN "国际跳棋" | mkN "跳棋" ; -- status=guess -- status=guess -- status=guess
 lin draw_1_V2 = mkV2 "画" ;
 lin draw_2_V2 = mkV2 "画" ;
@@ -10866,7 +10845,7 @@ lin drill_V = mkV "演练" | {-HSK-} mkV "训练" ;
 lin drill_V2 = mkV2 "练习" | {-HSK-} mkV2 "训练" ;
 lin drink_N = mkN "饮料" | {-HSK-} mkN "饮料" "杯" ;
 lin drink_V = mkV "喝" ;
-lin drink_V2 = L.drink_V2 | {-HSK-} mkV2 "喝" ;
+lin drink_V2 = L.drink_V2 ;
 lin drink_up_V2 = prepV2 OP_drink_V OP_up_Prep ; -- guess-p-verb
 lin drinkable_A = mkA "可飲用" | mkA "可饮用" | {-mwn-} mkA "可以喝" | mkA "适于饮用" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin drinker_N = mkN "酒徒" ;
@@ -11085,7 +11064,7 @@ lin dustpan_N = mkN "掃把和簸箕" | mkN "扫把和簸箕" | mkN "垃圾鏟" 
 lin dusty_A = mkA "含糊" ;
 lin dutchFem_N = mkN "荷兰人" ;
 lin dutchMasc_N = mkN "荷兰人" ;
-lin dutch_A = mkA "荷兰人" ;
+lin dutch_A = mkA "荷兰" ;
 lin dutiable_A = mkA "应纳关税" ; -- open-multilingual-wordnet
 lin dutiful_A = mkA "忠实" ;
 lin duty_N = mkN "义务" "項" | mkN "任务" "項" | mkN "责任" "個" | {-HSK-} mkN "责任" ;
@@ -11216,7 +11195,7 @@ lin easy_Adv = mkAdv "便" | mkAdv "容易" | mkAdv "轻" ;
 lin easy_V2V = mkV2V "发出停止命令" ;
 lin easygoing_A = mkA "逍遥自在" ;
 lin eat_V = mkV "吃" ;
-lin eat_V2 = L.eat_V2 | {-HSK-} mkV2 "吃" ;
+lin eat_V2 = L.eat_V2 ;
 lin eat_away_V = advV OP_eat_V OP_away_Adv ; -- guess-p-verb
 lin eat_away_V2 = mkV2 (advV OP_eat_V OP_away_Adv ) ; -- guess-p-verb
 lin eat_in_V = advV OP_eat_V OP_in_Adv ; -- guess-p-verb
@@ -11347,7 +11326,7 @@ lin egad_Interj = mkInterj "哦天呐" ;
 lin egalitarianism_N = mkN "平等主义" "" ;
 lin egg_N = L.egg_N | {-HSK-} mkN "鸡蛋" "個" ;
 lin eggar_N = mkN "枯叶蛾之类" ; -- open-multilingual-wordnet
-lin eggcup_N = mkN "蛋杯" ; -- open-multilingual-wordnet
+lin egg_cup_N = mkN "蛋杯" ; -- open-multilingual-wordnet
 lin eggnog_N = mkN "蛋酒" | mkN "蛋奶酒" | mkN "蛋諾類" | mkN "蛋诺类" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin eggplant_N = mkN "茄子" ; -- status=guess
 lin eggshell_N = mkN "蛋殼" | mkN "蛋壳" ; -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -11392,7 +11371,8 @@ lin elastosis_N = mkN "弹性组织变性" ; -- open-multilingual-wordnet
 lin elation_N = mkN "得意" ;
 lin elbow_N = mkN "肘部" ;
 lin elder_A = mkA "年長" | mkA "年长" | {-HSK-} mkA "长" | {-mwn-} mkA "老" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin elder_N = mkN "长" | {-HSK-} mkN "长老" ;
+lin elder_1_N = mkN "长" | {-HSK-} mkN "长老" ;
+lin elder_2_N = mkN "长" | {-HSK-} mkN "长老" ;
 lin elderly_A = mkA "老年" ;
 lin elderslie_PN = foreignPN "Elderslie" ; -- comment=src=geonames status=guess
 lin eldest_A = mkA "大" ;
@@ -11438,7 +11418,6 @@ lin electromyograph_N = mkN "肌电描记器" ; -- open-multilingual-wordnet
 lin electron_N = mkN "电子" "个" ;
 lin electronegativity_N = mkN "電負性" | mkN "电负性" ; -- status=guess -- status=guess
 lin electronic_A = mkA "电子" ;
-lin electronically_Adv = mkAdv "电子地" ;
 lin electronics_N = mkN "电子" ;
 lin electrophoresis_N = mkN "电泳" | mkN "电泳分离法" | mkN "电解渗入法" ; -- open-multilingual-wordnet
 lin electrophoretic_A = mkA "电泳" ; -- open-multilingual-wordnet
@@ -11580,7 +11559,6 @@ lin emphasis_N = mkN "重点" ;
 lin emphasize_V2 = mkV2 "强调" ;
 lin emphasize_VS = mkVS "强调" ;
 lin emphatic_A = mkA "強調" | mkA "强调" ; -- status=guess -- status=guess
-lin emphatically_Adv = mkAdv "强调" ;
 lin empire_N = mkN "帝国" ;
 lin empirical_A = mkA "经验主义" ; -- comment="完全根据经验" ;
 lin emplacement_N = mkN "安置" | mkN "定位" | mkN "指出位置" | mkN "放置" ; -- open-multilingual-wordnet
@@ -11668,7 +11646,6 @@ lin end_up_V2 = prepV2 OP_end_V OP_up_Prep ; -- guess-p-verb
 lin end_up_with_V2 = prepV2 (advV OP_end_V OP_up_Adv ) OP_with_Prep ; -- guess-p-verb
 lin endanger_V2 = mkV2 "危害" ;
 lin endarteritis_N = mkN "动脉内膜炎" ; -- open-multilingual-wordnet
-lin endeavor_N = mkN "努力" ; -- status=guess
 lin endeavour_N = mkN "努力" ; -- status=guess
 lin endeavour_V = mkV "努力" ; -- status=guess, src=wikt
 lin endermic_A = mkA "涂在皮肤上" ; -- open-multilingual-wordnet
@@ -11696,7 +11673,6 @@ lin enduring_A = variants {} ;
 lin enema_N = mkN "灌腸劑" | mkN "灌肠剂" | mkN "灌腸" | mkN "灌肠" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin enemy_N = L.enemy_N | {-HSK-} mkN "敌人" "個" ;
 lin energetic_A = mkA "积极" | {-HSK-} mkA "精力充沛" ;
-lin energetically_Adv = mkAdv "起勁" | mkAdv "起劲" ; -- status=guess -- status=guess
 lin energizer_N = mkN "供能装置" ; -- open-multilingual-wordnet
 lin energy_N = mkN "精力" | mkN "能源" "個" | {-HSK-} mkN "能源" ;
 lin enfield_PN = foreignPN "Enfield" ; -- comment=src=geonames status=guess
@@ -11715,7 +11691,7 @@ lin enginery_N = mkN "机器" ; -- open-multilingual-wordnet
 lin england_PN = foreignPN "England" ; -- comment=src=geonames status=guess
 lin englishFem_N = mkN "英文" ;
 lin englishMasc_N = mkN "英文" ;
-lin english_A = mkA "英语" ;
+lin english_A = mkA "英国" ;
 lin engrave_V2 = mkV2 "刻" | {-HSK-} mkV2 "铭记" ;
 lin engraving_N = mkN "雕刻" | mkN "鐫刻" | mkN "镌刻" ; -- status=guess -- status=guess -- status=guess
 lin engross_V2 = mkV2 (mkV "全神贯注") ; -- status=guess, src=wikt
@@ -11979,7 +11955,6 @@ lin err_V = mkV "犯错" ;
 lin errand_N = mkN "差事" ;
 lin errant_A = mkA "迷失" ; -- status=guess
 lin erratic_A = mkA "不稳定" ;
-lin erratically_Adv = mkAdv "不稳定" ;
 lin erratum_N = mkN "勘误表" ;
 lin erroneous_A = mkA "错误" ;
 lin error_N = mkN "错" "個" | mkN "错误" "個" | {-HSK-} mkN "错误" ;
@@ -12088,7 +12063,6 @@ lin ethiopia_PN = mkPN "埃塞俄比亚" ; -- comment=src=geonames status=guess
 lin ethiopian_A = mkA "埃塞俄比亚" ;
 lin ethnic_A = mkA "民族" ;
 lin ethnic_N = mkN "種族清洗" | mkN "种族清洗" | mkN "民族凈化" | mkN "民族净化" ; -- status=guess -- status=guess -- status=guess -- status=guess
-lin ethnically_Adv = mkAdv "人种上" ;
 lin ethnicity_N = mkN "民族" ; -- status=guess
 lin ethnocentric_A = mkA "民族中心主义" | mkA "民族优越感" | mkA "种族优越感" ; -- open-multilingual-wordnet
 lin ethnocentrism_N = mkN "民族優越感" | mkN "民族优越感" | mkN "民族优越感" ; -- status=guess -- status=guess -- status=guess
@@ -12121,7 +12095,7 @@ lin euphoria_N = mkN "欣快" ;
 lin euphoriant_N = mkN "安乐药" | mkN "欣快剂" ; -- open-multilingual-wordnet
 lin eurasia_PN = foreignPN "Eurasia" ; -- comment=src=eng status=guess
 lin eurhythmics_N = mkN "艺术体操" | mkN "韵律体操" | mkN "韵律操" | mkN "韵律舞蹈" | mkN "韵律舞蹈体操" | mkN "韵律运动" ; -- open-multilingual-wordnet
-lin euro_N = mkN "歐元" | mkN "欧元" | {-mwn-} mkN "欧" ; -- status=guess -- status=guess -- open-multilingual-wordnet
+lin euro_N = mkN "欧元" ;
 lin eurodollar_N = mkN "欧洲美元" ;
 lin europe_PN = mkPN "欧洲" ;
 lin european_A = mkA "欧洲" ;
@@ -12158,7 +12132,8 @@ lin evasion_N = mkN "逃避" ;
 lin eve_N = mkN "前夕" ;
 lin eve_PN = foreignPN "Eve" ; -- comment=src=eng status=guess
 lin evelyn_PN = foreignPN "Evelyn" ; -- comment=src=eng status=guess
-lin even_A = mkA "哪怕" | mkA "均匀" | mkA "整齐" | mkA "甚至" | mkA "还" | {-HSK-} mkA "平均" ;
+lin even_1_A = mkA "哪怕" | mkA "均匀" | mkA "整齐" | mkA "甚至" | mkA "还" | {-HSK-} mkA "平均" ;
+lin even_2_A = mkA "哪怕" | mkA "均匀" | mkA "整齐" | mkA "甚至" | mkA "还" | {-HSK-} mkA "平均" ;
 lin even_AdA = mkAdA "甚至" ;
 lin even_AdV = mkAdV "甚至" ;
 lin even_Adv = mkAdv "哪怕" | mkAdv "均匀" | mkAdv "整齐" | mkAdv "甚至" | mkAdv "还" ;
@@ -12274,7 +12249,7 @@ lin excretory_A = mkA "分泌" | mkA "排泄" ; -- open-multilingual-wordnet
 lin excursion_N = mkN "偏移" ;
 lin excuse_N = mkN "借" | {-HSK-} mkN "借口" ;
 lin excuse_V2 = mkV2 "原谅" ;
-lin excuse_me_Interj = mkInterj "劳驾" | mkInterj "对不起" | {-HSK-} mkInterj "原谅我" ;
+lin excuse_me_Interj = mkInterj "原谅我" ;
 lin execute_V2 = mkV2 "执行" | {-HSK-} mkV2 "进行" ;
 lin execution_N = mkN "执行" ;
 lin executive_A = mkA "执行" ;
@@ -12413,7 +12388,8 @@ lin explosion_N = mkN "爆炸" ;
 lin explosive_A = mkA "爆炸性" ;
 lin explosive_N = mkN "爆炸物" ;
 lin expo_N = mkN "博览会" ;
-lin exponent_N = mkN "指数" ; -- status=guess
+lin exponent_1_N = mkN "指数" ; -- status=guess
+lin exponent_2_N = mkN "指数" ; -- status=guess
 lin exponential_A = mkA "指数" ; -- open-multilingual-wordnet
 lin exponential_N = mkN "指数函数" ; -- open-multilingual-wordnet
 lin export_N = mkN "出口" ;
@@ -12518,7 +12494,7 @@ lin eyelid_N = mkN "眼皮" | mkN "瞼" | mkN "睑" ; -- status=guess -- status=
 lin eyeliner_N = mkN "眼線筆" | mkN "眼线笔" | mkN "眼線膏" | mkN "眼线膏" | {-mwn-} mkN "眼线液" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin eyepatch_N = mkN "眼罩" ; -- open-multilingual-wordnet
 lin eyepiece_N = mkN "目鏡" | mkN "目镜" | mkN "接目鏡" | mkN "接目镜" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
-lin eyeshadow_N = mkN "眼影" ; -- open-multilingual-wordnet
+lin eye_shadow_N = mkN "眼影" ; -- open-multilingual-wordnet
 lin eyestrain_N = mkN "眼疲劳" | mkN "眼睛疲劳" | mkN "视疲劳" ; -- open-multilingual-wordnet
 lin eyewash_N = mkN "洗眼药" ; -- open-multilingual-wordnet
 lin eyewitness_N = mkN "目击者" ;
@@ -12698,7 +12674,7 @@ lin farmyard_N = mkN "农业场地" | mkN "农场场地" | mkN "农家庭院" | 
 lin farnham_PN = foreignPN "Farnham" ; -- comment=src=geonames status=guess
 lin farnworth_PN = foreignPN "Farnworth" ; -- comment=src=geonames status=guess
 lin farrow_N = mkN "下小猪" ; -- open-multilingual-wordnet
-lin farsighted_A = mkA "能看到远处" | mkA "能看得很远" | mkA "远视" | mkA "远视眼" ; -- open-multilingual-wordnet
+lin far_sighted_A = mkA "能看到远处" | mkA "能看得很远" | mkA "远视" | mkA "远视眼" ; -- open-multilingual-wordnet
 lin fart_N = mkN "屁" | mkN "放屁" ; -- status=guess -- status=guess
 lin fart_V = mkV "放屁" ; -- status=guess, src=wikt
 lin farther_Adv = mkAdv "更远" ;
@@ -13119,8 +13095,9 @@ lin finish_with_V2 = prepV2 OP_finish_V OP_with_Prep ; -- guess-p-verb
 lin finished_A = variants {} ;
 lin finite_A = mkA "有限" ;
 lin finland_PN = mkPN "芬兰" ;
-lin finnishFem_N = variants {} ; ---- sense to be split
-lin finnishMasc_N = variants {} ; ---- sense to be split
+lin finnishFem_N = variants {} ;
+lin finnishMasc_N = variants {} ;
+lin finnish_A = mkA "芬兰语" ;
 lin fiona_PN = foreignPN "Fiona" ; -- comment=src=eng status=guess
 lin fipple_N = mkN "音栓" ; -- open-multilingual-wordnet
 lin fir_N = mkN "冷杉" ; -- status=guess
@@ -13153,7 +13130,7 @@ lin fireman_N = mkN "消防队员" "位" ;
 lin firenze_PN = foreignPN "Firenze" ; -- comment=src=eng status=guess
 lin fireplace_N = mkN "壁炉" ;
 lin fireplug_N = mkN "消防栓" | mkN "消防龙头" | mkN "灭火塞" ; -- open-multilingual-wordnet
-lin firepower_N = mkN "火力" ; -- status=guess
+lin fire_power_N = mkN "火力" ; -- status=guess
 lin fireside_N = mkN "家" | mkN "家庭" ; -- open-multilingual-wordnet
 lin firewall_N = mkN "防火牆" | mkN "防火墙" ; -- status=guess -- status=guess
 lin firewater_N = mkN "烈酒" ;
@@ -13172,13 +13149,12 @@ lin firmness_N = mkN "坚定" [] ;
 lin firmware_N = mkN "固件" | mkN "韌體" | mkN "韧体" | mkN "塑體" | mkN "塑体" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin first_Adv = mkAdv "元" | mkAdv "先" | mkAdv "最初" | mkAdv "第一" | mkAdv "首先" | {-HSK-} mkAdv "最先" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin first_class_A = mkA "第一" ;
-lin first_hand_A = mkA "一手" ;
 lin first_rate_A = mkA "一流" ;
-lin firsthand_A = mkA "从来源处接收到" | mkA "直接" | mkA "直接得来" | mkA "第一手" ; -- open-multilingual-wordnet
+lin first_hand_A = mkA "从来源处接收到" | mkA "直接" | mkA "直接得来" | mkA "第一手" ; -- open-multilingual-wordnet
 lin firstly_Adv = variants {} ;
 lin fisc_N = mkN "国库" ; -- open-multilingual-wordnet
 lin fiscal_A = mkA "财务" ;
-lin fish_N = L.fish_N | {-HSK-} mkN "鱼" "條" ;
+lin fish_N = L.fish_N ;
 lin fish_V = mkV "捕鱼" ;
 lin fish_V2 = mkV2 "鱼" ;
 lin fishbone_N = mkN "鱼骨" ; -- open-multilingual-wordnet
@@ -13187,7 +13163,7 @@ lin fisher_N = mkN "魚夫" | mkN "鱼夫" ; -- status=guess -- status=guess
 lin fisherman_N = mkN "渔夫" "名" ;
 lin fishery_N = mkN "渔业" [] ;
 lin fisheye_A = mkA "宽角度" | mkA "超广角" ; -- open-multilingual-wordnet
-lin fishhook_N = mkN "魚鉤" | mkN "鱼钩" ; -- status=guess -- status=guess -- open-multilingual-wordnet
+lin fish_hook_N = mkN "魚鉤" | mkN "鱼钩" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin fishing_N = mkN "钓鱼" [] ;
 lin fishmonger_N = mkN "魚商" | mkN "鱼商" ; -- status=guess -- status=guess
 lin fishnet_N = mkN "渔网" ; -- open-multilingual-wordnet
@@ -13279,10 +13255,10 @@ lin flat_A = mkA "平" | {-HSK-} mkA "平坦" | {-HSK-} mkA "匾" ;
 lin flat_Adv = mkAdv "平" ;
 lin flat_N = mkN "公寓" | {-HSK-} mkN "平" ;
 lin flatbed_N = mkN "平台型" | mkN "平板载货车" ; -- open-multilingual-wordnet
-lin flatcar_N = mkN "平车" ; -- open-multilingual-wordnet
+lin flat_car_N = mkN "平车" ; -- open-multilingual-wordnet
 lin flatfoot_N = mkN "扁平足" ; -- status=guess
 lin flathead_N = mkN "鲬鱼" ; -- open-multilingual-wordnet
-lin flatiron_N = mkN "熨斗" | mkN "铬铁" ; -- open-multilingual-wordnet
+lin flat_iron_N = mkN "熨斗" | mkN "铬铁" ; -- open-multilingual-wordnet
 lin flatlet_N = mkN "单间公寓" | mkN "套房" | mkN "小公寓" ; -- open-multilingual-wordnet
 lin flatness_N = mkN "平坦" ;
 lin flatten_V = mkV "弄平" ;
@@ -13294,9 +13270,8 @@ lin flatwork_N = mkN "机械熨烫件" ; -- open-multilingual-wordnet
 lin flaunt_V = mkV "炫耀" ;
 lin flaunt_V2 = mkV2 "炫耀" ;
 lin flavin_N = mkN "核黄素" | mkN "黄素" ; -- open-multilingual-wordnet
-lin flavor_N = mkN "口味" | mkN "味道" | mkN "尝" ;
 lin flavorful_A = mkA "味浓" | mkA "好风味" | mkA "有味道" | mkA "有香味" ; -- open-multilingual-wordnet
-lin flavour_N = mkN "香味" "种" ;
+lin flavour_N = mkN "香味" "种" | mkN "口味" | mkN "味道" | mkN "尝" ;
 lin flaw_N = mkN "缺陷" ;
 lin flaw_V2 = mkV2 "破裂" ;
 lin flawless_A = mkA "无瑕疵" ;
@@ -13541,7 +13516,7 @@ lin foot_V2 = mkV2 "步行" ;
 lin footage_N = mkN "以尺计算长度" ;
 lin football_N = mkN "足球" ;
 lin footballer_N = mkN "足球員" | mkN "足球员" | mkN "足球選手" | mkN "足球选手" ; -- status=guess -- status=guess -- status=guess -- status=guess
-lin footbath_N = mkN "洗脚盆" | mkN "脚盆" ; -- open-multilingual-wordnet
+lin foot_bath_N = mkN "洗脚盆" | mkN "脚盆" ; -- open-multilingual-wordnet
 lin footboard_N = mkN "床踏板" ; -- open-multilingual-wordnet
 lin footbridge_N = mkN "人行桥" ; -- open-multilingual-wordnet
 lin foothill_N = mkN "山麓" ; -- status=guess
@@ -13787,7 +13762,6 @@ lin frankie_PN = foreignPN "Frankie" ; -- comment=src=eng status=guess
 lin frankincense_N = mkN "乳香" ; -- status=guess -- open-multilingual-wordnet
 lin frankly_Adv = adjAdv frank_A ; -- derived
 lin frantic_A = mkA "狂乱" ;
-lin frantically_Adv = mkAdv "狂暴地" ;
 lin fraserburgh_PN = foreignPN "Fraserburgh" ; -- comment=src=geonames status=guess
 lin fraternal_A = mkA "兄弟" ; -- status=guess
 lin fraternity_N = mkN "兄弟会" "次" ;
@@ -13814,7 +13788,8 @@ lin freddie_PN = foreignPN "Freddie" ; -- comment=src=eng status=guess
 lin freddy_PN = foreignPN "Freddy" ; -- comment=src=eng status=guess
 lin frederick_PN = mkPN "弗雷德里克" ; -- comment=src=geonames status=guess
 lin frederiksberg_PN = mkPN "腓特烈斯贝" ; -- comment=src=geonames status=guess
-lin free_A = mkA "免费" | mkA "自由" | {-HSK-} mkA "无偿" ;
+lin free_1_A = mkA "免费" | mkA "自由" | {-HSK-} mkA "无偿" ;
+lin free_2_A = mkA "免费" | mkA "自由" | {-HSK-} mkA "无偿" ;
 lin free_N = mkN "免费" | mkN "自由" "個" | {-HSK-} mkN "自由軟件" | mkN "自由软件" ; -- status=guess -- status=guess
 lin free_V2 = mkV2 "免费" | {-HSK-} mkV2 "放" ;
 lin free_V2V = mkV2V "免费" | {-HSK-} mkV2V "放" ;
@@ -13843,7 +13818,7 @@ lin freight_V2 = mkV2 "运送" ;
 lin freighter_N = mkN "货船" ;
 lin frenchFem_N = mkN "法国人" ;
 lin frenchMasc_N = mkN "法国人" ;
-lin french_A = mkA "法国人" ;
+lin french_A = mkA "法语" ;
 lin frenetic_A = mkA "狂热" ;
 lin frenzied_A = mkA "疯狂" ;
 lin frenzy_N = mkN "狂妄" ;
@@ -14148,7 +14123,7 @@ lin game_A = mkA "勇敢" | {-HSK-} mkA "游戏" ;
 lin game_N = mkN "游戏" ;
 lin game_V = mkV "赌博" ;
 lin game_V2 = mkV2 "使+玩游戏" ;
-lin gamebag_N = mkN "狩猎袋" ; -- open-multilingual-wordnet
+lin game_bag_N = mkN "狩猎袋" ; -- open-multilingual-wordnet
 lin gamelan_N = mkN "甘美蘭" | mkN "甘美兰" ; -- status=guess -- status=guess
 lin gametangium_N = mkN "配子囊" ; -- open-multilingual-wordnet
 lin gametophore_N = mkN "配子托" | mkN "配子枝" ; -- open-multilingual-wordnet
@@ -14210,7 +14185,7 @@ lin gasify_V2 = mkV2 (mkV "氣化") | mkV2 (mkV "气化") ; -- status=guess, src
 lin gasket_N = mkN "墊片" | mkN "垫片" | {-mwn-} mkN "密封垫" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin gaskin_N = mkN "胚部" ; -- open-multilingual-wordnet
 lin gaslight_N = mkN "煤氣燈" | mkN "煤气灯" ; -- status=guess -- status=guess
-lin gasmask_N = mkN "防毒面具" ; -- open-multilingual-wordnet
+lin gas_mask_N = mkN "防毒面具" ; -- open-multilingual-wordnet
 lin gasohol_N = mkN "汽油醇" ; -- open-multilingual-wordnet
 lin gasoline_N = mkN "汽油" | {-HSK-} mkN "汽油" "升" ;
 lin gasp_V = mkV "气喘吁吁的说" ;
@@ -14292,7 +14267,8 @@ lin gemmiferous_A = mkA "发芽" | mkA "发芽生殖" | mkA "生芽" ; -- open-m
 lin gempylid_N = mkN "蛇鲭鱼" ; -- open-multilingual-wordnet
 lin gen_PN = foreignPN "Gen" ; -- comment=src=eng status=guess
 lin gendarme_N = mkN "宪兵" "个" ;
-lin gender_N = mkN "性别" ;
+lin gender_1_N = mkN "性别" ;
+lin gender_2_N = mkN "性别" ;
 lin gene_N = mkN "基因" ;
 lin gene_PN = foreignPN "Gene" ; -- comment=src=eng status=guess
 lin genealogic_A = mkA "宗谱" | mkA "系谱" ; -- open-multilingual-wordnet
@@ -14310,13 +14286,11 @@ lin generational_A = mkA "一代" | mkA "世代" ; -- open-multilingual-wordnet
 lin generative_A = mkA "有生产力" | mkA "能生产" ; -- open-multilingual-wordnet
 lin generator_N = mkN "发电机" ;
 lin generic_A = mkA "通用" ;
-lin generically_Adv = mkAdv "一般" ;
 lin generosity_N = mkN "宽厚" ; -- status=guess
 lin generous_A = mkA "厚" | {-HSK-} mkA "大方" ;
 lin genesis_N = mkN "起源" ;
 lin genet_N = mkN "獛" ; -- status=guess
 lin genetic_A = mkA "基因" ;
-lin genetically_Adv = mkAdv "基因" ;
 lin geneticist_N = mkN "遗传学家" ;
 lin genetics_N = mkN "遺傳學" | mkN "遗传学" ; -- status=guess -- status=guess
 lin geneva_PN = foreignPN "Geneva" ; -- comment=src=geonames status=guess
@@ -14346,7 +14320,6 @@ lin gentility_N = mkN "文雅" ;
 lin gentle_A = mkA "温和" | {-HSK-} mkA "轻" | mkA "轻松" ;
 lin gentleman_N = mkN "绅士" ;
 lin gentleness_N = mkN "温柔" ;
-lin gently_Adv = mkAdv "轻轻" ;
 lin gentry_N = mkN "人们" ;
 lin genuine_A = mkA "地道" | mkA "真" | mkA "真正" ;
 lin genus_N = mkN "屬" | mkN "属" ; -- status=guess -- status=guess
@@ -14391,9 +14364,9 @@ lin gerbil_N = mkN "沙鼠" ; -- status=guess -- open-multilingual-wordnet
 lin geriatric_A = mkA "老人医学" | mkA "老年医学" | mkA "老年学" | mkA "老年病学" ; -- open-multilingual-wordnet
 lin geriatrics_N = mkN "老年病學" | mkN "老年病学" ; -- status=guess -- status=guess
 lin germ_N = mkN "胚芽" ;
-lin germanFem_N = variants {} ; ---- sense to be split
-lin germanMasc_N = variants {} ; ---- sense to be split
-lin german_A = mkA "德国人" ;
+lin germanFem_N = variants {} ;
+lin germanMasc_N = variants {} ;
+lin german_A = mkA "德语" ;
 lin germander_N = mkN "石蚕属植物" ; -- open-multilingual-wordnet
 lin germaneness_N = mkN "恰当" | mkN "有关" ; -- open-multilingual-wordnet
 lin germanite_N = mkN "亚锗酸盐" | mkN "锗石" ; -- open-multilingual-wordnet
@@ -14506,7 +14479,7 @@ lin ghetto_N = mkN "贫民区" ;
 lin ghillie_N = mkN "活结无舌鞋" ; -- open-multilingual-wordnet
 lin ghost_N = mkN "幽灵" ;
 lin ghostly_A = mkA "幽灵" ;
-lin ghostwriter_N = mkN "捉刀手" | mkN "代筆者" | mkN "代笔者" | {-mwn-} mkN "代笔人" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
+lin ghost_writer_N = mkN "捉刀手" | mkN "代筆者" | mkN "代笔者" | {-mwn-} mkN "代笔人" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin ghoul_N = mkN "食屍鬼" | mkN "食尸鬼" ; -- status=guess -- status=guess
 lin ghq_PN = foreignPN "Ghq" ; -- comment=src=eng status=guess
 lin giant_A = variants {} ;
@@ -14704,7 +14677,7 @@ lin glow_V = mkV "发光" ;
 lin glower_V = mkV "怒视" | mkV "皱眉" | mkV "蹙眉" | mkV "蹙额" ; -- open-multilingual-wordnet
 lin gloweringly_Adv = mkAdv "怒目而视+地" ; -- open-multilingual-wordnet
 lin glowingly_Adv = mkAdv "灼热+地" | mkAdv "热心+地" | mkAdv "热情洋溢+地" ; -- open-multilingual-wordnet
-lin glowworm_N = mkN "螢火蟲" | mkN "萤火虫" ; -- status=guess -- status=guess -- open-multilingual-wordnet
+lin glow_worm_N = mkN "螢火蟲" | mkN "萤火虫" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin gloxinia_N = mkN "六雪尼" | mkN "大岩桐" | mkN "落雪泥" ; -- open-multilingual-wordnet
 lin glucocorticoid_N = mkN "糖皮质激素" ; -- open-multilingual-wordnet
 lin glucose_N = mkN "葡萄糖" ;
@@ -14829,7 +14802,7 @@ lin gobble_V = mkV "狼吞虎咽" ;
 lin gobbledygook_N = mkN "官样文章" "篇" ;
 lin goblet_N = mkN "高脚杯" ; -- open-multilingual-wordnet
 lin goblin_N = mkN "妖精" ;
-lin goby_N = mkN "蝦虎魚" | mkN "虾虎鱼" ; -- status=guess -- status=guess -- open-multilingual-wordnet
+lin go_by_N = mkN "蝦虎魚" | mkN "虾虎鱼" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin god_N = mkN "神" ;
 lin god_PN = foreignPN "God" ; -- comment=src=eng status=guess
 lin godalming_PN = foreignPN "Godalming" ; -- comment=src=geonames status=guess
@@ -14877,9 +14850,9 @@ lin gong_N = mkN "鑼" | mkN "锣" | {-mwn-} mkN "钟" | mkN "钟琴" ; -- statu
 lin gonorrhea_N = mkN "淋病" ; -- status=guess -- open-multilingual-wordnet
 lin gonorrhoea_N = mkN "淋病" ; -- open-multilingual-wordnet
 lin goo_N = mkN "感伤""" ;
-lin good_A = mkA "商品" | mkA "好" | mkA "硬" | mkA "良好" ;
+lin good_A = mkA "好" ;
 lin good_N = mkN "商品" "個" | mkN "好" | mkN "硬" | mkN "良好" ;
-lin good_afternoon_Interj = mkInterj "下午好" ;
+lin good_afternoon_Interj = mkInterj "你好" ;
 lin good_evening_Interj = mkInterj "下午好" ;
 lin good_looking_A = mkA "好看" ;
 lin good_luck_Interj = mkInterj "祝你好运" ;
@@ -14887,7 +14860,6 @@ lin good_morning_Interj = mkInterj "早上好" ;
 lin good_natured_A = mkA "和蔼" ;
 lin good_night_Interj = mkInterj "晚安" ;
 lin goodbye_Interj = mkInterj "再见" ;
-lin goodbye_N = mkN "再见" | {-HSK-} mkN "走好" | mkN "走好" ; -- status=guess -- status=guess
 lin goodness_N = mkN "天哪" ;
 lin goods_N = mkN "产品" "個" | {-HSK-} mkN "產品" | mkN "产品" | mkN "貨物" | mkN "货物" | mkN "製品" | mkN "制品" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin goodwill_N = mkN "友好" [] ;
@@ -14973,9 +14945,9 @@ lin granddad_N = mkN "外公" | mkN "外祖父" | mkN "爷爷" | mkN "祖父" ; 
 lin granddaughter_N = mkN "孫女" | mkN "孙女" | mkN "外孫女" | mkN "外孙女" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin grandee_N = mkN "贵族" ;
 lin grandeur_N = mkN "庄严" ;
-lin grandfather_N = mkN "祖父" "位" ;
+lin grandfather_N = mkN "爷爷" | mkN "祖父" "位" ;
 lin grandiose_A = mkA "雄伟" ;
-lin grandmother_N = mkN "祖母" ;
+lin grandmother_N = mkN "奶奶" | mkN "祖母" ;
 lin grandpa_N = mkN "外公" | mkN "外祖父" | mkN "爷爷" | mkN "祖父" ; -- open-multilingual-wordnet
 lin grandparent_N = mkN "祖父母" ;
 lin grandson_N = mkN "孙子" ;
@@ -15041,7 +15013,6 @@ lin gravitation_N = mkN "重力" | mkN "引力" ; -- status=guess -- status=gues
 lin gravitational_A = mkA "万有引力" | mkA "地球引力" | mkA "重力" ; -- open-multilingual-wordnet
 lin gravity_N = mkN "重力" ;
 lin gravy_N = mkN "肉汁" [] ;
-lin grayly_Adv = mkAdv "晦暗+地" | mkAdv "灰灰+地" ; -- open-multilingual-wordnet
 lin graz_PN = mkPN "格拉茨" ; -- comment=src=geonames status=guess
 lin graze_V = mkV "放牧" ;
 lin grease_N = mkN "油脂" "块" ;
@@ -15168,7 +15139,7 @@ lin ground_N = mkN "地面" ;
 lin ground_V = mkV "使+搁浅" ;
 lin ground_V2 = mkV2 "压迫" ;
 lin groundcover_N = mkN "地被" ; -- open-multilingual-wordnet
-lin groundfish_N = mkN "底层鱼" | mkN "底栖鱼" ; -- open-multilingual-wordnet
+lin ground_fish_N = mkN "底层鱼" | mkN "底栖鱼" ; -- open-multilingual-wordnet
 lin grounding_N = mkN "接地" "" ;
 lin groundless_A = mkA "无根据" | mkA "无稽" ; -- open-multilingual-wordnet
 lin groundmass_N = mkN "基质" | mkN "石基" ; -- open-multilingual-wordnet
@@ -15264,7 +15235,7 @@ lin guidepost_N = mkN "准则" | mkN "指导方针" | mkN "指导路线" ; -- op
 lin guild_N = mkN "公会" "个" ;
 lin guilder_N = mkN "荷兰盾" ;
 lin guildford_PN = mkPN "吉爾福德" ; -- comment=src=geonames status=guess
-lin guildhall_N = mkN "同业公会" ; -- open-multilingual-wordnet
+lin guild_hall_N = mkN "同业公会" ; -- open-multilingual-wordnet
 lin guile_N = mkN "诡计" ;
 lin guileless_A = mkA "坦率" | mkA "耿直" | mkA "诚实" ; -- open-multilingual-wordnet
 lin guilloche_N = mkN "扭索状装饰" | mkN "连结环" ; -- open-multilingual-wordnet
@@ -15444,7 +15415,7 @@ lin halliard_N = mkN "升降索" | mkN "吊索" ; -- open-multilingual-wordnet
 lin hallmark_N = mkN "标志" ;
 lin hallow_V2 = mkV2 "使+神圣" ;
 lin hallowe'en_PN = foreignPN "Hallowe'en" ; -- comment=src=eng status=guess
-lin hallstand_N = mkN "衣帽架" ; -- open-multilingual-wordnet
+lin hall_stand_N = mkN "衣帽架" ; -- open-multilingual-wordnet
 lin hallucination_N = mkN "幻覺" | mkN "幻觉" | mkN "幻想" ; -- status=guess -- status=guess -- status=guess
 lin hallucinatory_A = mkA "引起幻觉" ; -- open-multilingual-wordnet
 lin hallucinogen_N = mkN "致幻剂" | mkN "迷幻剂" ; -- open-multilingual-wordnet
@@ -15593,7 +15564,7 @@ lin hardbound_A = mkA "精装" ;
 lin hardcover_N = mkN "精装" ;
 lin harden_V2 = mkV2 "变硬" ;
 lin hardening_N = mkN "使强壮" | mkN "强化" | mkN "硬化" ; -- open-multilingual-wordnet
-lin hardheaded_A = mkA "务实" | mkA "实践" | mkA "实际" | mkA "讲究实际" ; -- open-multilingual-wordnet
+lin hard_headed_A = mkA "务实" | mkA "实践" | mkA "实际" | mkA "讲究实际" ; -- open-multilingual-wordnet
 lin hardliner_N = mkN "强硬路线" ;
 lin hardly_AdV = mkAdV "硬" | {-HSK-} mkAdV "艰苦" | mkAdV "辛苦" ; -- comment=NOT SURE "硬" or "困难"
 lin hardly_Adv = mkAdv "仅仅" | mkAdv "几乎不" | mkAdv "简直不" | mkAdv "简直没有" ; -- open-multilingual-wordnet
@@ -15901,7 +15872,7 @@ lin hell_Interj = mkInterj "见鬼去吧" ;
 lin hell_N = mkN "地狱" [] ;
 lin hellfire_N = mkN "地獄之火" | mkN "地狱之火" ; -- status=guess -- status=guess
 lin hellgrammiate_N = mkN "水虿" ; -- open-multilingual-wordnet
-lin hello_Interj = mkInterj "喂" ;
+lin hello_Interj = mkInterj "你好" ;
 lin helm_N = mkN "舵" ;
 lin helmet_N = variants {} ;
 lin helmeted_A = mkA "佩戴头盔" ;
@@ -16030,7 +16001,6 @@ lin heritable_A = mkA "可继承" ; -- open-multilingual-wordnet
 lin heritage_N = mkN "遗产" "份" ;
 lin herm_N = mkN "头像方碑" ; -- open-multilingual-wordnet
 lin hermaphrodite_N = mkN "陰陽人" | mkN "阴阳人" | mkN "兩性人" | mkN "两性人" ; -- status=guess -- status=guess -- status=guess -- status=guess
-lin hermetically_Adv = mkAdv "不透气+地" | mkAdv "密封+地" ; -- open-multilingual-wordnet
 lin hermit_N = mkN "寄生蟹" ; -- status=guess
 lin hermitage_N = mkN "隐居处" ; -- status=guess -- open-multilingual-wordnet
 lin herne_PN = mkPN "黑尔讷" ; -- comment=src=geonames status=guess
@@ -16038,7 +16008,6 @@ lin herne_bay_PN = foreignPN "Herne bay" ; -- comment=src=eng status=guess
 lin hernia_N = mkN "疝氣" | mkN "疝气" | mkN "小腸串氣" | mkN "小肠串气" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin hero_N = mkN "英雄" | {-HSK-} mkN "英雄" "個" ;
 lin heroic_A = mkA "英勇" ;
-lin heroically_Adv = mkAdv "英勇+地" | mkAdv "英雄+地" ; -- open-multilingual-wordnet
 lin heroin_N = {-mwn-} mkN "二乙酰吗啡" | mkN "海洛因" ; -- open-multilingual-wordnet
 lin heroine_N = mkN "女英雄" "位" ;
 lin heroism_N = mkN "英雄主義" | mkN "英雄主义" | mkN "豪氣" | mkN "豪气" ; -- status=guess -- status=guess -- status=guess -- status=guess
@@ -16107,7 +16076,7 @@ lin hide_out_V = advV OP_hide_V OP_out_Adv ; -- guess-p-verb
 lin hideaway_N = mkN "隐匿处" ;
 lin hidebound_A = mkA "死板" ;
 lin hideous_A = mkA "可怕" ;
-lin hideout_N = mkN "隱匿處" | mkN "隐匿处" | mkN "巢穴" ; -- status=guess -- status=guess -- status=guess
+lin hide_out_N = mkN "隱匿處" | mkN "隐匿处" | mkN "巢穴" ; -- status=guess -- status=guess -- status=guess
 lin hiding_N = mkN "藏" ;
 lin hidrotic_A = mkA "出汗" | mkA "汗" ; -- open-multilingual-wordnet
 lin hierarch_N = mkN "主牧师" | mkN "大主教" | mkN "教主" | mkN "高僧" | mkN "高级教士" ; -- open-multilingual-wordnet
@@ -16174,7 +16143,7 @@ lin hint_V2 = variants {} ; -- comment=mkV "暗示" ;
 lin hint_VS = mkVS "暗示" ;
 lin hinterland_N = mkN "腹地" ;
 lin hip_N = mkN "臀部" ;
-lin hipflask_N = mkN "小酒瓶" ; -- open-multilingual-wordnet
+lin hip_flask_N = mkN "小酒瓶" ; -- open-multilingual-wordnet
 lin hiplength_A = mkA "长至臀部" ; -- open-multilingual-wordnet
 lin hippie_N = mkN "嬉皮士" ;
 lin hippodrome_N = mkN "賽馬場" | mkN "赛马场" | mkN "競技場" | mkN "竞技场" | {-mwn-} mkN "跑马场" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -16285,7 +16254,7 @@ lin hold_with_V2 = prepV2 OP_hold_V OP_with_Prep ; -- guess-p-verb
 lin holdall_N = mkN "大手提包" ; -- open-multilingual-wordnet
 lin holder_N = mkN "持有人" ;
 lin holding_N = mkN "保持" ;
-lin holdup_N = mkN "持枪抢劫" "次" ;
+lin hold_up_N = mkN "持枪抢劫" "次" ;
 lin hole_N = mkN "孔" | {-HSK-} mkN "洞" "個" ;
 lin hole_V = mkV "打洞" ;
 lin holiday_N = mkN "节" | mkN "节日" "個" | {-HSK-} mkN "节日" ;
@@ -16397,7 +16366,7 @@ lin hook_V = mkV "钩住" ;
 lin hook_V2 = mkV2 "钩住" ;
 lin hookah_N = mkN "水煙" | mkN "水烟" | mkN "水煙筒" | mkN "水烟筒" | mkN "水煙袋" | mkN "水烟袋" | {-mwn-} mkN "一种水烟袋" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin hooklike_A = mkA "似钩" ; -- open-multilingual-wordnet
-lin hookup_N = mkN "装配" ; -- open-multilingual-wordnet
+lin hook_up_N = mkN "装配" ; -- open-multilingual-wordnet
 lin hooligan_N = mkN "流氓" | mkN "歹徒" | mkN "阿飛" | mkN "阿飞" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin hooliganism_N = mkN "流氓行为" ;
 lin hoop_N = mkN "箍" | mkN "圈" | {-mwn-} mkN "球篮" | mkN "篮子" ; -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -16471,7 +16440,7 @@ lin hosepipe_N = mkN "软管" ; -- open-multilingual-wordnet
 lin hosp_PN = foreignPN "Hosp" ; -- comment=src=eng status=guess
 lin hospice_N = mkN "奧斯皮斯" | mkN "奥斯皮斯" ; -- status=guess -- status=guess
 lin hospitable_A = mkA "热情友好" ;
-lin hospital_N = mkN "医院" | {-HSK-} mkN "医院" "所" ;
+lin hospital_N = mkN "医院" "所" ;
 lin hospitality_N = mkN "亲切" | {-HSK-} mkN "好客" [] ;
 lin hospitalization_N = mkN "住院治疗" ;
 lin hospitalize_V2 = mkV2 "就医" ;
@@ -16667,7 +16636,6 @@ lin hydrarthrosis_N = mkN "关节积水" ; -- open-multilingual-wordnet
 lin hydrate_N = mkN "水合物" ; -- status=guess
 lin hydration_N = mkN "水合" | mkN "水合作用" ; -- open-multilingual-wordnet
 lin hydraulic_A = mkA "液压" ;
-lin hydraulically_Adv = mkAdv "水力+地" | mkAdv "水压+地" | mkAdv "液压+地" ; -- open-multilingual-wordnet
 lin hydrazine_N = mkN "肼" ; -- status=guess
 lin hydrazoite_N = mkN "叠氨酸盐" ; -- open-multilingual-wordnet
 lin hydremia_N = mkN "稀血症" ; -- open-multilingual-wordnet
@@ -16707,7 +16675,6 @@ lin hydroxyproline_N = mkN "羟胆碱" ; -- open-multilingual-wordnet
 lin hyena_N = mkN "未完成体" ;
 lin hygiene_N = mkN "卫生用品" ;
 lin hygienic_A = mkA "衛生" | mkA "卫生" | {-mwn-} mkA "保健" | mkA "卫生" | mkA "清洁" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin hygienically_Adv = mkAdv "卫生+地" ; -- open-multilingual-wordnet
 lin hygrodeik_N = mkN "图示湿度计" | mkN "干湿球湿度表" ; -- open-multilingual-wordnet
 lin hygrometer_N = mkN "湿度计" ; -- open-multilingual-wordnet
 lin hygrophytic_A = mkA "需要大量水分" ; -- open-multilingual-wordnet
@@ -16841,7 +16808,7 @@ lin icebreaker_N = mkN "破冰船" ; -- status=guess
 lin icehouse_N = mkN "冰室" | mkN "冰库" ; -- open-multilingual-wordnet
 lin iceland_PN = mkPN "冰岛" ; -- comment=src=geonames status=guess
 lin icepick_N = mkN "碎冰錐" | mkN "碎冰锥" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin icetray_N = mkN "冰格" ; -- open-multilingual-wordnet
+lin ice_tray_N = mkN "冰格" ; -- open-multilingual-wordnet
 lin ichorous_A = mkA "脓水" ; -- open-multilingual-wordnet
 lin ichthyology_N = mkN "魚類學" | mkN "鱼类学" ; -- status=guess -- status=guess
 lin ichthyosaur_N = mkN "魚龍" | mkN "鱼龙" ; -- status=guess -- status=guess
@@ -16884,19 +16851,16 @@ lin idiocy_N = mkN "白痴" "位" ;
 lin idiographic_A = mkA "个案研究" | mkA "个案解释" | mkA "特殊规律研究法" | mkA "研究特殊规律" ; -- open-multilingual-wordnet
 lin idiom_N = mkN "成語" | mkN "成语" | mkN "習慣用語" | mkN "习惯用语" | mkN "俗語" | mkN "俗语" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin idiomatic_A = mkA "惯用" ;
-lin idiomatically_Adv = mkAdv "惯用+地" ; -- open-multilingual-wordnet
 lin idiopathic_A = mkA "个人特有" | mkA "先天" | mkA "自发" ; -- open-multilingual-wordnet
 lin idiosyncrasy_N = mkN "特性" ; -- status=guess
 lin idiosyncratic_A = mkA "特质" ;
 lin idiot_N = mkN "白痴" ;
 lin idiotic_A = mkA "白痴" | mkA "愚蠢" ; -- status=guess -- status=guess
-lin idiotically_Adv = mkAdv "愚蠢地" ; -- status=guess
 lin idle_A = mkA "休闲" | mkA "空闲" | {-HSK-} mkA "闲置" ;
 lin idle_N = mkN "休闲" | mkN "空闲" ;
 lin idle_V = mkV "虚度" ;
 lin idle_V2 = mkV2 "怠" ;
 lin idler_N = mkN "懶惰者" | mkN "懒惰者" ; -- status=guess -- status=guess
-lin idly_Adv = mkAdv "懒惰+地" | mkAdv "懒散+地" | mkAdv "懒洋洋+地" | mkAdv "无所事事+地" ; -- open-multilingual-wordnet
 lin idol_N = mkN "偶像" | mkN "萬人迷" | mkN "万人迷" | {-mwn-} mkN "上帝" | mkN "神" | mkN "神像" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin idolatrous_A = mkA "崇拜偶像" ; -- open-multilingual-wordnet
 lin ie_PN = foreignPN "IE" ; -- comment=src=eng status=guess
@@ -16924,7 +16888,7 @@ lin ilk_N = mkN "亲属" ;
 lin ilkeston_PN = foreignPN "Ilkeston" ; -- comment=src=geonames status=guess
 lin ilkley_PN = foreignPN "Ilkley" ; -- comment=src=geonames status=guess
 lin ill_A = mkA "生病" ;
-lin ill_Adv = mkAdv "不利地" ;
+lin ill_AdV = mkAdV "不利地" ;
 lin ill_N = mkN "病" ;
 lin ill_advised_A = mkA "欠考虑" ;
 lin ill_disposed_A = mkA "疾病" ;
@@ -17457,7 +17421,7 @@ lin informant_N = mkN "提供消息的人" | mkN "告密者" | mkN "線人" | mk
 lin information_N = mkN "信息" | mkN "消息" "條" | mkN "资料" "份" | {-HSK-} mkN "消息" ;
 lin informative_A = mkA "信息量大" ;
 lin infraction_N = mkN "违反" ;
-lin infrared_A = mkA "紅外" | mkA "红外" | {-mwn-} mkA "红外线" ; -- status=guess -- status=guess -- open-multilingual-wordnet
+lin infra_red_A = mkA "紅外" | mkA "红外" | {-mwn-} mkA "红外线" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin infrastructure_N = mkN "基础设施" ;
 lin infrequent_A = mkA "稀少" ;
 lin infringe_V = mkV "违犯" ;
@@ -17852,7 +17816,7 @@ lin intransitive_A = mkA "不及物" | {-mwn-} mkA "不及物" ; -- status=guess
 lin intransitivity_N = mkN "不及物性" ; -- open-multilingual-wordnet
 lin intrapulmonary_A = mkA "肺内" ; -- open-multilingual-wordnet
 lin intrasentential_A = mkA "有关句子成分" ; -- open-multilingual-wordnet
-lin intrauterine_A = mkA "子宫内" ; -- open-multilingual-wordnet
+lin intra_uterine_A = mkA "子宫内" ; -- open-multilingual-wordnet
 lin intravasation_N = mkN "内渗" ; -- open-multilingual-wordnet
 lin intravenous_A = mkA "静脉内" ;
 lin intraventricular_A = mkA "心室内" ; -- open-multilingual-wordnet
@@ -18085,7 +18049,7 @@ lin isthmus_N = mkN "地铁" ;
 lin it_Pron = S.it_Pron ;
 lin italianFem_N = mkN "意大利人" ;
 lin italianMasc_N = mkN "意大利人" ;
-lin italian_A = mkA "意大利" ;
+lin italian_A = mkA "意大利语" ;
 lin italic_A = mkA "斜體" | mkA "斜体" ; -- status=guess -- status=guess
 lin italic_N = mkN "斜體" | mkN "斜体" ; -- status=guess -- status=guess
 lin italy_PN = mkPN "意大利" ;
@@ -18248,7 +18212,7 @@ lin jewelry_N = mkN "首饰" ;
 lin jewish_A = mkA "犹太人" ;
 lin jiao_N = mkN "角" ; -- open-multilingual-wordnet
 lin jib_N = mkN "船首三角帆" ; -- open-multilingual-wordnet
-lin jibboom_N = mkN "第二斜桅" | mkN "艏斜帆桁" ; -- open-multilingual-wordnet
+lin jib_boom_N = mkN "第二斜桅" | mkN "艏斜帆桁" ; -- open-multilingual-wordnet
 lin jig_N = mkN "吉格" ; -- status=guess
 lin jiggermast_N = mkN "后桅" ; -- open-multilingual-wordnet
 lin jiggle_N = mkN "摇动" | mkN "摇曳" | mkN "轻摇" ; -- open-multilingual-wordnet
@@ -18336,7 +18300,6 @@ lin journal_N = mkN "刊物" ;
 lin journalism_N = mkN "新闻学" [] ;
 lin journalist_N = mkN "记者" | {-HSK-} mkN "记者" "個" ;
 lin journalistic_A = mkA "新闻业" ;
-lin journalistically_Adv = mkAdv "记者地" ; -- open-multilingual-wordnet
 lin journey_N = mkN "前途" | mkN "旅游" | {-HSK-} mkN "旅行" "段" ;
 lin journey_V = mkV "旅行" ;
 lin joust_N = mkN "馬上長矛比武" | mkN "马上长矛比武" | mkN "比武" ; -- status=guess -- status=guess -- status=guess
@@ -18348,7 +18311,7 @@ lin joy_PN = foreignPN "Joy" ; -- comment=src=eng status=guess
 lin joyce_PN = foreignPN "Joyce" ; -- comment=src=eng status=guess
 lin joyful_A = mkA "春" | {-HSK-} mkA "欢喜" ;
 lin joyous_A = mkA "高高興興" | mkA "高高兴兴" ; -- status=guess -- status=guess
-lin joystick_N = mkN "控制桿" | mkN "控制杆" | mkN "操縱桿" | mkN "操纵杆" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin joy_stick_N = mkN "控制桿" | mkN "控制杆" | mkN "操縱桿" | mkN "操纵杆" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin jubilant_A = mkA "欢呼" ;
 lin jubilee_N = mkN "周年大庆" | mkN "周年庆祝" | mkN "周年纪念" ; -- open-multilingual-wordnet
 lin judas_N = mkN "猫眼" | mkN "窥视孔" ; -- open-multilingual-wordnet
@@ -18373,7 +18336,8 @@ lin juggle_V = mkV "耍" ;
 lin juggle_V2 = mkV2 "欺骗" ;
 lin juggler_N = mkN "变戏法者" ;
 lin jugular_A = mkA "咽喉" | mkA "颈部" ; -- open-multilingual-wordnet
-lin juice_N = mkN "果汁" "杯" ;
+lin juice_1_N = mkN "果汁" "杯" ;
+lin juice_2_N = mkN "果汁" "杯" ;
 lin juicy_A = mkA "多汁" ; -- status=guess
 lin juju_N = mkN "物神" | mkN "符咒" | mkN "迷信" ; -- open-multilingual-wordnet
 lin jujube_N = mkN "棗" | mkN "枣" | mkN "棗實" | mkN "枣实" ; -- status=guess -- status=guess -- status=guess -- status=guess
@@ -18698,7 +18662,8 @@ lin kinkajou_N = mkN "蜜熊" ; -- status=guess
 lin kinshasa_PN = mkPN "金夏沙" ; -- comment=src=geonames status=guess
 lin kinship_N = mkN "親屬關係" | mkN "亲属关系" | {-mwn-} mkN "亲密关系" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin kiosk_N = mkN "涼亭" | mkN "凉亭" ; -- status=guess -- status=guess
-lin kip_N = mkN "基普" | mkN "老撾基普" | mkN "老挝基普" ; -- status=guess -- status=guess -- status=guess
+lin kip_1_N = mkN "基普" | mkN "老撾基普" | mkN "老挝基普" ; -- status=guess -- status=guess -- status=guess
+lin kip_2_N = mkN "基普" | mkN "老撾基普" | mkN "老挝基普" ; -- status=guess -- status=guess -- status=guess
 lin kippax_PN = foreignPN "Kippax" ; -- comment=src=eng status=guess
 lin kirin_PN = foreignPN "Kirin" ; -- comment=src=eng status=guess
 lin kirk_N = mkN "苏格兰教会" | mkN "苏格兰教堂" ; -- open-multilingual-wordnet
@@ -18741,7 +18706,7 @@ lin kneecap_N = mkN "膝蓋骨" | mkN "膝盖骨" ; -- status=guess -- status=gu
 lin kneel_V = mkV "下跪" ;
 lin kneeler_N = mkN "跪垫" ; -- open-multilingual-wordnet
 lin knell_N = mkN "丧钟" ;
-lin knickknack_N = mkN "小古玩" | mkN "小古董" | mkN "小装饰品类" | mkN "放古董的架子" ; -- open-multilingual-wordnet
+lin knick_knack_N = mkN "小古玩" | mkN "小古董" | mkN "小装饰品类" | mkN "放古董的架子" ; -- open-multilingual-wordnet
 lin knife_N = mkN "刀" "把" ;
 lin knife_V2 = mkV2 "使+劈开" ;
 lin knight_N = mkN "骑士" ;
@@ -18994,7 +18959,7 @@ lin lap_V = mkV "拍打" ;
 lin laparocele_N = mkN "脂肪疝" ; -- open-multilingual-wordnet
 lin laparoscope_N = mkN "腹腔镜" ; -- open-multilingual-wordnet
 lin lapboard_N = mkN "膝板" ; -- open-multilingual-wordnet
-lin lapdog_N = mkN "小狗" | mkN "寵物狗" | mkN "宠物狗" | {-mwn-} mkN "叭儿狗" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
+lin lap_dog_N = mkN "小狗" | mkN "寵物狗" | mkN "宠物狗" | {-mwn-} mkN "叭儿狗" ; -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin lapful_N = mkN "一兜的量" ; -- open-multilingual-wordnet
 lin lapidary_A = mkA "宝石" | mkA "玉石" ; -- open-multilingual-wordnet
 lin lapin_N = mkN "阉割过的雄兔" ; -- open-multilingual-wordnet
@@ -19141,7 +19106,7 @@ lin layer_V2 = mkV2 "使+堆积成层" ;
 lin layette_N = mkN "初生婴儿用品" ; -- open-multilingual-wordnet
 lin laying_N = mkN "下蛋" | mkN "产卵" | mkN "产蛋" ; -- open-multilingual-wordnet
 lin layman_N = mkN "门外汉" "名" ;
-lin layout_N = mkN "布局" ;
+lin lay_out_N = mkN "布局" ;
 lin layover_N = mkN "中途短暂的停留" ; -- open-multilingual-wordnet
 lin lazaret_N = mkN "传染病医院" | mkN "传染病院" | mkN "麻疯病院" ; -- open-multilingual-wordnet
 lin lazarette_N = mkN "传染病医院" | mkN "传染病院" | mkN "麻疯病院" ; -- open-multilingual-wordnet
@@ -19205,7 +19170,7 @@ lin leash_N = mkN "皮带" "条" ;
 lin least_Adv = mkAdv "最少" ;
 lin leather_N = L.leather_N ;
 lin leatherhead_PN = foreignPN "Leatherhead" ; -- comment=src=geonames status=guess
-lin leatherjacket_N = mkN "长脚纹的幼虫" ; -- open-multilingual-wordnet
+lin leather_jacket_N = mkN "长脚纹的幼虫" ; -- open-multilingual-wordnet
 lin leatherwork_N = mkN "皮革制品" ; -- open-multilingual-wordnet
 lin leathery_A = mkA "皮般强韧" | mkA "皮质" ; -- open-multilingual-wordnet
 lin leave_N = mkN "离开" "次" ;
@@ -19370,7 +19335,6 @@ lin let_out_V2 = mkV2 "放" ;
 lin letchworth_PN = foreignPN "Letchworth" ; -- comment=src=geonames status=guess
 lin lethal_A = mkA "致命" ;
 lin lethargic_A = mkA "昏睡" ;
-lin lethargically_Adv = mkAdv "昏睡" | mkAdv "精力不充沛+地" | mkAdv "迟钝+地" ; -- open-multilingual-wordnet
 lin lethargy_N = mkN "昏睡" ;
 lin lethe_PN = foreignPN "Lethe" ; -- comment=src=eng status=guess
 lin letter_1_N = mkN "书信" ;
@@ -19378,17 +19342,16 @@ lin letter_2_N = mkN "书信" ;
 lin letter_N = mkN "书信" ; -- comment=already split
 lin letting_N = mkN "出租" "次" ;
 lin lettuce_N = mkN "莴苣" ;
-lin letup_N = mkN "停顿" ; -- open-multilingual-wordnet
-lin leu_N = mkN "列伊" ; -- status=guess
+lin let_up_N = mkN "停顿" ; -- open-multilingual-wordnet
+lin leu_N = mkN "列伊" ;
 lin leukaemia_N = mkN "白血病" ; -- open-multilingual-wordnet
-lin leukemia_N = mkN "白血病" ; -- status=guess -- open-multilingual-wordnet
 lin leukocyte_N = mkN "白血球" | mkN "白細胞" | mkN "白细胞" ; -- status=guess -- status=guess -- status=guess
 lin leukocytosis_N = mkN "白血球增多" ; -- open-multilingual-wordnet
 lin leukoderma_N = mkN "白变病" | mkN "白斑病" ; -- open-multilingual-wordnet
 lin leukoencephalitis_N = mkN "脑白质炎" ; -- open-multilingual-wordnet
 lin leukoma_N = mkN "白斑" | mkN "角膜白斑" ; -- open-multilingual-wordnet
 lin leukopenia_N = mkN "白细胞减少症" | mkN "白血球减少" ; -- open-multilingual-wordnet
-lin lev_N = mkN "列弗" ; -- status=guess -- open-multilingual-wordnet
+lin lev_N = mkN "列弗" ;
 lin levant_PN = foreignPN "Levant" ; -- comment=src=geonames status=guess
 lin level_1_N = mkN "水平" ;
 lin level_2_N = mkN "水平" ;
@@ -19489,17 +19452,17 @@ lin lifeless_A = mkA "无生气" ;
 lin lifelike_A = mkA "逼真" ; -- status=guess
 lin lifeline_N = mkN "生命线""条" ;
 lin lifelong_A = mkA "终身" ;
-lin lifespan_N = variants {} ;
 lin lifestyle_N = variants {} ;
 lin lifetime_N = mkN "一生" [] ;
-lin lifework_N = mkN "一生的工作" | mkN "畢生的事業" | mkN "毕生的事业" ; -- status=guess -- status=guess -- status=guess
+lin life_work_N = mkN "一生的工作" | mkN "畢生的事業" | mkN "毕生的事业" ; -- status=guess -- status=guess -- status=guess
 lin lift_N = mkN "举起" "次" ;
 lin lift_V = mkV "举" | mkV "抬" | mkV "提" | {-HSK-} mkV "举起" ;
 lin lift_V2 = mkV2 "举" | mkV2 "抬" | mkV2 "提" ;
 lin lift_off_V = advV OP_lift_V OP_off_Adv ; -- guess-p-verb
 lin ligament_N = mkN "韌帶" | mkN "韧带" | {-mwn-} mkN "纽带" | mkN "联结物" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin liger_N = mkN "獅虎" | mkN "狮虎" ; -- status=guess -- status=guess
-lin light_A = mkA "光" | mkA "光明" | mkA "嫩" | mkA "灯" | mkA "薄" | mkA "轻" ;
+lin light_1_A = mkA "光" | mkA "光明" | mkA "嫩" | mkA "灯" | mkA "薄" | mkA "轻" ;
+lin light_2_A = mkA "光" | mkA "光明" | mkA "嫩" | mkA "灯" | mkA "薄" | mkA "轻" ;
 lin light_Adv = mkAdv "光" | mkAdv "光明" | mkAdv "嫩" | mkAdv "灯" | mkAdv "薄" | mkAdv "轻" ;
 lin light_N = mkN "光" | {-HSK-} mkN "光" "道" | mkN "光明" | mkN "嫩" | mkN "灯" "盞" | mkN "薄" | mkN "轻" ;
 lin light_V = mkV "光" | {-HSK-} mkV "点" ;
@@ -19553,7 +19516,8 @@ lin limb_N = mkN "肢体" ;
 lin limbers_N = mkN "污水道" | mkN "通水孔" ; -- open-multilingual-wordnet
 lin limbic_A = mkA "边缘" ; -- open-multilingual-wordnet
 lin limbo_N = mkN "不定的状态" | mkN "监狱" "所" ;
-lin lime_N = mkN "灰" | {-HSK-} mkN "萊檬" | mkN "莱檬" | mkN "萊姆" | mkN "莱姆" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin lime_1_N = mkN "灰" | {-HSK-} mkN "萊檬" | mkN "莱檬" | mkN "萊姆" | mkN "莱姆" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin lime_2_N = mkN "灰" | {-HSK-} mkN "萊檬" | mkN "莱檬" | mkN "萊姆" | mkN "莱姆" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin limekiln_N = mkN "石灰窑" ; -- open-multilingual-wordnet
 lin limelight_N = mkN "舞台中心" ;
 lin limerick_N = mkN "五行打油詩" | mkN "五行打油诗" ; -- status=guess -- status=guess
@@ -19588,7 +19552,7 @@ lin linecut_N = mkN "线雕凸版" ; -- open-multilingual-wordnet
 lin lineman_N = mkN "前锋" ;
 lin linen_N = mkN "亚麻布" ;
 lin liner_N = mkN "班轮" "艘" ;
-lin lineup_N = mkN "阵容" ;
+lin line_up_N = mkN "阵容" ;
 lin linger_V = mkV "盘桓" ;
 lin lingerie_N = mkN "女用贴身内衣裤" ;
 lin lingeringly_Adv = mkAdv "延迟+地" | mkAdv "延长+地" | mkAdv "拖延+地" | mkAdv "逗留不去地" ; -- open-multilingual-wordnet
@@ -19821,7 +19785,6 @@ lin log_out_V = mkV "注销" | mkV "登出" ; -- open-multilingual-wordnet
 lin loganberry_N = mkN "罗甘梅" | mkN "羅甘梅" ; -- status=guess -- status=guess
 lin logarithm_N = mkN "對數" | mkN "对数" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin logarithmic_A = mkA "对数" ; -- open-multilingual-wordnet
-lin logarithmically_Adv = mkAdv "对数+地" | mkAdv "用对数+地" ; -- open-multilingual-wordnet
 lin logbook_N = mkN "航海日志" | mkN "航空日志" ; -- status=guess -- status=guess
 lin loggia_N = mkN "凉廊" ; -- open-multilingual-wordnet
 lin logic_N = mkN "逻辑" | {-HSK-} mkN "逻辑" [] ;
@@ -19832,7 +19795,7 @@ lin logistic_A = mkA "后勤" ; -- open-multilingual-wordnet
 lin logistics_N = mkN "物流" ;
 lin logo_N = mkN "標誌" | mkN "标志" | mkN "商標" | mkN "商标" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin logogrammatic_A = mkA "语标" ; -- open-multilingual-wordnet
-lin logrolling_N = mkN "水上踩滚木" | mkN "滚木材" | mkN "转木比赛" ; -- open-multilingual-wordnet
+lin log_rolling_N = mkN "水上踩滚木" | mkN "滚木材" | mkN "转木比赛" ; -- open-multilingual-wordnet
 lin logwood_N = mkN "墨水树" | mkN "彩木" | mkN "洋苏木" | mkN "苏仿木" ; -- open-multilingual-wordnet
 lin loin_N = mkN "腰部" | {-mwn-} mkN "腰" ; -- status=guess -- open-multilingual-wordnet
 lin loincloth_N = mkN "纏腰帶" | mkN "缠腰带" | mkN "纏腰布" | mkN "缠腰布" | {-mwn-} mkN "土人的腰布" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -20040,7 +20003,7 @@ lin lumbar_A = mkA "腰部" ; -- open-multilingual-wordnet
 lin lumber_N = mkN "木料" "根" ;
 lin lumber_V = mkV "伐木" ;
 lin lumberjack_N = mkN "伐木工" | {-mwn-} mkN "伐木茄克" | mkN "短茄克衫" ; -- status=guess -- open-multilingual-wordnet
-lin lumbermill_N = mkN "锯木场" | mkN "锯木机" ; -- open-multilingual-wordnet
+lin lumber_mill_N = mkN "锯木场" | mkN "锯木机" ; -- open-multilingual-wordnet
 lin lumberyard_N = mkN "木材堆置场" ;
 lin lumbosacral_A = mkA "腰" | mkA "腰骶" ; -- open-multilingual-wordnet
 lin lumen_N = mkN "流明" ; -- status=guess -- status=guess
@@ -20161,7 +20124,6 @@ lin machinery_N = mkN "机械" ;
 lin machinist_N = mkN "机械师" ;
 lin machmeter_N = mkN "马赫表" | mkN "马赫计" ; -- open-multilingual-wordnet
 lin macho_N = mkN "男子漢" | mkN "男子汉" ; -- status=guess -- status=guess
-lin macintosh_N = mkN "橡皮布防水衣" | mkN "马金托什雨衣" ; -- open-multilingual-wordnet
 lin mackerel_N = mkN "鯖魚" | mkN "鲭鱼" ; -- status=guess -- status=guess
 lin mackinaw_N = mkN "麦基诺厚呢" ; -- open-multilingual-wordnet
 lin mackintosh_N = mkN "橡皮布防水衣" | mkN "马金托什雨衣" ; -- open-multilingual-wordnet
@@ -20223,7 +20185,6 @@ lin magnesite_N = mkN "菱镁矿" ; -- open-multilingual-wordnet
 lin magnesium_N = mkN "鎂" | mkN "镁" ; -- status=guess -- status=guess
 lin magnet_N = mkN "磁铁" "块" ;
 lin magnetic_A = mkA "磁" ;
-lin magnetically_Adv = mkAdv "有磁力" ;
 lin magnetism_N = mkN "磁" [] ;
 lin magnetize_V2 = mkV2 "磁化" ;
 lin magneto_N = mkN "永磁发电机" | mkN "磁电机" ; -- open-multilingual-wordnet
@@ -20286,7 +20247,6 @@ lin maisonnette_N = mkN "小房屋" ; -- open-multilingual-wordnet
 lin maize_N = mkN "玉米" | mkN "粟米" | {-HSK-} mkN "玉米" "粒" ; -- status=guess -- status=guess
 lin maj_PN = foreignPN "Maj" ; -- comment=src=eng status=guess
 lin majestic_A = mkA "雄伟" ;
-lin majestically_Adv = mkAdv "威严+地" | mkAdv "庄严+地" | mkAdv "雄伟+地" ; -- open-multilingual-wordnet
 lin majesty_N = mkN "威严" ;
 lin majolica_N = mkN "马略尔卡陶器" ; -- open-multilingual-wordnet
 lin major_A = mkA "专业" | mkA "主要" | mkA "大" | mkA "重要" ;
@@ -20416,7 +20376,6 @@ lin mandrill_N = mkN "山魈" ; -- status=guess
 lin mandy_PN = foreignPN "Mandy" ; -- comment=src=eng status=guess
 lin mane_N = mkN "獅子的鬃毛" | mkN "狮子的鬃毛" | mkN "獅鬣" | mkN "狮鬣" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin maneuver_N = mkN "活动" "項" ;
-lin maneuver_V = mkV "演习" ;
 lin manga_N = mkN "漫畫" | mkN "漫画" | mkN "日本漫畫" | mkN "日本漫画" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin mangabey_N = mkN "白眉猴" ; -- open-multilingual-wordnet
 lin manganese_N = mkN "錳" ; -- status=guess
@@ -20458,6 +20417,7 @@ lin mannered_A = mkA "矫饰" ;
 lin mannerism_N = mkN "假装" | mkN "虚饰" ; -- open-multilingual-wordnet
 lin manners_N = mkN "礼貌" | {-HSK-} mkN "規矩" | mkN "规矩" | mkN "禮貌" | mkN "禮儀" | mkN "礼仪" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin mannheim_PN = mkPN "曼海姆" ; -- comment=src=geonames status=guess
+lin manoeuvre_V = mkV "演习" ;
 lin manometer_N = mkN "压力计" ; -- open-multilingual-wordnet
 lin manor_N = mkN "庄园" ;
 lin manorial_A = mkA "庄园" ; -- open-multilingual-wordnet
@@ -20556,7 +20516,7 @@ lin marketing_N = mkN "营销" ;
 lin marketplace_N = mkN "市井" ;
 lin markka_N = mkN "馬克" | mkN "马克" ; -- status=guess -- status=guess
 lin marksman_N = mkN "射手" ; -- status=guess
-lin markup_N = mkN "標記" | mkN "标记" ; -- status=guess -- status=guess
+lin mark_up_N = mkN "標記" | mkN "标记" ; -- status=guess -- status=guess
 lin marl_N = mkN "泥灰土" ; -- open-multilingual-wordnet
 lin marlborough_PN = foreignPN "Marlborough" ; -- comment=src=geonames status=guess
 lin marlene_PN = foreignPN "Marlene" ; -- comment=src=eng status=guess
@@ -20583,7 +20543,8 @@ lin marriage_N = mkN "婚姻" | {-HSK-} mkN "婚姻" "次" ;
 lin married_A = variants {} ;
 lin married_A2 = L.married_A2 ;
 lin married_N = mkN "夫婦" | mkN "夫妇" | mkN "夫妻" ; -- status=guess -- status=guess -- status=guess
-lin marrow_N = mkN "骨髓" "" ;
+lin marrow_1_N = mkN "骨髓" "" ;
+lin marrow_2_N = mkN "骨髓" "" ;
 lin marry_V = mkV "娶" | mkV "结婚" ;
 lin marry_V2 = mkV2 "娶" | mkV2 "结婚" ;
 lin marry_in_V = advV OP_marry_V OP_in_Adv ; -- guess-p-verb
@@ -20636,7 +20597,9 @@ lin mason_dixon_PN = foreignPN "Mason-dixon" ; -- comment=src=eng status=guess
 lin masonry_N = mkN "砖石" ;
 lin masquerade_V = mkV "伪装" ;
 lin mass_A = {-HSK-} mkA "质量" ;
-lin mass_N = mkN "块" [] | {-HSK-} mkN "质量" "個" ;
+lin mass_1_N = mkN "块" [] | {-HSK-} mkN "质量" "個" ;
+lin mass_2_N = mkN "块" [] | {-HSK-} mkN "质量" "個" ;
+lin mass_3_N = mkN "块" [] | {-HSK-} mkN "质量" "個" ;
 lin mass_V = mkV "聚集" ;
 lin mass_produce_V2 = mkV2 "批量生产" ;
 lin massachusetts_PN = mkPN "马萨诸塞州" ;
@@ -20695,7 +20658,6 @@ lin material_A = mkA "材料" | mkA "物质" | mkA "资料" ;
 lin material_N = mkN "材料" | {-HSK-} mkN "材料" "個" | mkN "物质" "個" | mkN "资料" "份" ;
 lin materialism_N = mkN "唯物主義" | mkN "唯物主义" | mkN "唯物論" | mkN "唯物论" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin materialistic_A = mkA "唯物主义" | {-HSK-} mkA "物质" ;
-lin materialistically_Adv = mkAdv "唯物论+地" ; -- open-multilingual-wordnet
 lin materialize_V = mkV "物质化" ;
 lin materiel_N = mkN "軍需品" | mkN "军需品" ; -- status=guess -- status=guess
 lin maternal_A = mkA "母親" | mkA "母亲" | {-mwn-} mkA "母亲" | mkA "父亲" | mkA "父母亲" ; -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -20781,7 +20743,7 @@ lin meal_N = mkN "餐" ;
 lin mealtime_N = mkN "吃饭时间" | mkN "进餐时间" | mkN "通常的进餐时间" ; -- open-multilingual-wordnet
 lin mealworm_N = mkN "大黄粉虫幼体" | mkN "米虫的幼虫" ; -- open-multilingual-wordnet
 lin mealy_A = mkA "粉状" ;
-lin mealybug_N = mkN "水腊虫" | mkN "水蜡虫" | mkN "粉蚧" ; -- open-multilingual-wordnet
+lin mealy_bug_N = mkN "水腊虫" | mkN "水蜡虫" | mkN "粉蚧" ; -- open-multilingual-wordnet
 lin mean_A = mkA "平均" ;
 lin mean_N = mkN "平均数" ;
 lin mean_V2 = mkV2 "意味着" | {-HSK-} mkV2 "表示" ;
@@ -21231,13 +21193,13 @@ lin military_A = mkA "军事" ;
 lin military_N = mkN "军事" | {-HSK-} mkN "军队" "支" ;
 lin militate_V = mkV "产生作用" ;
 lin militia_N = mkN "义勇军" ;
-lin milk_N = L.milk_N | {-HSK-} mkN "牛奶" "瓶" ;
+lin milk_N = L.milk_N ;
 lin milk_V = mkV "擠奶" | mkV "挤奶" | mkV "產乳" | mkV "产乳" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin milk_V2 = mkV2 "挤奶" | mkV2 "压榨" ;
 lin milkless_A = mkA "无奶" ; -- open-multilingual-wordnet
 lin milkmaid_N = mkN "擠奶女工" | mkN "挤奶女工" ; -- status=guess -- status=guess
 lin milkman_N = mkN "送奶人" ; -- status=guess
-lin milkshake_N = mkN "奶昔" ; -- status=guess
+lin milk_shake_N = mkN "奶昔" ; -- status=guess
 lin milkweed_N = mkN "乳草属植物" | mkN "芳草属植物" | mkN "马利筋属植物" ; -- open-multilingual-wordnet
 lin milkwort_N = mkN "远志" ; -- open-multilingual-wordnet
 lin milky_A = mkA "乳白色" ;
@@ -21245,7 +21207,7 @@ lin mill_N = mkN "厂" ;
 lin mill_V = mkV "碾磨" ;
 lin mill_V2 = mkV2 "乱转" ;
 lin millboard_N = mkN "书皮纸板" | mkN "书面厚纸" | mkN "麻丝板" ; -- open-multilingual-wordnet
-lin milldam_N = mkN "水闸" ; -- open-multilingual-wordnet
+lin mill_dam_N = mkN "水闸" ; -- open-multilingual-wordnet
 lin millenarian_A = mkA "千禧年信奉者" ; -- open-multilingual-wordnet
 lin millennium_N = mkN "千年" ; -- status=guess
 lin miller_N = mkN "粉翅蛾" ; -- open-multilingual-wordnet
@@ -21489,7 +21451,7 @@ lin mixer_N = mkN "搅拌机" ;
 lin mixture_N = mkN "混合物" ;
 lin mizen_N = mkN "后桅纵帆" ; -- open-multilingual-wordnet
 lin mizzen_N = mkN "后桅纵帆" ; -- open-multilingual-wordnet
-lin mizzenmast_N = mkN "後桅" | {-mwn-} mkN "后桅" | mkN "后桅的纵帆" ; -- status=guess -- open-multilingual-wordnet
+lin mizzen_mast_N = mkN "後桅" | {-mwn-} mkN "后桅" | mkN "后桅的纵帆" ; -- status=guess -- open-multilingual-wordnet
 lin ml_N = mkN "毫升" ;
 lin mlle_PN = foreignPN "Mlle" ; -- comment=src=eng status=guess
 lin mm_N = mkN "毫米" ;
@@ -21805,7 +21767,9 @@ lin motorist_N = mkN "驾驶员" ;
 lin motorize_V2 = mkV2 "机动化" ;
 lin motorway_N = mkN "公路" "条" ;
 lin motto_N = mkN "座右銘" | mkN "座右铭" | {-mwn-} mkN "口号" | mkN "标语" | mkN "格言" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin mould_N = mkN "霉菌" | mkN "模" ;
+lin mould_1_N = mkN "霉菌" | mkN "模" ;
+lin mould_2_N = mkN "霉菌" | mkN "模" ;
+lin mould_3_N = mkN "霉菌" | mkN "模" ;
 lin mouldy_A = mkA "發霉" | mkA "发霉" ; -- status=guess -- status=guess
 lin moult_N = mkN "換毛" | mkN "换毛" | mkN "換羽" | mkN "换羽" | {-mwn-} mkN "眠起" | mkN "脱毛" | mkN "脱皮" | mkN "脱角" | mkN "蜕皮" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin moult_V = mkV "換毛" | mkV "换毛" | mkV "換羽" | mkV "换羽" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
@@ -21927,7 +21891,7 @@ lin multiform_A = mkA "各种形式" | mkA "多样" | mkA "多种多样" | mkA "
 lin multilane_A = mkA "多车道" ; -- open-multilingual-wordnet
 lin multilateral_A = mkA "多国" ;
 lin multilevel_A = mkA "多层次" | mkA "多级" ; -- open-multilingual-wordnet
-lin multilingual_A = mkA "多種語言" | mkA "多种语言" | mkA "多語" | mkA "多语" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin multi_lingual_A = mkA "多種語言" | mkA "多种语言" | mkA "多語" | mkA "多语" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin multimedia_N = {-mwn-} mkN "多媒体" | mkN "多媒体传输" ; -- open-multilingual-wordnet
 lin multinucleate_A = mkA "多核" ; -- open-multilingual-wordnet
 lin multiphase_A = mkA "多相" ; -- open-multilingual-wordnet
@@ -22229,7 +22193,7 @@ lin nearer_Prep = mkPrep "靠近" ;
 lin nearest_Adv = mkAdv "最近" | {-mwn-} mkAdv "最近+地" | mkAdv "最靠近+地" ; -- open-multilingual-wordnet
 lin nearest_Prep = mkPrep "最近" ;
 lin nearly_Adv = {-HSK-} mkAdv "几乎" | mkAdv "差不多" | adjAdv near_A ; -- derived
-lin nearsighted_A = mkA "近视" ; -- open-multilingual-wordnet
+lin near_sighted_A = mkA "近视" ; -- open-multilingual-wordnet
 lin neat_A = mkA "干净" | mkA "整齐" ;
 lin neath_PN = foreignPN "Neath" ; -- comment=src=geonames status=guess
 lin neatness_N = mkN "整洁" ;
@@ -22380,7 +22344,6 @@ lin neuropteron_N = mkN "脉翅目昆虫" ; -- open-multilingual-wordnet
 lin neurosarcoma_N = mkN "神经肉瘤" ; -- open-multilingual-wordnet
 lin neurosis_N = mkN "神經症" | mkN "神经症" | {-mwn-} mkN "神经过敏症" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin neurosyphilis_N = mkN "神经梅毒" ; -- open-multilingual-wordnet
-lin neurotically_Adv = mkAdv "神经质+地" | mkAdv "神经过敏+地" ; -- open-multilingual-wordnet
 lin neurotoxic_A = mkA "毒害神经" | mkA "神经中毒" | mkA "神经毒素引起" ; -- open-multilingual-wordnet
 lin neurotransmitter_N = mkN "神經傳導物質" ; -- status=guess
 lin neurotropic_A = mkA "亲神经" ;
@@ -22487,7 +22450,7 @@ lin nightly_A = mkA "每夜" ;
 lin nightly_Adv = mkAdv "每夜" | adjAdv nightly_A ; -- derived
 lin nightmare_N = mkN "梦魇" ;
 lin nightshade_N = mkN "茄属植物" | mkN "龙葵属植物" ; -- open-multilingual-wordnet
-lin nighttime_N = mkN "夜裡" | mkN "夜里" | mkN "夜間" | mkN "夜间" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin night_time_N = mkN "夜裡" | mkN "夜里" | mkN "夜間" | mkN "夜间" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin nihil_N = mkN "无" ; -- open-multilingual-wordnet
 lin nihilism_N = mkN "虛無主義" | mkN "虚无主义" ; -- status=guess -- status=guess
 lin nihilist_N = mkN "无政府主义者" ; -- open-multilingual-wordnet
@@ -22631,7 +22594,7 @@ lin nonsectarian_A = mkA "无宗派" | mkA "无派性" ; -- open-multilingual-wo
 lin nonsense_N = mkN "废话" | mkN "无聊" | {-HSK-} mkN "废话""句" ;
 lin nonsensitive_A = mkA "不再机密" ; -- open-multilingual-wordnet
 lin nonsignificant_A = mkA "不足道" ; -- open-multilingual-wordnet
-lin nonskid_A = mkA "不滑" | mkA "防滑" ; -- open-multilingual-wordnet
+lin non_skid_A = mkA "不滑" | mkA "防滑" ; -- open-multilingual-wordnet
 lin nonslip_A = mkA "不滑" | mkA "防滑" ; -- open-multilingual-wordnet
 lin nonslippery_A = mkA "不滑" ; -- open-multilingual-wordnet
 lin nonspatial_A = mkA "非空间" ; -- open-multilingual-wordnet
@@ -22697,9 +22660,9 @@ lin northwest_N = mkN "西北" [] ;
 lin northwich_PN = foreignPN "Northwich" ; -- comment=src=geonames status=guess
 lin norton_PN = foreignPN "Norton" ; -- comment=src=geonames status=guess
 lin norway_PN = mkPN "挪威" ;
-lin norwegianFem_N = variants {} ; ---- sense to be split
-lin norwegianMasc_N = variants {} ; ---- sense to be split
-lin norwegian_A = mkA "挪威" ;
+lin norwegianFem_N = variants {} ;
+lin norwegianMasc_N = variants {} ;
+lin norwegian_A = mkA "挪威语" ;
 lin norwich_PN = mkPN ("诺威奇" | "諾里奇") ; -- comment=src=geonames status=guess
 lin nose_N = L.nose_N | {-HSK-} mkN "鼻子" "個" ;
 lin nosebleed_N = mkN "鼻血" | mkN "鼻出血" ; -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -22973,8 +22936,8 @@ lin octopus_N = mkN "章魚" | mkN "章鱼" ; -- status=guess -- status=guess
 lin octosyllabic_A = mkA "八音节" ; -- open-multilingual-wordnet
 lin octroi_N = mkN "入市税" | mkN "货物入市税" ; -- open-multilingual-wordnet
 lin octuple_A = mkA "八倍" | mkA "八层" | mkA "由八部分组成" ; -- open-multilingual-wordnet
-lin odd_A = mkA "奇怪" | {-HSK-} mkA "零" ;
-lin odd_N = {-HSK-} mkN "奇怪" | mkN "零" ;
+lin odd_1_A = mkA "奇怪" | {-HSK-} mkA "零" ;
+lin odd_2_A = mkA "奇怪" | {-HSK-} mkA "零" ;
 lin oddity_N = mkN "怪癖" ;
 lin oddment_N = mkN "珍品" | mkN "稀有物" ; -- open-multilingual-wordnet
 lin odds_N = mkN "可能性" "个" ;
@@ -23000,12 +22963,11 @@ lin offal_N = mkN "内脏""" ;
 lin offaly_PN = foreignPN "Offaly" ; -- comment=src=eng status=guess
 lin offbeat_A = mkA "离奇" ;
 lin offenbach_PN = foreignPN "Offenbach" ; -- comment=src=geonames status=guess
-lin offence_N = mkN "犯罪" "次" ;
+lin offence_N = mkN "犯罪" "次" | mkN "刑事犯罪" | mkN "罪" | mkN "罪行" ; -- open-multilingual-wordnet
 lin offend_V = mkV "冒犯" ;
 lin offend_V2 = mkV2 "得罪" ;
 lin offenderFem_N = mkN "犯罪分子" ;
 lin offenderMasc_N = mkN "犯罪分子" ;
-lin offense_N = mkN "刑事犯罪" | mkN "犯罪" | mkN "罪" | mkN "罪行" ; -- open-multilingual-wordnet
 lin offensive_A = mkA "冒犯" ;
 lin offensive_N = mkN "进攻" ;
 lin offer_N = mkN "议案" ;
@@ -23172,7 +23134,7 @@ lin open_up_V2 = mkV2 "开拓" | {-HSK-} mkV2 "张" ;
 lin openbill_N = mkN "钳嘴鹳" ; -- open-multilingual-wordnet
 lin opencast_A = mkA "露天开采" | mkA "露天挖掘" ; -- open-multilingual-wordnet
 lin opener_N = mkN "开启工具" ;
-lin openhearted_A = mkA "光明" ;
+lin open_hearted_A = mkA "光明" ;
 lin opening_A = mkA "门" ;
 lin opening_N = mkN "开盘" | {-HSK-} mkN "门" ;
 lin openness_N = mkN "率直" ;
@@ -23240,7 +23202,6 @@ lin optimism_N = mkN "乐观" [] ;
 lin optimistFem_N = mkN "乐观主义者" ;
 lin optimistMasc_N = mkN "乐观主义者" ;
 lin optimistic_A = mkA "乐观" | {-HSK-} mkA "开朗" ;
-lin optimistically_Adv = mkAdv "乐观地" ;
 lin optimization_N = mkN "優化" | mkN "优化" ; -- status=guess -- status=guess
 lin option_N = mkN "选择" | {-HSK-} mkN "选项" ;
 lin optional_A = mkA "可选" ;
@@ -23352,8 +23313,7 @@ lin orthodoxy_N = mkN "正统" "" ;
 lin orthographic_A = mkA "拼字正确" | mkA "正字法" ; -- open-multilingual-wordnet
 lin orthography_N = mkN "正字法" | mkN "拼字" | mkN "拼寫法" | mkN "拼写法" | mkN "正詞法" | mkN "正词法" | mkN "拼寫" | mkN "拼写" | mkN "寫法" | mkN "写法" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin orthopaedic_A = mkA "整形外科" ; -- open-multilingual-wordnet
-lin orthopedic_A = mkA "整形外科" ; -- open-multilingual-wordnet
-lin orthopedics_N = mkN "骨科" | mkN "整形外科" | mkN "矯形外科" | mkN "矫形外科" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin orthopaedics_N = mkN "骨科" | mkN "整形外科" | mkN "矯形外科" | mkN "矫形外科" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin orthopnea_N = mkN "端坐呼吸" ; -- open-multilingual-wordnet
 lin orthoptic_A = mkA "双目并用" ; -- open-multilingual-wordnet
 lin oryx_N = mkN "羚羊" | {-mwn-} mkN "长角羚羊" ; -- status=guess -- open-multilingual-wordnet
@@ -23373,7 +23333,6 @@ lin osmiridium_N = mkN "铱锇合金" | mkN "铱锇矿" ; -- open-multilingual-w
 lin osmium_N = mkN "鋨" ; -- status=guess
 lin osmosis_N = mkN "渗透" | {-mwn-} mkN "渗透作用" ; -- status=guess -- open-multilingual-wordnet
 lin osmotic_A = mkA "渗透" | {-mwn-} mkA "渗透性" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin osmotically_Adv = mkAdv "渗透地" ; -- open-multilingual-wordnet
 lin osnabruck_PN = foreignPN "Osnabruck" ; -- comment=src=eng status=guess
 lin ossett_PN = foreignPN "Ossett" ; -- comment=src=geonames status=guess
 lin ossicular_A = mkA "小骨" ;
@@ -23670,7 +23629,7 @@ lin oxygen_N = mkN "氧" "" ;
 lin oxygenation_N = mkN "以氧气处理" | mkN "氧化" ; -- open-multilingual-wordnet
 lin oxymoron_N = mkN "矛盾修飾法" | mkN "矛盾修饰法" | mkN "矛盾語" | mkN "矛盾语" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin oyster_N = mkN "牡蠣" | mkN "牡蛎" ; -- status=guess -- status=guess
-lin oystercatcher_N = mkN "蛎鹬" ; -- open-multilingual-wordnet
+lin oyster_catcher_N = mkN "蛎鹬" ; -- open-multilingual-wordnet
 lin ozena_N = mkN "臭鼻症" ; -- open-multilingual-wordnet
 lin ozone_N = mkN "臭氧" ;
 lin ozonide_N = mkN "臭氧化物" ; -- open-multilingual-wordnet
@@ -23689,7 +23648,6 @@ lin pachydermatous_A = mkA "厚皮" | mkA "厚皮类动物" ; -- open-multilingu
 lin pachytene_N = mkN "粗线丝期" ; -- open-multilingual-wordnet
 lin pacific_A = mkA "和平" ;
 lin pacific_PN = mkPN "太平洋" ;
-lin pacifically_Adv = mkAdv "和平+地" ; -- open-multilingual-wordnet
 lin pacifier_N = mkN "奶嘴" | {-mwn-} mkN "橡皮奶头" ; -- status=guess -- open-multilingual-wordnet
 lin pacifistFem_N = variants {} ; ---- sense to be split
 lin pacifistMasc_N = variants {} ; ---- sense to be split
@@ -23797,7 +23755,9 @@ lin palliation_N = mkN "减轻" | mkN "缓和" ; -- open-multilingual-wordnet
 lin palliative_A = mkA "使缓和" | mkA "减轻" | mkA "止痛性" | mkA "缓和" | mkA "缓和性" ; -- open-multilingual-wordnet
 lin palliative_N = mkN "臨終關懷" | mkN "临终关怀" | mkN "安寧和緩醫療" | mkN "安宁和缓医疗" | mkN "善忠服務" | mkN "善忠服务" | mkN "姑息療法" | mkN "姑息疗法" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin pallor_N = mkN "苍白" ;
-lin palm_N = mkN "棕榈" ;
+lin palm_1_N = mkN "棕榈" ;
+lin palm_2_N = mkN "棕榈" ;
+lin palm_3_N = mkN "棕榈" ;
 lin palm_V2 = mkV2 "将+藏于掌中" ;
 lin palm_off_V = mkV "用诡计" ; -- open-multilingual-wordnet
 lin palmar_A = mkA "手掌" | mkA "掌中" | mkA "足底" ; -- open-multilingual-wordnet
@@ -24050,7 +24010,6 @@ lin parturient_A = mkA "临产" | mkA "临盆" | mkA "生产" ; -- open-multilin
 lin parturition_N = mkN "出生" | mkN "分娩" | mkN "生產" | mkN "生产" | mkN "娩" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin party_1_N = mkN "党" ;
 lin party_2_N = mkN "党" ;
-lin party_N = mkN "党" ;
 lin parvenu_N = mkN "暴發戶" | mkN "暴发户" ; -- status=guess -- status=guess
 lin pas_N = mkN "舞步""" ;
 lin paschal_A = mkA "复活节" | mkA "逾越节" ; -- open-multilingual-wordnet
@@ -24132,7 +24091,6 @@ lin paternal_A = mkA "父親" | mkA "父亲" | mkA "父系" | mkA "母系" ; -- 
 lin paternoster_N = mkN "主禱文" | mkN "主祷文" ; -- status=guess -- status=guess
 lin path_N = mkN "路" "條" | {-HSK-} mkN "路径" "条" ;
 lin pathetic_A = mkA "可怜" ;
-lin pathetically_Adv = mkAdv "可怜地" | mkAdv "哀伤+地" | mkAdv "悲哀地" | mkAdv "感伤+地" ; -- open-multilingual-wordnet
 lin pathogen_N = mkN "病原体""" ;
 lin pathogenesis_N = mkN "发病" | mkN "致病" ; -- open-multilingual-wordnet
 lin pathological_A = mkA "病理学" ;
@@ -24154,7 +24112,6 @@ lin patrilineage_N = mkN "父系" ; -- open-multilingual-wordnet
 lin patrimonial_A = mkA "祖传" ; -- open-multilingual-wordnet
 lin patriot_N = mkN "爱国者" ;
 lin patriotic_A = mkA "爱国" ;
-lin patriotically_Adv = mkAdv "爱国+地" ; -- open-multilingual-wordnet
 lin patriotism_N = mkN "爱国主义" ;
 lin patristic_A = mkA "教父遗书" ; -- open-multilingual-wordnet
 lin patrol_N = mkN "巡逻" ;
@@ -24273,7 +24230,6 @@ lin pedal_V = mkV "踩" | {-HSK-} mkV "骑" ;
 lin pedal_V2 = mkV2 "踩" ;
 lin pedant_N = mkN "夫子" | mkN "學究" | mkN "学究" ; -- status=guess -- status=guess -- status=guess
 lin pedantic_A = mkA "賣弄學問" | mkA "炫學者" | {-mwn-} mkA "卖弄学问" | mkA "学究式" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin pedantically_Adv = mkAdv "卖弄学问+地" | mkAdv "学究式地" | mkAdv "迂腐地" ; -- open-multilingual-wordnet
 lin peddle_V = mkV "叫卖" ;
 lin peddle_V2 = mkV2 "兜售" ;
 lin peddler_N = mkN "不法商贩" ;
@@ -24577,7 +24533,6 @@ lin pessimism_N = mkN "悲观" ; -- comment="悲观情绪" ;
 lin pessimistFem_N = mkN "悲观主义者" ;
 lin pessimistMasc_N = mkN "悲观主义者" ;
 lin pessimistic_A = mkA "悲观" ;
-lin pessimistically_Adv = mkAdv "悲观+地" ; -- open-multilingual-wordnet
 lin pest_N = variants {} ;
 lin pester_V2 = mkV2 "纠缠" ;
 lin pesticide_N = mkN "农药" "种" ;
@@ -24628,7 +24583,8 @@ lin pharmacist_N = mkN "药剂师" "名" ;
 lin pharmacological_A = mkA "药理学" ; -- open-multilingual-wordnet
 lin pharmacologist_N = mkN "藥理學家" | mkN "药理学家" ; -- status=guess -- status=guess
 lin pharmacology_N = mkN "藥理學" | mkN "药理学" ; -- status=guess -- status=guess
-lin pharmacy_N = mkN "药店" ;
+lin pharmacy_1_N = mkN "药店" ;
+lin pharmacy_2_N = mkN "药店" ;
 lin pharos_N = mkN "灯塔" ; -- open-multilingual-wordnet
 lin pharyngeal_A = mkA "咽" | {-mwn-} mkA "咽" | mkA "咽喉" ; -- status=guess -- open-multilingual-wordnet
 lin pharyngitis_N = mkN "咽炎" | {-mwn-} mkN "咽头炎" ; -- status=guess -- open-multilingual-wordnet
@@ -24652,10 +24608,8 @@ lin phi_N = mkN "弗愛" | mkN "佛爱" | mkN "斐" ; -- status=guess -- status=
 lin phil_PN = foreignPN "Phil" ; -- comment=src=eng status=guess
 lin philadelphia_PN = mkPN "費城" ; -- comment=src=geonames status=guess
 lin philadelphus_N = mkN "山梅花" ; -- open-multilingual-wordnet
-lin philanthropically_Adv = mkAdv "仁慈地" | mkAdv "博爱地" | mkAdv "慈善地" ; -- open-multilingual-wordnet
 lin philanthropist_N = mkN "慈善家" ;
 lin philatelic_A = mkA "集邮" | mkA "集邮癖" ; -- open-multilingual-wordnet
-lin philatelically_Adv = mkAdv "集邮+地" ; -- open-multilingual-wordnet
 lin philatelist_N = mkN "集郵家" | mkN "集邮家" ; -- status=guess -- status=guess
 lin philately_N = mkN "集郵" | mkN "集邮" ; -- status=guess -- status=guess
 lin philip_PN = foreignPN "Philip" ; -- comment=src=geonames status=guess
@@ -24673,7 +24627,6 @@ lin phimosis_N = mkN "包莖" | mkN "包茎" | {-mwn-} mkN "包皮过长" ; -- s
 lin phlebitis_N = mkN "静脉炎" ; -- open-multilingual-wordnet
 lin phlebothrombosis_N = mkN "静脉血栓" | mkN "静脉血栓形成" ; -- open-multilingual-wordnet
 lin phlegm_N = mkN "痰" ; -- status=guess
-lin phlegmatically_Adv = mkAdv "冷淡" | mkAdv "冷淡的" | mkAdv "迟钝" ; -- open-multilingual-wordnet
 lin phloem_N = mkN "韌皮部" | mkN "韧皮部" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin phlogiston_N = mkN "燃素说" | {-mwn-} mkN "热素" | mkN "燃素" ; -- status=guess -- open-multilingual-wordnet
 lin phlogopite_N = mkN "金云母" ; -- open-multilingual-wordnet
@@ -24792,7 +24745,7 @@ lin picking_N = mkN "采摘" "次" ;
 lin pickle_N = mkN "咸菜" "种" ;
 lin pickle_V2 = mkV2 (mkV "腌菜") | mkV2 (mkV "鹹菜") | mkV2 (mkV "咸菜") | mkV2 (mkV "泡菜") | mkV2 (mkV "腌") ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin pickpocket_N = mkN "扒手" | mkN "三隻手" | mkN "三只手" | mkN "剪綹" | mkN "剪绺" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
-lin pickup_N = mkN "皮卡" ; -- status=guess
+lin pick_up_N = mkN "皮卡" ; -- status=guess
 lin picnic_N = mkN "野餐" ;
 lin picofarad_N = mkN "微微法拉" ; -- open-multilingual-wordnet
 lin picometer_N = mkN "微微米" ; -- open-multilingual-wordnet
@@ -24863,7 +24816,6 @@ lin pimp_V = mkV "拉皮條" | mkV "拉皮条" | mkV "拉客" ; -- status=guess,
 lin pimple_N = mkN "疙瘩" | mkN "丘疹" ; -- status=guess -- status=guess
 lin pin_N = mkN "大头针" ;
 lin pin_V2 = mkV2 "别" | {-HSK-} mkV2 "钉住" ;
-lin pin_point_V2 = mkV2 "大头针" ; -- comment="别针" ;--"针" ;
 lin pinafore_N = mkN "围巾" | mkN "无袖连衣裙" ; -- open-multilingual-wordnet
 lin pinball_N = mkN "弹球" ;
 lin pincer_N = mkN "螯" | mkN "钳" | mkN "钳爪" ; -- open-multilingual-wordnet
@@ -24890,7 +24842,7 @@ lin pinnate_A = mkA "羽毛状" | mkA "羽状" ; -- open-multilingual-wordnet
 lin pinnatifid_A = mkA "羽状半裂" ; -- open-multilingual-wordnet
 lin pinnatisect_A = mkA "羽状全裂" ; -- open-multilingual-wordnet
 lin pinny_N = mkN "围巾" | mkN "无袖连衣裙" ; -- open-multilingual-wordnet
-lin pinpoint_V2 = mkV2 "查明" ;
+lin pin_point_V2 = mkV2 "查明" | mkV2 "大头针" ; -- comment="别针" ;--"针" ;
 lin pinscher_N = mkN "杜宾犬" ; -- open-multilingual-wordnet
 lin pint_N = mkN "品脱" ;
 lin pinto_N = mkN "杂色马" | mkN "花马" ; -- open-multilingual-wordnet
@@ -24898,7 +24850,8 @@ lin pioneer_N = mkN "先锋" ;
 lin pioneer_V = mkV "开辟" ;
 lin pioneer_V2 = mkV2 "先锋" ;
 lin pious_A = mkA "虔诚" ;
-lin pipe_N = mkN "管子" "根" ;
+lin pipe_1_N = mkN "管子" "根" ;
+lin pipe_2_N = mkN "管子" "根" ;
 lin pipe_V = mkV "吹奏" ;
 lin pipe_V2 = mkV2 "吹奏" ;
 lin pipeclay_N = mkN "白土" | mkN "管土" ; -- open-multilingual-wordnet
@@ -24979,7 +24932,7 @@ lin plaid_N = mkN "格子花呢" ;
 lin plain_A = mkA "便" | mkA "白" | {-HSK-} mkA "朴素" ;
 lin plain_Adv = mkAdv "便" | mkAdv "白" | {-HSK-} mkAdv "平易" ;
 lin plain_N = mkN "便" | mkN "白" | {-HSK-} mkN "朴素" [] ;
-lin plainspoken_A = mkA "坦率" | mkA "坦白" | mkA "率直" | mkA "直言无讳" | mkA "直言无隐" | mkA "老实" | mkA "讲话坦率" ; -- open-multilingual-wordnet
+lin plain_spoken_A = mkA "坦率" | mkA "坦白" | mkA "率直" | mkA "直言无讳" | mkA "直言无隐" | mkA "老实" | mkA "讲话坦率" ; -- open-multilingual-wordnet
 lin plaintiff_N = mkN "原告" ;
 lin plaintive_A = mkA "哀伤" ;
 lin plait_N = mkN "辮子" | mkN "辫子" ; -- status=guess -- status=guess
@@ -25005,7 +24958,8 @@ lin planned_A = variants {} ;
 lin planner_N = mkN "计划者" ;
 lin planning_N = mkN "规划" "次" ;
 lin planographic_A = mkA "平版" | mkA "平面印刷" ; -- open-multilingual-wordnet
-lin plant_N = mkN "厂" | {-HSK-} mkN "植物" "種" ;
+lin plant_1_N = mkN "厂" | {-HSK-} mkN "植物" "種" ;
+lin plant_2_N = mkN "厂" | {-HSK-} mkN "植物" "種" ;
 lin plant_V2 = mkV2 "厂" ;
 lin plant_out_V2 = prepV2 (lin V OP_plant_V2) OP_out_Prep ; -- guess-p-verb
 lin plantain_N = mkN "芣苢" ; -- status=guess
@@ -25090,7 +25044,7 @@ lin please_V = mkV "请" ;
 lin please_V2 = mkV2 "请" ;
 lin please_V2V = mkV2V "请" ;
 lin please_VV = mkVV "使+喜欢" ;
-lin please_Voc = S.please_Voc ;
+lin please_Voc = ss "请上" ;
 lin pleased_A = {-HSK-} mkA "快" | mkA "满意" ;
 lin pleasing_N = mkN "愉快" ;
 lin pleasingly_Adv = mkAdv "喜欢地" | mkAdv "高兴地" ; -- open-multilingual-wordnet
@@ -25187,7 +25141,6 @@ lin ply_V2 = mkV2 "从事" ;
 lin plymouth_PN = mkPN "普利茅斯" ; -- comment=src=geonames status=guess
 lin plywood_N = mkN "夹板" ;
 lin pneumatic_A = mkA "氣體" | mkA "气体" | {-mwn-} mkA "充气" | mkA "气动" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin pneumatically_Adv = mkAdv "充气地" | mkAdv "气动地" | mkAdv "由空气作用" ; -- open-multilingual-wordnet
 lin pneumatophore_N = mkN "出水通气根" | mkN "呼吸根" ; -- open-multilingual-wordnet
 lin pneumococcal_A = mkA "肺炎球菌" ; -- open-multilingual-wordnet
 lin pneumoconiosis_N = mkN ": 尘肺" | mkN ": 塵肺" | {-mwn-} mkN "尘肺" | mkN "尘肺病" | mkN "石棉肺病" | mkN "矽肺病" | mkN "肺尘埃沉着病" | mkN "肺尘症" ; -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -25203,9 +25156,9 @@ lin pock_N = mkN "痘痕" ; -- open-multilingual-wordnet
 lin pocket_N = mkN "口袋" | {-HSK-} mkN "腰" ;
 lin pocket_V2 = mkV2 "隐藏" ;
 lin pocket_money_N = mkN "零钱" ;
-lin pocketbook_N = mkN "手提包" | mkN "皮包" | mkN "钱包" ; -- open-multilingual-wordnet
+lin pocket_book_N = mkN "手提包" | mkN "皮包" | mkN "钱包" ; -- open-multilingual-wordnet
 lin pocketful_N = mkN "一口袋" ; -- open-multilingual-wordnet
-lin pocketknife_N = mkN "小刀" ; -- status=guess
+lin pocket_knife_N = mkN "小刀" ; -- status=guess
 lin pod_N = mkN "豆荚" ;
 lin podalgia_N = mkN "足痛" ; -- open-multilingual-wordnet
 lin podcast_N = mkN "播客" ; -- status=guess
@@ -25262,7 +25215,7 @@ lin polio_N = mkN "小儿麻痹" | mkN "小儿麻痹症" | mkN "脊髓灰质炎"
 lin poliomyelitis_N = mkN "小兒麻痺" | mkN "小儿麻痹" | mkN "脊髓灰質炎" | mkN "脊髓灰质炎" | {-mwn-} mkN "小儿麻痹症" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin polishFem_N = mkN "抛光" "种" ;
 lin polishMasc_N = mkN "抛光" "种" ;
-lin polish_A = mkA "抛光" ;
+lin polish_A = mkA "波兰语" ;
 lin polish_V = mkV "擦" | {-HSK-} mkV "波兰" ;
 lin polish_V2 = mkV2 "擦" | {-HSK-} mkV2 "磨光" | {-HSK-} mkV2 "琢磨" ;
 lin politburo_N = mkN "政治局" ; -- status=guess
@@ -25525,7 +25478,8 @@ lin potty_N = mkN "便壶" ; -- open-multilingual-wordnet
 lin pouch_N = mkN "袋" ;
 lin poultry_N = mkN "家禽" ;
 lin pounce_V = mkV "扑过去抓住" ;
-lin pound_N = mkN "英镑" ;
+lin pound_1_N = mkN "英镑" ;
+lin pound_2_N = mkN "英镑" ;
 lin pound_V = mkV "连续重击" ;
 lin pound_V2 = mkV2 "镑" ;
 lin pour_V = mkV "倾倒" ;
@@ -25566,7 +25520,6 @@ lin practitionerFem_N = mkN "医生" ;
 lin practitionerMasc_N = mkN "医生" ;
 lin praetorian_A = mkA "司法官" | mkA "行政长官" ; -- open-multilingual-wordnet
 lin pragmatic_A = mkA "实用" | {-HSK-} mkA "实际" ;
-lin pragmatically_Adv = mkAdv "现实主义+地" | mkAdv "讲究实效+地" ; -- open-multilingual-wordnet
 lin pragmatics_N = mkN "語用學" | mkN "语用学" ; -- status=guess -- status=guess
 lin pragmatism_N = mkN "实用主义" "" ;
 lin pragmatist_N = mkN "实用主义者" "名" ;
@@ -25657,7 +25610,7 @@ lin predispose_V2 = mkV2 "易患" ;
 lin predisposition_N = mkN "倾向""" ;
 lin predominant_A = mkA "优越" ;
 lin predominate_V = mkV "占上风" | mkV "占优势" | mkV "控制" | mkV "支配" | mkV "统治" ; -- open-multilingual-wordnet
-lin preexistence_N = mkN "先在" | mkN "先存在" ; -- open-multilingual-wordnet
+lin pre_existence_N = mkN "先在" | mkN "先存在" ; -- open-multilingual-wordnet
 lin preface_N = mkN "前言" ;
 lin prefaded_A = mkA "给作预退色" | mkA "预衰落" ; -- open-multilingual-wordnet
 lin prefectural_A = mkA "县" ;
@@ -25799,7 +25752,7 @@ lin previous_A = mkA "上" | mkA "以前" | mkA "往" | mkA "过去" ;
 lin prey_N = mkN "捕食" ;
 lin prey_V = mkV "猎物" ;
 lin priapism_N = mkN "陰莖異常勃起" | mkN "阴茎异常勃起" | {-mwn-} mkN "持续勃起症" ; -- status=guess -- status=guess -- open-multilingual-wordnet
-lin price_N = mkN "价格" | {-HSK-} mkN "价格" "個" ;
+lin price_N = {-HSK-} mkN "价格" "個" ;
 lin price_V = mkV "价格" ;
 lin price_V2 = mkV2 "价格" ;
 lin price_V2V = mkV2V "价格" ;
@@ -25876,7 +25829,6 @@ lin pro_N = mkN "亲" [] ;
 lin pro_forma_A = mkA "形式上" ;
 lin proactive_A = mkA "积极" ;
 lin probabilistic_A = mkA "概率性" | mkA "盖然论" ; -- open-multilingual-wordnet
-lin probabilistically_Adv = mkAdv "概率+地" | mkAdv "概率论+地" ; -- open-multilingual-wordnet
 lin probability_N = mkN "可能" "個" | {-HSK-} mkN "可能性" ;
 lin probable_A = mkA "可能" ;
 lin probable_AS = L.probable_AS ;
@@ -25890,7 +25842,6 @@ lin probe_V2 = mkV2 "调查" ;
 lin probity_N = mkN "廉洁" "" ;
 lin problem_N = mkN "困难" "個" | mkN "问题" "個" | mkN "难" | {-HSK-} mkN "问题" ;
 lin problematic_A = mkA "有问题" ;
-lin problematically_Adv = mkAdv "有问题+地" ; -- open-multilingual-wordnet
 lin proboscidean_N = mkN "长鼻目的动物" ; -- open-multilingual-wordnet
 lin proboscis_N = mkN "長鼻" | mkN "长鼻" | mkN "吻" | mkN "象鼻" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin procedural_A = mkA "程序" ;
@@ -26107,7 +26058,6 @@ lin propyl_N = mkN "丙基" ; -- open-multilingual-wordnet
 lin propylene_N = mkN "丙烯" ; -- open-multilingual-wordnet
 lin propylthiouracil_N = mkN "丙基硫尿嘧啶" | mkN "丙基硫氧嘧啶" ; -- open-multilingual-wordnet
 lin proration_N = mkN "按比例的分配" ;
-lin prosaically_Adv = mkAdv "平凡+地" | mkAdv "无趣+地" | mkAdv "缺乏想象力" ; -- open-multilingual-wordnet
 lin prosciutto_N = mkN "火腿" ; -- status=guess
 lin proscribe_V2 = mkV2 "禁止" ;
 lin prose_N = mkN "散文" ;
@@ -26273,7 +26223,7 @@ lin ptosis_N = mkN "下垂" | mkN "下垂症" ; -- open-multilingual-wordnet
 lin pty_PN = foreignPN "Pty" ; -- comment=src=eng status=guess
 lin ptyalin_N = mkN "唾液淀粉酶" ; -- open-multilingual-wordnet
 lin ptyalism_N = mkN "唾液分泌过多" | mkN "流涎" ; -- open-multilingual-wordnet
-lin pub_N = mkN "酒吧" "家" | {-HSK-} mkN "酒馆" "间" ;
+lin pub_N = mkN "酒吧" "家" ;
 lin pubertal_A = mkA "发育期" | mkA "青春期" ; -- open-multilingual-wordnet
 lin puberty_N = mkN "青春期" | mkN "思春期" | mkN "發情" | mkN "发情" | mkN "發身" | mkN "发身" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin pubic_A = mkA "耻骨" | mkA "阴部" ; -- open-multilingual-wordnet
@@ -26665,7 +26615,6 @@ lin quite_Predet = mkPredet "相当" ;
 lin quito_PN = mkPN "基多" ; -- comment=src=geonames status=guess
 lin quittance_N = mkN "偿付" | mkN "偿还" ; -- open-multilingual-wordnet
 lin quiver_N = mkN "颤动" ;
-lin quixotically_Adv = mkAdv "吉诃德式+地" | mkAdv "唐吉诃德式+地" | mkAdv "堂吉诃德式地" | mkAdv "狂想家+地" ; -- open-multilingual-wordnet
 lin quiz_N = mkN "考察" "次" ;
 lin quiz_V2 = mkV2 "提问" | {-HSK-} mkV2 "测验" ;
 lin quoin_N = mkN "外角" ; -- open-multilingual-wordnet
@@ -26971,7 +26920,7 @@ lin reading_N = mkN "阅读" ;
 lin reading_PN = mkPN "雷丁" ; -- comment=src=geonames status=guess
 lin readjustment_N = mkN "重新调整" ;
 lin readmit_V2 = mkV2 "重新接纳" ;
-lin ready_A = mkA "准备" | {-HSK-} mkA "愿意" ;
+lin ready_A = L.ready_A ;
 lin ready_N = mkN "愿意" | {-HSK-} mkN "现款""" ;
 lin ready_V2 = mkV2 "准备" ;
 lin reaffirm_V2 = mkV2 "重申" ;
@@ -26984,7 +26933,6 @@ lin realign_V2 = mkV2 "重组" ;
 lin realism_N = mkN "写实主义" ;
 lin realist_N = mkN "现实主义者" ;
 lin realistic_A = mkA "实际" ;
-lin realistically_Adv = mkAdv "切实" ;
 lin reality_N = mkN "实际" | mkN "现实" "個" | {-HSK-} mkN "现实" ;
 lin realizable_A = mkA "可实现" ; -- open-multilingual-wordnet
 lin realization_N = mkN "实现" [] ;
@@ -27134,7 +27082,7 @@ lin record_V2 = mkV2 "录音" | {-HSK-} mkV2 "记录" ;
 lin record_breaking_A = mkA "破记录" ;
 lin recorder_N = mkN "录音机" ;
 lin recording_N = mkN "记录" ;
-lin recount_V2 = mkV2 "叙述" | {-HSK-} mkV2 "述说" ;
+lin re_count_V2 = mkV2 "叙述" | {-HSK-} mkV2 "述说" ;
 lin recount_VS = mkVS "叙述" | {-HSK-} mkVS "述说" ;
 lin recoup_V2 = mkV2 "补偿" ;
 lin recourse_N = mkN "求援" ; -- comment="求助" ;
@@ -27251,8 +27199,8 @@ lin refocus_V2 = mkV2 "重新调焦" ;
 lin refocusing_N = mkN "使重新集中" | mkN "再聚焦" | mkN "重调焦距" ; -- open-multilingual-wordnet
 lin reforestation_N = mkN "重新造林" ;
 lin reform_N = mkN "改革" ;
-lin reform_V = mkV "改革" ;
-lin reform_V2 = mkV2 "改革" ;
+lin re_form_V = mkV "改革" ;
+lin re_form_V2 = mkV2 "改革" ;
 lin reformer_N = mkN "改革者" ;
 lin reformulate_V2 = mkV2 "改写" ;
 lin refract_V2 = mkV2 "使+折射" ;
@@ -27371,7 +27319,7 @@ lin rejection_N = mkN "拒绝" "次" ;
 lin rejoice_V = mkV "开心" | {-HSK-} mkV "開心" | mkV "高興" | mkV "高兴" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin rejoice_V2 = mkV2 "开心" | {-HSK-} mkV2 (mkV "開心") | mkV2 (mkV "开心") | mkV2 (mkV "高興") | mkV2 (mkV "高兴") ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin rejoin_V = mkV "再加入" ;
-lin rejoin_V2 = mkV2 "再加入" ;
+lin re_join_V2 = mkV2 "再加入" ;
 lin rejuvenate_V = mkV "恢復活力" | mkV "恢复活力" | mkV "使變得年輕" | mkV "使变得年轻" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin rejuvenate_V2 = mkV2 "使+年轻" ;
 lin rejuvenation_N = mkN "回春" ;
@@ -27731,7 +27679,7 @@ lin restart_V2 = mkV2 "重新开始" ;
 lin restate_V2 = mkV2 "重申" ;
 lin restate_V2V = mkV2V "重申" ;
 lin restatement_N = mkN "重述" ;
-lin restaurant_N = L.restaurant_N | {-HSK-} mkN "餐厅" "間" | mkN "饭馆" "家" ;
+lin restaurant_N = L.restaurant_N ;
 lin restitution_N = mkN "报废""次" ;
 lin restless_A = mkA "不安" ;
 lin restlessness_N = mkN "焦躁不安" ; -- status=guess
@@ -28135,11 +28083,13 @@ lin robust_A = mkA "健壮" ;
 lin roc_N = mkN "鹏" | mkN "大鹏" ; -- status=guess -- status=guess
 lin rochdale_PN = foreignPN "Rochdale" ; -- comment=src=geonames status=guess
 lin rochester_PN = mkPN "羅徹斯特" ; -- comment=src=geonames status=guess
-lin rock_N = L.rock_N ;
+lin rock_1_N = L.rock_N ;
+lin rock_2_N = L.rock_N ;
 lin rock_V = mkV "摇" | {-HSK-} mkV "摇晃" ;
 lin rock_V2 = mkV2 "摇" | {-HSK-} mkV2 "摇动" ;
 lin rocker_N = mkN "摇杆" ;
-lin rocket_N = mkN "火箭" ;
+lin rocket_1_N = mkN "火箭" ;
+lin rocket_2_N = mkN "火箭" ;
 lin rocket_V = mkV "飞驰" ;
 lin rocky_A = mkA "岩石" ;
 lin rod_N = mkN "竿" ;
@@ -28179,8 +28129,9 @@ lin romance_A = mkA "爱情" ;
 lin romance_N = mkN "冒险故事" | {-HSK-} mkN "爱情" "個" ;
 lin romance_V2 = mkV2 "虚构" ;
 lin romania_PN = mkPN "罗马尼亚" ;
-lin romanianFem_N = variants {} ; ---- sense to be split
-lin romanianMasc_N = variants {} ; ---- sense to be split
+lin romanianFem_N = variants {} ;
+lin romanianMasc_N = variants {} ;
+lin romanian_A = mkA "罗马尼亚语" ;
 lin romantic_A = mkA "浪漫" ;
 lin romantic_N = mkN "浪漫" ;
 lin romanticism_N = mkN "浪漫精神" ; -- status=guess
@@ -28203,7 +28154,7 @@ lin room_2_N = mkN "房间" ;
 lin room_N = mkN "房间" ;
 lin room_V = mkV "居住" ;
 lin roomful_N = mkN "全房间" ;
-lin roommate_N = mkN "室友" | mkN "同屋" ; -- status=guess -- status=guess
+lin room_mate_N = mkN "室友" | mkN "同屋" ; -- status=guess -- status=guess
 lin roomy_A = mkA "寬敞" | mkA "宽敞" | mkA "廣闊" | mkA "广阔" | mkA "寬廣" | mkA "宽广" | mkA "寬大" | mkA "宽大" | mkA "敞" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin roost_V = mkV "栖息" ;
 lin rooster_N = mkN "公鸡""只" ;
@@ -28266,7 +28217,7 @@ lin rough_Adv = mkAdv "大概" | mkAdv "草" | {-mwn-} mkAdv "粗略+地" | mkAd
 lin rough_N = mkN "大概" | mkN "草" "棵" ;
 lin rough_V2 = mkV2 "粗暴对待" ;
 lin rough_and_tumble_A = mkA "粗糙的东西" ;
-lin roughhewn_A = mkA "粗野" ;
+lin rough_hewn_A = mkA "粗野" ;
 lin roughish_A = mkA "有点粗糙" | mkA "略粗糙" ; -- open-multilingual-wordnet
 lin roughneck_N = mkN "无赖" ;
 lin roughshod_A = mkA "无情" | mkA "暴虐" | mkA "残暴" | mkA "残酷无情" ; -- open-multilingual-wordnet
@@ -28291,7 +28242,7 @@ lin rover_N = mkN "探測漫遊者" | mkN "探测漫游者" ; -- status=guess --
 lin row_N = mkN "一排" ;
 lin row_V = mkV "行" ;
 lin row_V2 = variants {} ; -- comment=mkV "行" ;
-lin rowanberry_N = mkN "大杨莓" | mkN "花楸浆果" ; -- open-multilingual-wordnet
+lin rowan_berry_N = mkN "大杨莓" | mkN "花楸浆果" ; -- open-multilingual-wordnet
 lin rowboat_N = mkN "划艇" | {-mwn-} mkN "小舟" ; -- status=guess -- open-multilingual-wordnet
 lin rowdiness_N = mkN "暴行" | mkN "粗暴行为" ; -- open-multilingual-wordnet
 lin rowdy_A = mkA "吵闹" ;
@@ -28376,7 +28327,7 @@ lin rumour_V3 = mkV3 "谣传" ;
 lin rump_N = mkN "屁股" ; -- status=guess
 lin rumple_V2 = mkV2 "弄皱" ;
 lin run_N = mkN "经营" ;
-lin run_V = L.run_V | {-HSK-} mkV "执行" | mkV "经营" | mkV "走" | mkV "跑步" ;
+lin run_V = L.run_V ;
 lin run_V2 = mkV2 "执行" | mkV2 "经营" | mkV2 "走" | mkV2 "跑步" | {-HSK-} mkV2 "运行" ;
 lin run_across_V2 = prepV2 OP_run_V OP_across_Prep ; -- guess-p-verb
 lin run_after_V2 = prepV2 OP_run_V OP_after_Prep ; -- guess-p-verb
@@ -28437,7 +28388,7 @@ lin russet_A = mkA "枯叶色" | mkA "赤褐色" | mkA "黄褐色" ; -- open-mul
 lin russia_PN = mkPN "俄国" ;
 lin russianFem_N = mkN "俄" ;
 lin russianMasc_N = mkN "俄" ;
-lin russian_A = mkA "俄国" ;
+lin russian_A = mkA "俄语" ;
 lin rust_A = mkA "深褐色" | mkA "红褐色" | mkA "赭色+地" | mkA "铁锈色" ; -- open-multilingual-wordnet
 lin rust_N = mkN "鏽病" | mkN "锈病" | {-mwn-} mkN "锈菌" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin rust_V = mkV "生锈" ;
@@ -28583,7 +28534,7 @@ lin salon_N = mkN "沙龙" ;
 lin saloon_N = mkN "酒吧" "家" | {-mwn-} mkN "酒吧" | mkN "酒吧间" | mkN "酒馆" ; -- open-multilingual-wordnet
 lin salpingitis_N = mkN "输卵管炎" ; -- open-multilingual-wordnet
 lin salt_A = mkA "盐" | {-mwn-} mkA "犀利" | mkA "辛辣" ; -- open-multilingual-wordnet
-lin salt_N = L.salt_N | {-HSK-} mkN "盐" "粒" ;
+lin salt_N = L.salt_N ;
 lin salt_PN = foreignPN "Salt" ; -- comment=src=geonames status=guess
 lin salt_V2 = mkV2 "用盐腌" ;
 lin saltash_PN = foreignPN "Saltash" ; -- comment=src=geonames status=guess
@@ -28713,7 +28664,6 @@ lin sarcosine_N = mkN "甲甘氨酸" | mkN "肌氨酸" ; -- open-multilingual-wo
 lin sarcosomal_A = mkA "肌粒" ; -- open-multilingual-wordnet
 lin sardine_N = mkN "沙丁魚" | mkN "沙丁鱼" ; -- status=guess -- status=guess
 lin sardonic_A = mkA "讽刺" ;
-lin sardonically_Adv = mkAdv "讽刺" ;
 lin sardonyx_N = mkN "红条纹玛瑙" | mkN "红玛瑙" ; -- open-multilingual-wordnet
 lin sari_N = mkN "莎麗" | mkN "莎丽" ; -- status=guess -- status=guess
 lin sarin_N = mkN "沙林" ; -- status=guess
@@ -28848,7 +28798,7 @@ lin scare_N = mkN "惊吓" ;
 lin scare_V = mkV "吓" ;
 lin scare_V2 = mkV2 "吓" | {-HSK-} mkV2 "惊吓" ;
 lin scarecrow_N = mkN "稻草人" ; -- status=guess
-lin scared_A = variants {} ;
+lin scared_A = mkA "惊慌" ;
 lin scarf_N = mkN "围巾" "條" | {-HSK-} mkN "領巾" | mkN "领巾" | mkN "圍巾" | mkN "围巾" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin scarlet_A = mkA "红色" ;
 lin scarlet_N = mkN "深紅色" | mkN "深红色" | mkN "緋紅" | mkN "绯红" ; -- status=guess -- status=guess -- status=guess -- status=guess
@@ -28898,7 +28848,8 @@ lin scholar_N = mkN "大方" | {-HSK-} mkN "学者" ;
 lin scholarly_A = mkA "博学" ;
 lin scholarship_N = mkN "奖学金" "份" ;
 lin scholastic_A = mkA "学校" ; -- open-multilingual-wordnet
-lin school_N = L.school_N | {-HSK-} mkN "学校" "所" | mkN "派" | mkN "门" ;
+lin school_1_N = L.school_N ;
+lin school_2_N = mkN "学校" "所" | mkN "派" | mkN "门" ;
 lin school_V2 = mkV2 "学校" ;
 lin schoolbag_N = mkN "書包" | mkN "书包" ; -- status=guess -- status=guess
 lin schoolbook_N = mkN "教科书" | mkN "课本" ; -- open-multilingual-wordnet
@@ -28917,7 +28868,6 @@ lin schwerin_PN = mkPN "什未林" ; -- comment=src=geonames status=guess
 lin sciatica_N = mkN "坐骨神经痛" ; -- open-multilingual-wordnet
 lin science_N = L.science_N | {-HSK-} mkN "学术" "個" | mkN "科学" "門" ;
 lin scientific_A = mkA "科学" ;
-lin scientifically_Adv = mkAdv "系统地" ;
 lin scientist_N = mkN "科学家" ;
 lin scimitar_N = mkN "彎刀" | mkN "弯刀" ; -- status=guess -- status=guess
 lin scission_N = mkN "分离" | mkN "切割" | mkN "切断" | mkN "割断" ; -- open-multilingual-wordnet
@@ -29095,7 +29045,7 @@ lin seat_N = mkN "位" | mkN "位置" "個" | mkN "座" "個" | mkN "座位" "�
 lin seaton_burn_PN = foreignPN "Seaton burn" ; -- comment=src=eng status=guess
 lin seaton_delaval_PN = foreignPN "Seaton delaval" ; -- comment=src=eng status=guess
 lin seattle_PN = mkPN "西雅圖" ; -- comment=src=geonames status=guess
-lin seawater_N = mkN "海水" | {-mwn-} mkN "盐水" ; -- status=guess -- open-multilingual-wordnet
+lin sea_water_N = mkN "海水" | {-mwn-} mkN "盐水" ; -- status=guess -- open-multilingual-wordnet
 lin seaweed_N = mkN "海帶" | mkN "海带" | mkN "海草" | mkN "海藻" | mkN "昆布" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin seaworthiness_N = mkN "适于航海" | mkN "适航行" ; -- open-multilingual-wordnet
 lin seaworthy_A = mkA "经得起风浪" | mkA "适于航海" ; -- open-multilingual-wordnet
@@ -29110,7 +29060,7 @@ lin second_guess_V2 = mkV2 "预言" ;
 lin second_rate_A = mkA "二流" ;
 lin secondary_A = mkA "次要" ;
 lin secondary_N = mkN "中學" | mkN "中学" | {-HSK-} mkN "次要" ; -- status=guess -- status=guess
-lin secondhand_A = mkA "第二手" ; -- status=guess
+lin second_hand_A = mkA "第二手" ; -- status=guess
 lin secondly_Adv = {-HSK-} mkAdv "其次" ;
 lin secrecy_N = mkN "秘密" ;
 lin secret_A = mkA "暗" | mkA "秘密" ;
@@ -29244,7 +29194,6 @@ lin semblance_N = mkN "外貌" ;
 lin semen_N = mkN "精液" ; -- status=guess
 lin semester_N = mkN "学期" | {-HSK-} mkN "学期" "個" ;
 lin semestral_A = mkA "六个月一次" | mkA "半年一次" ; -- open-multilingual-wordnet
-lin semi_final_N = variants {} ;
 lin semiabstract_A = mkA "半抽象" ; -- open-multilingual-wordnet
 lin semiannual_A = mkA "一年两次" | mkA "一年二次" | mkA "半年一次" | mkA "半年" | mkA "每半年" ; -- open-multilingual-wordnet
 lin semiarid_A = mkA "半干旱" | mkA "雨量非常少" ; -- open-multilingual-wordnet
@@ -29255,7 +29204,7 @@ lin semicircular_A = mkA "半圆" ;
 lin semicolon_N = mkN "分號" | mkN "分号" | mkN "；" ; -- status=guess -- status=guess -- status=guess
 lin semiconductor_N = mkN "半导体" ;
 lin semidarkness_N = mkN "半暗" ; -- open-multilingual-wordnet
-lin semifinal_N = mkN "半決賽" | mkN "半决赛" ; -- status=guess -- status=guess
+lin semi_final_N = mkN "半決賽" | mkN "半决赛" ; -- status=guess -- status=guess
 lin semiliquid_A = mkA "半流体" | mkA "半流质" ; -- open-multilingual-wordnet
 lin seminal_A = mkA "创造性" ; -- status=guess
 lin seminar_N = mkN "﻿研讨会" "场" ;
@@ -29427,7 +29376,7 @@ lin settle_on_V2 = prepV2 OP_settle_V OP_on_Prep ; -- guess-p-verb
 lin settle_up_V = advV OP_settle_V OP_up_Adv ; -- guess-p-verb
 lin settlement_N = mkN "沉降" ; -- comment=NOT SURE
 lin settler_N = mkN "定居者" | mkN "開拓者" | mkN "开拓者" | mkN "殖民者" ; -- status=guess -- status=guess -- status=guess -- status=guess
-lin setup_N = mkN "设置" "份" ;
+lin set_up_N = mkN "设置" "份" ;
 lin seven_sisters_PN = foreignPN "Seven sisters" ; -- comment=src=eng status=guess
 lin sevenfold_A = mkA "七倍" | mkA "由七部而成" ; -- open-multilingual-wordnet
 lin sevenoaks_PN = foreignPN "Sevenoaks" ; -- comment=src=geonames status=guess
@@ -29446,7 +29395,8 @@ lin sewage_N = mkN "污水" "堆" ;
 lin sewer_N = mkN "裁缝师" ; -- comment=[mark]或下水道 4
 lin sewerage_N = mkN "下水道" ; -- status=guess
 lin sewing_N = mkN "缝纫" ;
-lin sex_N = mkN "性别" ;
+lin sex_1_N = mkN "性别" ;
+lin sex_2_N = mkN "性别" ;
 lin sexism_N = mkN "性別歧視" | mkN "性别歧视" ; -- status=guess -- status=guess
 lin sexist_A = mkA "性别歧视" ;
 lin sexploitation_N = mkN "性泛滥" | mkN "性渲染" | mkN "色情利用" ; -- open-multilingual-wordnet
@@ -29628,7 +29578,7 @@ lin shirk_V = mkV "推" | mkV "逃避" | {-HSK-} mkV "推卸" ;
 lin shirk_V2 = mkV2 "推" | mkV2 "逃避" ;
 lin shirley_PN = foreignPN "Shirley" ; -- comment=src=geonames status=guess
 lin shirt_N = L.shirt_N | {-HSK-} mkN "衬衫" "件" ;
-lin shirtfront_N = mkN "衬衫的胸襟" | mkN "衬衫的胸部" ; -- open-multilingual-wordnet
+lin shirt_front_N = mkN "衬衫的胸襟" | mkN "衬衫的胸部" ; -- open-multilingual-wordnet
 lin shit_N = mkN "狗屁" "次" ;
 lin shit_V = mkV "拉屎" ;
 lin shiver_N = mkN "发抖" ;
@@ -29663,7 +29613,7 @@ lin shoot_up_V = mkV "暴涨" | mkV "迅速上升" | mkV "迅速成长" ; -- ope
 lin shoot_up_V2 = prepV2 OP_shoot_V OP_up_Prep ; -- guess-p-verb
 lin shooter_N = mkN "射手" ; -- status=guess
 lin shooting_N = mkN "拍摄" ;
-lin shop_N = L.shop_N | {-HSK-} mkN "商店" "家" ;
+lin shop_N = L.shop_N ;
 lin shop_V = mkV "购物" ;
 lin shopkeeper_N = mkN "店主" "名" ; -- comment="老板" ;
 lin shoplifter_N = mkN "商店小偷" ; -- status=guess
@@ -29908,7 +29858,7 @@ lin silvan_A = mkA "多林木" | mkA "多森林" | mkA "树木" | mkA "树林" |
 lin silver_A = {-HSK-} mkA "银" | {-mwn-} mkA "有口才" | mkA "雄辩" ; -- open-multilingual-wordnet
 lin silver_N = L.silver_N | {-HSK-} mkN "银" ;
 lin silverback_N = mkN "银背大猩" ; -- open-multilingual-wordnet
-lin silverfish_N = mkN "蠹魚" | mkN "蠹鱼" | mkN "衣魚" | mkN "衣鱼" | mkN "壁魚" | mkN "壁鱼" | mkN "書蛀蟲" | mkN "书蛀虫" | mkN "紙魚" | mkN "纸鱼" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
+lin silver_fish_N = mkN "蠹魚" | mkN "蠹鱼" | mkN "衣魚" | mkN "衣鱼" | mkN "壁魚" | mkN "壁鱼" | mkN "書蛀蟲" | mkN "书蛀虫" | mkN "紙魚" | mkN "纸鱼" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin silverside_N = mkN "银汉科鱼" | mkN "银汉鱼类" | mkN "银河鱼" ; -- open-multilingual-wordnet
 lin silversmith_N = mkN ": 银色匠" | mkN ": 銀色匠" ; -- status=guess -- status=guess
 lin silverware_N = mkN "銀器" | mkN "银器" ; -- status=guess -- status=guess
@@ -30004,7 +29954,7 @@ lin siskin_N = mkN "鶸" ; -- status=guess
 lin sissy_N = mkN "膽小鬼" | mkN "胆小鬼" | mkN "懦夫" ; -- status=guess -- status=guess -- status=guess
 lin sister_N = L.sister_N ;
 lin sister_in_law_N = mkN "嫂子" ;
-lin sit_V = L.sit_V | {-HSK-} mkV "坐" ;
+lin sit_V = L.sit_V ;
 lin sit_V2 = mkV2 "坐" ;
 lin sit_about_V = advV OP_sit_V OP_about_Adv ; -- guess-p-verb
 lin sit_around_V = mkV "坐" | mkV "坐落" | mkV "无所事事" | mkV "闲坐" | mkV "闲坐着" ; -- open-multilingual-wordnet
@@ -30168,7 +30118,7 @@ lin sleeping_N = mkN "睡眠" "次" ;
 lin sleeplessness_N = mkN "失眠" ; -- open-multilingual-wordnet
 lin sleepwalking_N = mkN "夢遊" | mkN "梦游" | mkN "夢遊症" | mkN "梦游症" | mkN "夢遊病" | mkN "梦游病" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin sleepy_A = mkA "欲睡" ;
-lin sleepyhead_N = mkN "貪睡者" | mkN "贪睡者" ; -- status=guess -- status=guess
+lin sleepy_head_N = mkN "貪睡者" | mkN "贪睡者" ; -- status=guess -- status=guess
 lin sleet_N = mkN "冻雨" | mkN "霰" ; -- status=guess -- status=guess
 lin sleet_V = mkV "下雨雪" | mkV "下雨雹" | mkV "降霰" ; -- open-multilingual-wordnet
 lin sleeve_N = mkN "套筒" ;
@@ -30194,7 +30144,8 @@ lin slim_V2 = mkV2 "薄" ;
 lin slime_N = mkN "黏液" ;
 lin slimed_A = mkA "似黏液" | mkA "粘糊糊" | mkA "黏滑" ; -- open-multilingual-wordnet
 lin slimy_A = mkA "泥泞" ;
-lin sling_N = mkN "吊绳""根" ;
+lin sling_1_N = mkN "吊绳""根" ;
+lin sling_2_N = mkN "吊绳""根" ;
 lin slinger_N = mkN "投石者" "名" ;
 lin slingshot_N = mkN "彈弓" | mkN "弹弓" ; -- status=guess -- status=guess
 lin slip_N = mkN "滑" ;
@@ -30462,7 +30413,7 @@ lin soften_V = mkV "软化" ;
 lin soften_V2 = mkV2 "减轻" ;
 lin softener_N = mkN "柔软剂" ;
 lin softening_N = mkN "变软" | mkN "软化" ; -- open-multilingual-wordnet
-lin softhearted_A = mkA "心軟" | mkA "心软" ; -- status=guess -- status=guess
+lin soft_hearted_A = mkA "心軟" | mkA "心软" ; -- status=guess -- status=guess
 lin softness_N = mkN "柔软" [] ;
 lin software_N = mkN "软件" ;
 lin softy_N = mkN "多愁善感的人" "位" ;
@@ -30513,7 +30464,8 @@ lin soloist_N = mkN "独奏者" ;
 lin solon_PN = foreignPN "Solon" ; -- comment=src=geonames status=guess
 lin solstice_N = mkN "至日" | mkN "至點" | mkN "至点" | mkN "冬至" | mkN "夏至" | {-mwn-} mkN "至" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin soluble_A = mkA "可溶性" ;
-lin solution_N = mkN "答案" "個" | {-HSK-} mkN "解决方案" ;
+lin solution_1_N = mkN "答案" "個" | {-HSK-} mkN "解决方案" ;
+lin solution_2_N = mkN "答案" "個" | {-HSK-} mkN "解决方案" ;
 lin solvable_A = mkA "可以解" | mkA "可以解决" | mkA "可分解" | mkA "可解决" ; -- open-multilingual-wordnet
 lin solvate_N = mkN "溶剂化物" ; -- open-multilingual-wordnet
 lin solvation_N = mkN "溶剂化" | mkN "溶剂化作用" | mkN "溶剂离解作用" ; -- open-multilingual-wordnet
@@ -30588,7 +30540,7 @@ lin sorrel_N = mkN "酸模" | {-mwn-} mkN "栗色马" ; -- status=guess -- open-
 lin sorrow_N = mkN "悲哀" ;
 lin sorrowful_A = mkA "悲哀" | mkA "悲痛" | mkA "悲傷" | mkA "悲伤" | mkA "哀愁" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess
 lin sorry_A = mkA "对不起" | mkA "抱歉" | mkA "遗憾" ;
-lin sorry_Interj = mkInterj "对不起" | mkInterj "抱歉" | mkInterj "遗憾" ;
+lin sorry_Interj = mkInterj "对不起" ;
 lin sort_N = mkN "分类" ;
 lin sort_V = mkV "分类" ;
 lin sort_V2 = mkV2 "分类" ;
@@ -30652,7 +30604,8 @@ lin sow_V2 = mkV2 "播种" ;
 lin soy_N = mkN "大豆" ;
 lin sozzled_A = mkA "喝醉" | mkA "喝醉了" | mkA "喝醉酒" | mkA "烂醉" | mkA "酒醉" | mkA "醉" | mkA "醉醺醺" ; -- open-multilingual-wordnet
 lin spa_N = mkN "温泉浴场" ;
-lin space_N = mkN "空间" | {-HSK-} mkN "空间" "個" ;
+lin space_1_N = mkN "空间" | {-HSK-} mkN "空间" "個" ;
+lin space_2_N = mkN "空间" | {-HSK-} mkN "空间" "個" ;
 lin space_V2 = mkV2 "使+隔开" ;
 lin spacecraft_N = mkN "宇宙飞船" ;
 lin spaceship_N = mkN "飞船" ;
@@ -30674,7 +30627,7 @@ lin spandex_N = mkN "氨綸" | mkN "氨纶" ; -- status=guess -- status=guess
 lin spaniel_N = mkN "獚" | mkN "西班牙猎犬" ; -- open-multilingual-wordnet
 lin spanishFem_N = variants {} ; ---- sense to be split
 lin spanishMasc_N = variants {} ; ---- sense to be split
-lin spanish_A = mkA "西班牙" ;
+lin spanish_A = mkA "西班牙语" ;
 lin spank_N = mkN "一巴掌" ; -- status=guess
 lin spank_V = mkV "打" ;
 lin spank_V2 = mkV2 (mkV "拍擊") | mkV2 (mkV "拍击") ; -- status=guess, src=wikt -- status=guess, src=wikt
@@ -30905,7 +30858,6 @@ lin spoon_V2 = mkV2 (mkV "调情") ; -- status=guess, src=wikt
 lin spoonbill_N = mkN "琵鷺" | mkN "琵鹭" | {-mwn-} mkN "篦鹭" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin spoonful_N = mkN "一勺" ;
 lin sporadic_A = mkA "零星" ;
-lin sporadically_Adv = mkAdv "零星" ;
 lin sporangiophore_N = mkN "孢囊柄" | mkN "孢囊梗" | mkN "孢子的主茎" ; -- open-multilingual-wordnet
 lin sporangium_N = mkN "孢子囊" | mkN "芽孢囊" ; -- open-multilingual-wordnet
 lin spore_N = mkN "袍子" "件" ;
@@ -31100,7 +31052,7 @@ lin stairway_N = mkN "楼梯" ; -- open-multilingual-wordnet
 lin stake_N = mkN "标桩" ;
 lin stake_V2 = mkV2 "资助" ;
 lin stakeford_PN = foreignPN "Stakeford" ; -- comment=src=eng status=guess
-lin stakeholder_N = mkN "代管代理" ; -- status=guess
+lin stake_holder_N = mkN "代管代理" ; -- status=guess
 lin stalactite_N = mkN "鐘乳石" | mkN "钟乳石" ; -- status=guess -- status=guess
 lin stalagmite_N = mkN "石筍" | mkN "石笋" ; -- status=guess -- status=guess
 lin stale_A = mkA "陈腐" ;
@@ -31121,7 +31073,8 @@ lin stamford_PN = mkPN "斯坦福" ;
 lin stammer_N = mkN "口吃" | {-mwn-} mkN "结巴" | mkN "结结巴巴" ; -- status=guess -- open-multilingual-wordnet
 lin stammer_V = mkV "口吃" | mkV "結巴" | mkV "结巴" | mkV "磕巴" | mkV "漏口" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin stammer_V2 = mkV2 (mkV "口吃") | mkV2 (mkV "結巴") | mkV2 (mkV "结巴") | mkV2 (mkV "磕巴") | mkV2 (mkV "漏口") ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
-lin stamp_N = mkN "邮票" ;
+lin stamp_1_N = mkN "邮票" ;
+lin stamp_2_N = mkN "邮票" ;
 lin stamp_V = mkV "打印" | mkV "踩" | mkV "顿" | {-HSK-} mkV "捣碎" ;
 lin stamp_V2 = mkV2 "打印" | mkV2 "踩" | mkV2 "顿" | {-HSK-} mkV2 "标出" ;
 lin stampede_N = mkN "惊跑" ;
@@ -31229,7 +31182,8 @@ lin statesman_N = mkN "政治家" ;
 lin static_A = mkA "静态" ;
 lin static_N = mkN "靜電" | mkN "静电" ; -- status=guess -- status=guess
 lin statics_N = mkN "靜力學" ; -- status=guess
-lin station_N = mkN "站台" | mkN "站" | {-HSK-} mkN "车站" ;
+lin station_1_N = mkN "站台" | mkN "站" ;
+lin station_2_N = mkN "车站" ;
 lin station_V2 = mkV2 "站" ;
 lin stationariness_N = mkN "不动" | mkN "固定" ; -- open-multilingual-wordnet
 lin stationary_A = mkA "固定" ;
@@ -31484,14 +31438,15 @@ lin stolon_N = mkN "匍匐茎" | mkN "纤匐枝" ; -- open-multilingual-wordnet
 lin stoloniferous_A = mkA "具匍匐茎" ; -- open-multilingual-wordnet
 lin stomach_N = mkN "肚子" "個" | mkN "胃" "個" | {-HSK-} mkN "胃" ;
 lin stomach_V2 = mkV2 "忍下" ;
-lin stomachache_N = mkN "胃痛" | {-mwn-} mkN "肚子痛" | mkN "胃痛或肚痛" ; -- status=guess -- open-multilingual-wordnet
+lin stomach_ache_N = mkN "胃痛" | {-mwn-} mkN "肚子痛" | mkN "胃痛或肚痛" ; -- status=guess -- open-multilingual-wordnet
 lin stomatitis_N = mkN "口腔炎" ; -- open-multilingual-wordnet
 lin stomatopod_N = mkN "口脚类动物" | mkN "口足目动物" ; -- open-multilingual-wordnet
 lin stomatous_A = mkA "有口" | mkA "有孔" | mkA "有气孔" ; -- open-multilingual-wordnet
 lin stomp_V = mkV "跺脚" ;
 lin stomp_V2 = mkV2 "跺" ;
 lin stone_A = mkA "石头" | {-mwn-} mkA "暗青灰色" | mkA "浅棕色" | mkA "淡褐色" ; -- open-multilingual-wordnet
-lin stone_N = L.stone_N | {-HSK-} mkN "石头" "塊" ;
+lin stone_1_N = L.stone_N ;
+lin stone_2_N = L.stone_N ;
 lin stone_PN = foreignPN "Stone" ; -- comment=src=geonames status=guess
 lin stone_V2 = mkV2 "用石头铺" ;
 lin stonecrop_N = mkN "景天" | mkN "景天属的植物" ; -- open-multilingual-wordnet
@@ -31505,7 +31460,7 @@ lin stool_N = mkN "凳子" "个" ;
 lin stoop_V = mkV "彎腰" | mkV "弯腰" | mkV "俯下" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin stoop_V2 = mkV2 (mkV "彎腰") | mkV2 (mkV "弯腰") | mkV2 (mkV "俯下") ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin stop_N = mkN "停止" | {-HSK-} mkN "顿" ;
-lin stop_V = L.stop_V | {-HSK-} mkV "住" | mkV "停止" | mkV "站" | mkV "逗" ;
+lin stop_V = L.stop_V ;
 lin stop_V2 = mkV2 "住" | mkV2 "停止" | mkV2 "站" | mkV2 "逗" | {-HSK-} mkV2 "停" ;
 lin stop_VV = mkVV "住" | mkVV "停止" | mkVV "站" | mkVV "逗" ;
 lin stop_around_V = advV OP_stop_V OP_around_Adv ; -- guess-p-verb
@@ -31787,7 +31742,7 @@ lin subjacent_A = mkA "在下方" ; -- open-multilingual-wordnet
 lin subject_1_N = mkN "主题" ;
 lin subject_2_N = mkN "主题" ;
 lin subject_A = mkA "服从" | {-HSK-} mkA "课" | mkA "题" | mkA "题目" ;
-lin subject_A2 = mkA2 "受制于" ;
+lin subject_to_A2 = mkA2 "受制于" ;
 lin subject_N = mkN "主题" ;
 lin subject_V2 = mkV2 "主题" ;
 lin subjective_A = mkA "主观" ;
@@ -32025,7 +31980,7 @@ lin superjacent_A = mkA "上覆" | mkA "停在上面" | mkA "压在上面" | mkA
 lin superlative_A = mkA "最伟大" | mkA "最好" | mkA "最高级" ; -- open-multilingual-wordnet
 lin superlative_N = mkN "最高級" | mkN "最高级" ; -- status=guess -- status=guess
 lin superman_N = mkN "超人" ; -- status=guess
-lin supermarket_N = mkN "超市" "家" | {-HSK-} mkN "超级市场" "家" ;
+lin supermarket_N = mkN "超级市场" "家" ;
 lin supermodel_N = mkN "超級名模" ; -- status=guess
 lin supernatant_A = mkA "浮在表面" ; -- open-multilingual-wordnet
 lin supernaturalist_A = mkA "超自然主义" | mkA "超自然力" ; -- open-multilingual-wordnet
@@ -32198,11 +32153,12 @@ lin sweat_V2 = mkV2 (mkV "流汗") | mkV2 (mkV "發汗") | mkV2 (mkV "发汗") |
 lin sweater_N = mkN "毛衣" "件" ;
 lin sweatshirt_N = mkN "運動衫" | mkN "运动衫" ; -- status=guess -- status=guess
 lin sweaty_A = mkA "吃力" ;
-lin swedeFem_N = variants {} ; ---- sense to be split
-lin swedeMasc_N = variants {} ; ---- sense to be split
-lin sweden_PN = mkPN "瑞典" ;
-lin swedishFem_N = variants {} ; ---- sense to be split
-lin swedishMasc_N = variants {} ; ---- sense to be split
+lin swedeFem_N = mkN "瑞典" ;
+lin swedeMasc_N = mkN "瑞典人" ;
+lin sweden_PN = mkPN "瑞典人" ;
+lin swedish_A = mkA "瑞典语" ;
+lin swedishFem_N = mkN "瑞典人" ; 
+lin swedishMasc_N = mkN "瑞典人" ;
 lin sweep_N = mkN "范围" ;
 lin sweep_V = mkV "打扫" ;
 lin sweep_V2 = mkV2 "打扫" | {-HSK-} mkV2 "扫" ;
@@ -32366,7 +32322,6 @@ lin syrup_N = mkN "糖浆" | {-HSK-} mkN "露" ;
 lin syrupy_A = mkA "加蜜" | mkA "含蜜" ; -- open-multilingual-wordnet
 lin system_N = mkN "系统" | {-HSK-} mkN "系统" "個" ;
 lin systematic_A = mkA "系统" ;
-lin systematically_Adv = mkAdv "有组织" ;
 lin systematize_V2 = mkV2 (mkV "系統化") ; -- status=guess, src=wikt
 lin syston_PN = foreignPN "Syston" ; -- comment=src=geonames status=guess
 lin t_shirt_N = variants {} ;
@@ -32375,7 +32330,8 @@ lin tabbouleh_N = mkN "塔布勒沙拉" ; -- status=guess
 lin tabby_N = mkN "虎斑貓" | mkN "虎斑猫" | mkN "斑貓" | mkN "斑猫" | {-mwn-} mkN "雌猫" ; -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin tabernacle_N = mkN "临时房屋""座" ;
 lin tabes_N = mkN "脊髓痨" ; -- open-multilingual-wordnet
-lin table_N = L.table_N | {-HSK-} mkN "桌子" "張" | mkN "表格" "張" ;
+lin table_1_N = L.table_N ;
+lin table_2_N = {-HSK-} mkN "桌子" "張" | mkN "表格" "張" ;
 lin table_V2 = mkV2 "使+嵌合" ;
 lin tablecloth_N = mkN "桌布" ; -- status=guess
 lin tableland_N = mkN "高原" ; -- status=guess
@@ -32522,7 +32478,8 @@ lin tan_V = mkV "晒成褐色" ;
 lin tandem_N = mkN "串联" "" ;
 lin tangency_N = mkN "接触" ; -- open-multilingual-wordnet
 lin tangent_A = mkA "切" ;
-lin tangent_N = mkN "切" | {-HSK-} mkN "切線" | mkN "切线" ; -- status=guess -- status=guess
+lin tangent_1_N = mkN "切" | {-HSK-} mkN "切線" | mkN "切线" ; -- status=guess -- status=guess
+lin tangent_2_N = mkN "切" | {-HSK-} mkN "切線" | mkN "切线" ; -- status=guess -- status=guess
 lin tangerine_A = mkA "桔子" | {-HSK-} mkA "橘黄色" ;
 lin tangerine_N = mkN "桔子" "個" | {-HSK-} mkN "橘子""个" ;
 lin tangible_A = mkA "有形" ;
@@ -32641,7 +32598,7 @@ lin taxpaying_A = mkA "纳税" ; -- open-multilingual-wordnet
 lin tayside_PN = foreignPN "Tayside" ; -- comment=src=eng status=guess
 lin tb_N = mkN "肺结核" ;
 lin tbilisi_PN = mkPN "第比利斯" ; -- comment=src=geonames status=guess
-lin tea_N = mkN "茶" | {-HSK-} mkN "茶" "杯" ;
+lin tea_N = mkN "茶" "杯" ;
 lin tea_set_N = mkN "茶具""套" ;
 lin teach_V = mkV "启发" | mkV "教" | mkV "教育" | {-HSK-} mkV "教导" ;
 lin teach_V2 = L.teach_V2 | {-HSK-} mkV2 "启发" | mkV2 "教" | mkV2 "教育" ;
@@ -32653,7 +32610,7 @@ lin teaching_N = mkN "教学" [] ;
 lin teacup_N = mkN "茶碗" ; -- status=guess
 lin teahouse_N = mkN "茶館" | mkN "茶馆" ; -- status=guess -- status=guess
 lin teak_N = mkN "柚木" ; -- open-multilingual-wordnet
-lin teakettle_N = mkN "水壺" | mkN "水壶" | mkN "壺" | mkN "壶" ; -- status=guess -- status=guess -- status=guess -- status=guess
+lin tea_kettle_N = mkN "水壺" | mkN "水壶" | mkN "壺" | mkN "壶" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin teal_N = mkN "蓝绿色" ; -- status=guess
 lin team_N = mkN "团队" | {-HSK-} mkN "班" "個" | mkN "集体" "個" ;
 lin team_V = mkV "团队" ;
@@ -32672,7 +32629,7 @@ lin tear_off_V2 = prepV2 OP_tear_V OP_off_Prep ; -- guess-p-verb
 lin tear_out_V = advV OP_tear_V OP_out_Adv ; -- guess-p-verb
 lin tear_up_V = advV OP_tear_V OP_up_Adv ; -- guess-p-verb
 lin tear_up_V2 = prepV2 OP_tear_V OP_up_Prep ; -- guess-p-verb
-lin teardrop_N = mkN "淚滴" | mkN "泪滴" | mkN "淚水" | mkN "泪水" | mkN "眼淚" | mkN "眼泪" | {-mwn-} mkN "泪" | mkN "泪珠" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
+lin tear_drop_N = mkN "淚滴" | mkN "泪滴" | mkN "淚水" | mkN "泪水" | mkN "眼淚" | mkN "眼泪" | {-mwn-} mkN "泪" | mkN "泪珠" ; -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- status=guess -- open-multilingual-wordnet
 lin tearful_A = mkA "淚汪汪" | mkA "泪汪汪" | {-mwn-} mkA "含泪" ; -- status=guess -- status=guess -- open-multilingual-wordnet
 lin tearing_N = mkN "泪液分泌" | mkN "流泪" ; -- open-multilingual-wordnet
 lin tearless_A = mkA "不流泪" | mkA "无泪" ; -- open-multilingual-wordnet
@@ -32957,7 +32914,7 @@ lin thanatophobia_N = mkN "死亡恐惧" ; -- open-multilingual-wordnet
 lin thank_V2 = mkV2 "感谢" | {-HSK-} mkV2 "谢谢" ;
 lin thankful_A = mkA "感激" | {-HSK-} mkA "感谢" ;
 lin thankless_A = mkA "不表示感谢" ;
-lin thanks_Interj = mkInterj "感谢" | mkInterj "谢谢" ;
+lin thanks_Interj = mkInterj "谢谢" ;
 lin thanks_N = {-HSK-} mkN "感谢" | mkN "谢谢" ;
 lin thanks_to_Prep = mkPrep "由于" ;
 lin that_AdA = variants {} ;
@@ -32969,7 +32926,7 @@ lin thaw_N = mkN "解冻" ;
 lin thaw_V = mkV "融化" | {-HSK-} mkV "解凍" | mkV "解冻" | {-mwn-} mkV "使溶解" | mkV "液化" | mkV "溶解" ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt -- open-multilingual-wordnet
 lin thaw_V2 = mkV2 "融化" | {-HSK-} mkV2 (mkV "解凍") | mkV2 (mkV "解冻") | mkV2 (mkV "融化") ; -- status=guess, src=wikt -- status=guess, src=wikt -- status=guess, src=wikt
 lin theanthropism_N = mkN "拟人" | mkN "拟人论" ; -- open-multilingual-wordnet
-lin theatre_N = mkN "剧院" | mkN "劇場" | mkN "剧场" | {-HSK-} mkN "戏剧" ; -- status=guess -- status=guess
+lin theatre_N = mkN "剧院" ;
 lin theatrical_A = mkA "戏剧" ;
 lin theatrical_N = mkN "戏剧演出" ;
 lin thebe_N = mkN "西比" ; -- open-multilingual-wordnet
@@ -33366,7 +33323,7 @@ lin togo_PN = mkPN "多哥" ; -- comment=src=geonames status=guess
 lin toil_N = mkN "劳动" "次" ;
 lin toil_V = mkV "费力做" ;
 lin toil_VV = mkVV "辛劳" ;
-lin toilet_N = mkN "卫生间" "間" | mkN "厕所" "間" | mkN "洗手间" | {-HSK-} mkN "厕所" ;
+lin toilet_N = mkN "厕所" "間" ;
 lin toilsome_A = mkA "辛苦" ;
 lin token_N = mkN "象征" ;
 lin tokyo_PN = mkPN "东京" ;
@@ -33607,7 +33564,6 @@ lin traffic_V = mkV "交易" | mkV "贸易" ; -- open-multilingual-wordnet
 lin trafficker_N = mkN "贸易商" ;
 lin tragedy_N = mkN "悲剧" ;
 lin tragic_A = mkA "悲催" ;
-lin tragically_Adv = mkAdv "悲剧" ;
 lin tragicomic_A = mkA "悲喜剧" ;
 lin trail_N = mkN "小道" "条" ;
 lin trail_V = mkV "拖曳" ;
@@ -33632,7 +33588,7 @@ lin traitor_N = mkN "叛徒" ;
 lin trajectory_N = mkN "軌道" | mkN "轨道" | mkN "彈道" | mkN "弹道" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin tralee_PN = foreignPN "Tralee" ; -- comment=src=geonames status=guess
 lin tram_N = mkN "电车轨道""" ;
-lin tramcar_N = mkN "市内有轨电车" | mkN "有轨电车" | mkN "电车" ; -- open-multilingual-wordnet
+lin tram_car_N = mkN "市内有轨电车" | mkN "有轨电车" | mkN "电车" ; -- open-multilingual-wordnet
 lin trammel_N = mkN "手铐" | mkN "束缚物" | mkN "枷锁" | mkN "桎梏" ; -- open-multilingual-wordnet
 lin tramontane_A = mkA "异邦" | mkA "野蛮" ; -- open-multilingual-wordnet
 lin tramp_N = mkN "流浪汉" ;
@@ -34168,7 +34124,6 @@ lin ultracentrifugation_N = mkN "超速离心法" ; -- open-multilingual-wordnet
 lin ultramarine_A = mkA "深蓝色" | mkA "群青色" | mkA "青蓝色" ; -- open-multilingual-wordnet
 lin ultramontane_A = mkA "山那边" ;
 lin ultrasonic_A = mkA "超声" ;
-lin ultrasonically_Adv = mkAdv "超声波+地" ; -- open-multilingual-wordnet
 lin ultrasound_N = mkN "超聲波" | mkN "超声波" | mkN "超音波" ; -- status=guess -- status=guess -- status=guess
 lin ultraviolet_A = mkA "紫外线" ;
 lin ultraviolet_N = mkN "紫外" ; -- status=guess
@@ -34259,7 +34214,6 @@ lin unchangeable_A = mkA "不变" | mkA "不可变" ; -- open-multilingual-wordn
 lin unchanged_A = mkA "不变" ;
 lin unchanging_A = mkA "不变" ;
 lin uncharacteristic_A = mkA "不典型" | mkA "无典型特征" | mkA "非典型" ; -- open-multilingual-wordnet
-lin uncharacteristically_Adv = mkAdv "一反常态" ;
 lin uncharged_A = mkA "不嗬电" | mkA "不带电" | mkA "不带电荷" | mkA "无电荷" ; -- open-multilingual-wordnet
 lin uncharitable_A = mkA "不宽恕" | mkA "不慷慨" | mkA "严厉" | mkA "无情" | mkA "无慈悲心" | mkA "没有仁慈之心" ; -- open-multilingual-wordnet
 lin uncharted_A = mkA "未标明" ;
@@ -34374,7 +34328,7 @@ lin undersexed_A = mkA "性冷淡" | mkA "性欲不强" | mkA "性欲淡泊" | m
 lin undershrub_N = mkN "半灌木" | mkN "小灌木" ; -- open-multilingual-wordnet
 lin underside_N = mkN "下面" ;
 lin underspend_V = mkV "少花掉" ;
-lin understand_V = mkV "了解" | mkV "懂" | mkV "明白" | mkV "理解" ;
+lin understand_V = mkV "理解" ;
 lin understand_V2 = L.understand_V2 | {-HSK-} mkV2 "了解" | mkV2 "懂" | mkV2 "明白" | mkV2 "理解" ;
 lin understand_VS = mkVS "了解" | {-HSK-} mkVS "懂" | mkVS "明白" | mkVS "理解" ;
 lin understandable_A = mkA "可理解" ;
@@ -34430,7 +34384,6 @@ lin undrinkable_A = mkA "不能喝" | mkA "不能饮用" ; -- open-multilingual-
 lin undue_A = mkA "不适当" | {-HSK-} mkA "过分" ;
 lin undulate_A = mkA "波浪形" ; -- open-multilingual-wordnet
 lin undulate_V = mkV "波动" ;
-lin unduly_Adv = mkAdv "过度" ;
 lin unearth_V2 = mkV2 "发掘" ;
 lin unease_N = mkN "不安" [] ;
 lin uneasiness_N = mkN "局促" "次" ;
@@ -34449,7 +34402,8 @@ lin unequivocal_A = mkA "明白" | {-HSK-} mkA "明确" ;
 lin unerring_A = mkA "无过失" ;
 lin unesco_PN = foreignPN "Unesco" ; -- comment=src=eng status=guess
 lin unethical_A = mkA "不道德" ;
-lin uneven_A = mkA "不平坦" | {-HSK-} mkA "错" ;
+lin uneven_1_A = mkA "不平坦" | {-HSK-} mkA "错" ;
+lin uneven_2_A = mkA "不平坦" | {-HSK-} mkA "错" ;
 lin uneventful_A = mkA "波澜不惊" ;
 lin unexcused_A = mkA "未批准" | mkA "未经允许" ; -- open-multilingual-wordnet
 lin unexpected_A = mkA "意外" | {-HSK-} mkA "突然" ;
@@ -34470,7 +34424,7 @@ lin unfermented_A = mkA "新鲜" | mkA "未发酵" | mkA "淡" ; -- open-multili
 lin unfettered_A = mkA "不受约束" ;
 lin unfilled_A = mkA "空" ;
 lin unfinished_A = mkA "未完成" ;
-lin unfit_A = mkA "不" ;
+----lin unfit_A = mkA "不" ;
 lin unflagging_A = mkA "不屈不挠" ;
 lin unflavored_A = mkA "不加调料" ; -- open-multilingual-wordnet
 lin unfold_V = mkV "展开" ;
@@ -34514,7 +34468,6 @@ lin unhinge_V2 = mkV2 "拉开" ;
 lin unholy_A = mkA "不圣洁" | mkA "不神圣" | mkA "亵渎" ; -- open-multilingual-wordnet
 lin unhurt_A = mkA "没有受伤" ;
 lin unhygienic_A = mkA "不健康" | mkA "不卫生" ; -- open-multilingual-wordnet
-lin unhygienically_Adv = mkAdv "不卫生+地" | mkAdv "不清洁+地" ; -- open-multilingual-wordnet
 lin unicameral_A = mkA "一院制" ; -- status=guess
 lin unicef_PN = foreignPN "Unicef" ; -- comment=src=eng status=guess
 lin unicellular_A = mkA "單細胞" | mkA "单细胞" | {-mwn-} mkA "单细胞" | mkA "单细胞组成" ; -- status=guess -- status=guess -- open-multilingual-wordnet
@@ -34646,7 +34599,6 @@ lin unpalatable_A = mkA "難吃" | mkA "难吃" ; -- status=guess -- status=gues
 lin unparalleled_A = mkA "無比" | mkA "無雙" | mkA "空前未有" | mkA "無人能出其右" ; -- status=guess -- status=guess -- status=guess -- status=guess
 lin unpartitioned_A = mkA "未分割" | mkA "未分段" ; -- open-multilingual-wordnet
 lin unpasteurized_A = mkA "未灭菌" | mkA "未经高温消毒" ; -- open-multilingual-wordnet
-lin unpatriotically_Adv = mkAdv "不爱国+地" ; -- open-multilingual-wordnet
 lin unpeaceful_A = mkA "不安" ;
 lin unpeopled_A = mkA "无人" | mkA "无人居住" ; -- open-multilingual-wordnet
 lin unperformed_A = mkA "未演过" ; -- open-multilingual-wordnet
@@ -34922,7 +34874,7 @@ lin uphill_A = mkA "上坡" ;
 lin uphill_Adv = mkAdv "向上" ;
 lin uphold_V2 = mkV2 "主持" | mkV2 "坚持" | mkV2 "维护" ;
 lin upholstery_N = mkN "垫衬物" ;
-lin upmarket_A = mkA "质优价高" | mkA "高档" | mkA "高端市场" | mkA "高级" ; -- open-multilingual-wordnet
+lin up_market_A = mkA "质优价高" | mkA "高档" | mkA "高端市场" | mkA "高级" ; -- open-multilingual-wordnet
 lin upmost_A = mkA "最上" | mkA "最上面" | mkA "最高" ; -- open-multilingual-wordnet
 lin upon_Prep = mkPrep "在" "之上" ;
 lin upper_A = mkA "上" ;
@@ -35594,7 +35546,7 @@ lin wake_up_V2 = mkV2 "醒" ;
 lin wakefield_PN = foreignPN "Wakefield" ; -- comment=src=geonames status=guess
 lin wales_PN = foreignPN "Wales" ; -- comment=src=geonames status=guess
 lin walk_N = mkN "步行" [] ;
-lin walk_V = L.walk_V | {-HSK-} mkV "行" | mkV "走" ;
+lin walk_V = L.walk_V ;
 lin walk_V2 = mkV2 "行" | mkV2 "走" ;
 lin walk_away_from_V2 = prepV2 (advV OP_walk_V OP_away_Adv ) OP_from_Prep ; -- guess-p-verb
 lin walk_away_with_V2 = prepV2 (advV OP_walk_V OP_away_Adv ) OP_with_Prep ; -- guess-p-verb
@@ -35669,7 +35621,7 @@ lin warlord_N = mkN "軍閥" | mkN "军阀" | mkN "督軍" | mkN "督军" | mkN 
 lin warm_A = L.warm_A | {-HSK-} mkA "暖和" | mkA "温暖" | mkA "热烈" ;
 lin warm_V = mkV "温暖" ;
 lin warm_V2 = mkV2 "温暖" ;
-lin warmhearted_A = mkA "热心" | {-mwn-} mkA "亲切" | mkA "热心" | mkA "热心肠" | mkA "热情" ; -- open-multilingual-wordnet
+lin warm_hearted_A = mkA "热心" | {-mwn-} mkA "亲切" | mkA "热心" | mkA "热心肠" | mkA "热情" ; -- open-multilingual-wordnet
 lin warminster_PN = foreignPN "Warminster" ; -- comment=src=geonames status=guess
 lin warmonger_N = mkN "戰爭販子" | mkN "战争贩子" ; -- status=guess -- status=guess
 lin warmth_N = mkN "热情" ;
@@ -35745,7 +35697,7 @@ lin watchful_A = mkA "注意" ;
 lin watchmaker_N = mkN "鐘錶匠" | mkN "钟表匠" ; -- status=guess -- status=guess
 lin watchman_N = mkN "看守人" "位" ;
 lin watchword_N = mkN "口号" ;
-lin water_N = L.water_N | {-HSK-} mkN "水" ;
+lin water_N = L.water_N ;
 lin water_V = mkV "流泪" | {-HSK-} mkV "浇" ;
 lin water_V2 = mkV2 "水" | {-HSK-} mkV2 "浇" ;
 lin waterbuck_N = mkN "大羚羊" | mkN "水羚" ; -- open-multilingual-wordnet
@@ -35760,7 +35712,7 @@ lin waterfront_N = mkN "海滨" ;
 lin watering_N = mkN "噴壺" | mkN "喷壶" ; -- status=guess -- status=guess
 lin waterleaf_N = mkN "水叶" | mkN "水叶属植物" ; -- open-multilingual-wordnet
 lin waterless_A = mkA "干涸" | mkA "干燥" | mkA "无水" ; -- open-multilingual-wordnet
-lin waterline_N = mkN "水線" | mkN "水线" ; -- status=guess -- status=guess
+lin water_line_N = mkN "水線" | mkN "水线" ; -- status=guess -- status=guess
 lin waterlogged_A = mkA "似沼泽" | mkA "多沼地" | mkA "沼地" | mkA "泥泞" | mkA "浸水" | mkA "浸满水" | mkA "湿地" ; -- open-multilingual-wordnet
 lin waterloo_PN = mkPN "滑鐵盧" ; -- comment=src=geonames status=guess
 lin watermark_N = mkN "水印" ; -- status=guess
@@ -35769,7 +35721,7 @@ lin waterproof_A = mkA "防水" ; -- status=guess
 lin watershed_N = mkN "分水岭""条" ;
 lin waterweed_N = mkN "伊乐藻" | mkN "水蕴草" | mkN "眼子菜" | mkN "菹草" ; -- open-multilingual-wordnet
 lin waterworks_N = mkN "水厂" ;
-lin waterworn_A = mkA "水蚀" | mkA "给水磨损" | mkA "被水冲蚀" | mkA "被流水磨平" ; -- open-multilingual-wordnet
+lin water_worn_A = mkA "水蚀" | mkA "给水磨损" | mkA "被水冲蚀" | mkA "被流水磨平" ; -- open-multilingual-wordnet
 lin watery_A = mkA "含水" ;
 lin watford_PN = mkPN "沃特福德" ; -- comment=src=geonames status=guess
 lin watt_N = mkN "瓦" "片" ;
@@ -36054,7 +36006,7 @@ lin who_PN = foreignPN "WHO" ;
 lin whodunit_N = mkN "偵探小說" | mkN "侦探小说" ; -- status=guess -- status=guess
 lin whoever_NP = variants {} ;
 lin whole_A = mkA "一" | mkA "全部" | mkA "完" | mkA "完全" | mkA "整个" ;
-lin whole_N = mkN "一" | mkN "全部" | mkN "完" | mkN "完全" | mkN "整个" | {-HSK-} mkN "整个" [] ;
+lin whole_N = mkN "一" | mkN "全部" | mkN "完" | mkN "完全" | mkN "整个" [] ;
 lin wholehearted_A = mkA "一心一意" | mkA "全心全意" | mkA "真诚" ; -- open-multilingual-wordnet
 lin wholeness_N = mkN "健壮" ; -- open-multilingual-wordnet
 lin wholesale_A = mkA "批发" ;
@@ -36062,7 +36014,6 @@ lin wholesale_N = mkN "批发" ;
 lin wholesale_V2 = mkV2 "批发" ;
 lin wholesaler_N = mkN "批发商" ;
 lin wholesome_A = mkA "有益健康" ;
-lin wholly_Adv = mkAdv "全" ;
 lin whoop_V = mkV "叫喊" ;
 lin whoopee_Interj = mkInterj "放屁" ;
 lin whooper_N = mkN "鹄" | mkN "大天鹅" ; -- status=guess -- status=guess
@@ -36406,8 +36357,8 @@ lin wristband_N = mkN "手錶帶" | mkN "手表带" ; -- status=guess -- status=
 lin wristwatch_N = mkN "手錶" | mkN "手表" ; -- status=guess -- status=guess
 lin writ_N = mkN "文书" ;
 lin writ_large_A = variants {} ;
-lin write_V = mkV "修" | mkV "做" | mkV "写" ;
-lin write_V2 = L.write_V2 | {-HSK-} mkV2 "修" | mkV2 "做" | mkV2 "写" ;
+lin write_V = mkV "写" ;
+lin write_V2 = L.write_V2 ;
 lin write_VS = mkVS "修" | mkVS "做" | mkVS "写" ;
 lin write_down_V2 = prepV2 OP_write_V OP_down_Prep ; -- guess-p-verb
 lin write_in_V = advV OP_write_V OP_in_Adv ; -- guess-p-verb

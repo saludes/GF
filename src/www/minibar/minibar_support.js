@@ -43,6 +43,17 @@ function button_img(url,action) {
     return i;
 }
 
+function cycle_images(img_urls) {
+    var current=0;
+    function cycle() {
+	current++;
+	if(current>=img_urls.length) current=0;
+	i.src=img_urls[current]
+    }
+    var i=button_img(img_urls[0],cycle);
+    return i
+}
+
 function toggle_img(i) {
   var tmp=i.src;
   i.src=i.other;
@@ -69,14 +80,25 @@ function supportsSVG() {
 function speech_buttons(to3,to2,txt) {
     var voices = window.speechSynthesis && window.speechSynthesis.getVoices() || []
     var dvs = voices.filter(function(v){return v.default})
+    function pick2dash(v) { return hasPrefix(v.lang,to2dash) }
     if(to2)
 	var pick=function (v) { return v.lang==to2 }
-    else {
+    else if(to3.length==3) {
 	var to2dash=alangcode(to3)+"-"
-	var pick=function(v) { return hasPrefix(v.lang,to2dash) }
+	var pick=pick2dash
+    }
+    else {
+	// Maybe the name of the concrete syntax is the name of the language
+	// like in Numerals.pgf
+	var lang=to3.substr(0,1).toUpperCase()+to3.substr(1).toLowerCase()
+	var codes=langcode[lang]
+	var to2dash=(codes ? codes.code2 : to3)+"-"
+	var pick=pick2dash
     }
     function btn(v) {
-	var u=new SpeechSynthesisUtterance(txt)
+	// Remove spaces more fluent Thai:
+	var txt2 = v.lang=="th-TH" ? txt.split(" ").join("") : txt
+	var u=new SpeechSynthesisUtterance(txt2)
 	u.lang=v.lang // how to use v.voiceURI or v.name?
 
 	function speak() {

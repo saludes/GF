@@ -13,18 +13,17 @@ cat
   [VPS] {2} ;
 
 fun
-  MkVPI : VP -> VPI ;
-  ConjVPI : Conj -> [VPI] -> VPI ;
-  ComplVPIVV : VV -> VPI -> VP ;
+  MkVPI : VP -> VPI ;                 -- to walk
+  ConjVPI : Conj -> ListVPI -> VPI ;  -- to walk and drink beer
+  ComplVPIVV : VV -> VPI -> VP ;      -- want to walk and drink beer
 
-  MkVPS : Temp -> Pol -> VP -> VPS ;
-  ConjVPS : Conj -> [VPS] -> VPS ;
-  PredVPS : NP -> VPS -> S ;
+  MkVPS   : Temp -> Pol -> VP -> VPS ;  -- had walked
+  ConjVPS : Conj -> ListVPS -> VPS ;    -- had walked and drank beer
+  PredVPS : NP -> VPS -> S ;            -- I had walked and drank beer
 
 ---- merge VPS and VPI
 ----            MkVPS, BaseVPS, ConsVPS, ConjVPS, PredVPS,
 ----            VPIForm, VPIInf, VPIPresPart, MkVPI, BaseVPI, ConsVPI, ConjVPI, ComplVPIVV,
-
 
 -- generalizing Grammar
 
@@ -63,11 +62,11 @@ fun
   PastPartAP      : VPSlash -> AP ;         -- lost (opportunity) ; (opportunity) lost in space
   PastPartAgentAP : VPSlash -> NP -> AP ;   -- (opportunity) lost by the company
 
-  UseQuantPN : Quant -> PN -> NP;  -- this John
+  UseQuantPN : Quant -> PN -> NP ;  -- this John
     
 ---- merge with IdRP?
-    that_RP : RP ;
-    who_RP : RP ;
+    that_RP : RP ;    -- that [relative pronoun]
+    who_RP : RP ;     -- who [relative pronoun]
     EmptyRelSlash : ClSlash -> RCl ;            -- (the city) he lives in
 
 ---- overgenerating?
@@ -80,7 +79,7 @@ fun
 	
 ---- move to standard RGL?
     AdAdV       : AdA -> AdV -> AdV ;           -- almost always
-    UttAdV      : AdV -> Utt;                   -- always!
+    UttAdV      : AdV -> Utt ;                  -- always(!)
     PositAdVAdj : A -> AdV ;                    -- (that she) positively (sleeps)
 
     CompS       : S -> Comp ;                   -- (the fact is) that she sleeps
@@ -94,6 +93,17 @@ fun
 
     FocusObjS : NP -> SSlash -> S ;                    -- this woman I love  -- in declarative S, not in QS
 
+
+{-
+-- for documentation
+
+  BaseVPI : VPI -> VPI -> ListVPI ;      -- to walk, to run
+  ConsVPI : VPI -> ListVPI -> ListVPI ;  -- to walk, to run, to stop
+
+  BaseVPS : VPS -> VPS -> ListVPS ;      -- walks, has run
+  ConsVPS : VPS -> ListVPS -> ListVPS ;  -- walks, has run, will stop
+
+-}
 
 }
 

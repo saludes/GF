@@ -29,6 +29,8 @@ struct PgfReasoner {
 	PgfAbswersMap* table;
 	GuBuf* pqueue;
 	GuBuf* exprs;
+	size_t n_reported_exprs;
+	PgfClosure* start;
 	PgfEvalGates* eval_gates; // cached from pgf->abstr->eval_gates
 	GuExn* err;
 	void* enter_stack_ptr;
@@ -105,6 +107,7 @@ struct PgfEvalGates {
 
 	PgfFunction combine1;
 	PgfFunction combine2;
+	PgfFunction complete;
 
 	PgfClosure* (*enter)(PgfReasoner* rs, PgfClosure* closure);
 
@@ -132,6 +135,15 @@ pgf_reasoner_complete(PgfReasoner* rs, PgfExprState* st);
 
 void
 pgf_reasoner_try_constant(PgfReasoner* rs, PgfExprState* prev, PgfAbsFun* absfun);
+
+void
+pgf_reasoner_mk_string(PgfReasoner* rs, PgfExprState* parent);
+
+void
+pgf_reasoner_mk_int(PgfReasoner* rs, PgfExprState* parent);
+
+void
+pgf_reasoner_mk_float(PgfReasoner* rs, PgfExprState* parent);
 
 PgfClosure*
 pgf_evaluate_expr_thunk(PgfReasoner* rs, PgfExprThunk* thunk);

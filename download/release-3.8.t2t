@@ -1,0 +1,106 @@
+GF 3.8 Release Notes
+June 2016
+
+%!style:../css/notes.css
+%!postproc(html): <TITLE> <meta charset="UTF-8"><meta name = "viewport" content = "width = device-width"> <TITLE>
+%!postproc(html): <H1> <H1><a href="../"><IMG src="../doc/Logos/gf0.png"></a>
+
+==Installation==
+
+See the [download page http://www.grammaticalframework.org/download/index.html].
+
+
+==What's new==
+
+Roughly 400 changes have been pushed to the source repository since
+[the release of GF 3.7.1 release-3.7.1.html] in October 2015.
+
+
+===GF compiler and run-time library===
+
+
+====New features and notable changes====
+
+- GF shell: ``vd`` can now output
+  [universal dependency http://universaldependencies.org/] diagrams
+  in various formats, see ``help vd``.
+- The C runtime now includes an experimental library for managing
+  and querying ontologies built on top of the abstract syntax of 
+  a grammar. Since the ontology is based on an abstract syntax,
+  it is language independent by design. For now the library is
+  only used in the GF Offline Translator. The library uses
+  the B-tree backend of [SQLite https://www.sqlite.org/]
+  which makes it scalable even for non-trivial ontologies.
+
+
+====Other changes and bug fixes====
+
+- GF shell: a simple post-processing step has been added in the ``cc`` command
+  to try compute ``pre{...}`` tokens instead of leaving them uninterpreted.
+- GF shell: an argument parsing problem has been fixed in the ``cc`` command.
+  The problem was introduced before the release of GF 3.7.1 and prevented
+  commands like ``cc "last"`` and ``cc "last"++"year"`` from working,
+  but they should work again now.
+- Python binding: with the OS X installer package (``gf-3.8.pkg``),
+  the Python binding should now work directly out of the package.
+  (The installer puts the modules under ``/Library/Python/2.7/site-packages``,
+  where the Python interpreter can find them.)
+- Various improvements and bug fixes in the C run-time system and its bindings
+  to other languages.
+
+
+====Changes of interest to compiler developers====
+
+- The compiler source code has been updated for compatibility with GHC 8.0.1.
+
+
+===Resource Grammar Library===
+
+- New languages:
+  - Nynorsk by Stian Rødven Eide (fairly complete, supports API)
+  - Ancient Greek by Hans Leiß (partial, no API yet)
+  - Slovene by Krasimir Angelov (partial, no API yet, donated by [Digital Grammars http://www.digitalgrammars.com/])
+
+- Various fixes for several languages.
+  - English and Scandinavian: relative clauses and slash questions have been modernized to
+    using preposition stranding by default. This also enables the use of //that// in English,
+    which solves a problem of choosing between //which// and //who// when animacy information
+    is not available. The previous defaults (//which//,//who//,//whom//, pied piping) are available
+    in ``Extra`` modules.
+
+- Numerous fixes in the translation dictionaries.
+  - two new wide-coverage languages: Estonian and Russian
+  - The abstract syntax of the translation dictionary is now annotated
+    with glosses, examples and sense IDs from WordNet. This gives us
+    a basis on how to choose the best translations for different languages.
+  - We have started splitting many of the lexical entries in the abstract
+    syntax of the dictionary into different entries for senses that
+    translate differently accross languages.
+
+
+===Apps and Cloud services===
+
+- GF Offline Translator (for Android) now includes a user interface similar
+  to the Phrasomatic. This lets the user explore the controlled
+  language fragment of the wide coverage grammar. Althought
+  the code is already there, the new release of the app
+  will be postponed to get some of its other features stable.
+- GF Offline Translator (for Android) now offers glosses and examples for
+  most of its lexical items. This means that now it can be used as a more
+  explanatory dictionary.
+- Minibar can now show universal dependency diagrams for grammars that
+  support it (e.g. the ResourceDemo grammar).
+- PGF service: there is a new command ``deptree`` that can output
+  universal dependency diagrams for grammars that support it (there
+  has to be a label configuration file).
+- Wide Coverage Translation Demo:
+  there is now a new button "Grammars..." which show a list where users can
+  select which application grammars to use for translation, in addition to
+  the wide coverage grammar. Application grammars can give higher quality
+  translations in the domain they cover.
+  You can change the order in which the selected grammars are tried
+  by dragging them up and down in the list.
+
+--------------------
+
+[www.grammaticalframework.org http://www.grammaticalframework.org]

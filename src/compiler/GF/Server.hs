@@ -142,7 +142,7 @@ handle logLn documentroot state0 cache execute1 stateVar
       _ -> return (resp501 $ "method "++method)
   where
     logPutStrLn msg = liftIO $ logLn msg
-    debug msg = logPutStrLn msg
+--  debug msg = logPutStrLn msg
 
     addDate m =
       do t <- getCurrentTime
@@ -161,11 +161,7 @@ handle logLn documentroot state0 cache execute1 stateVar
 --         "/stop"    ->
 --         "/start"   ->
            "/parse"   -> parse (decoded qs)
-           "/version" -> do (c1,c2) <- PS.listPGFCache cache
-                            let rel = makeRelative documentroot
-                                sh1 (path,t) = rel path++" "++show t
-                                sh = map sh1
-                            return $ ok200 (unlines (gf_version:"":sh c1++"":sh c2))
+           "/version" -> versionInfo `fmap` PS.listPGFCache cache
            "/flush"   -> do PS.flushPGFCache cache; return (ok200 "flushed")
            '/':rpath ->
              -- This code runs without mutual exclusion, so it must *not*
@@ -174,7 +170,7 @@ handle logLn documentroot state0 cache execute1 stateVar
                (_  ,_             ,".pgf") -> do --debug $ "PGF service: "++path
                                                  wrapCGI $ PS.cgiMain' cache path
                (dir,"grammars.cgi",_     ) -> grammarList dir (decoded qs)
-               (dir  ,"exb.fcgi"  ,_    ) -> wrapCGI $ ES.cgiMain' root dir (fst cache)
+               (dir  ,"exb.fcgi"  ,_    ) -> wrapCGI $ ES.cgiMain' root dir (PS.pgfCache cache)
                _ -> serveStaticFile rpath path
              where path = translatePath rpath
            _ -> return $ resp400 upath
@@ -182,6 +178,27 @@ handle logLn documentroot state0 cache execute1 stateVar
     root = documentroot
 
     translatePath rpath = root</>rpath -- hmm, check for ".."
+
+    versionInfo (c1,c2) =
+        html200 . unlines $
+           "<!DOCTYPE html>":
+           "<meta name = \"viewport\" content = \"width = device-width\">":
+           "<link rel=\"stylesheet\" type=\"text/css\" href=\"cloud.css\" title=\"Cloud\">":
+           "":
+           ("<h2>"++hdr++"</h2>"):
+           (zipWith (++) ("<p>":repeat "<br>") buildinfo)++
+           sh "Haskell run-time system" c1++
+           sh "C run-time system" c2
+      where
+        hdr:buildinfo = lines gf_version
+        rel = makeRelative documentroot
+        sh1 (path,t) = "<tr><td>"++rel path++"<td>"++show t
+        sh _ [] = []
+        sh hdr gs =
+                "":("<h3>"++hdr++"</h3>"):
+                "<table class=loaded_grammars><tr><th>Grammar<th>Last modified":
+                map sh1 gs++
+                ["</table>"]
 
     wrapCGI cgi = cgiHandler root (handleErrors . handleCGIErrors $ cgi) rq
 
@@ -371,7 +388,7 @@ ok200' t     = Response 200 [t,xo]
 json200 x    = json200' id x
 json200' f   = ok200' jsonUTF8 . encodeString . f . encode
 jsonp200' f  = ok200' jsonpUTF8 . encodeString . f . encode
-html200      = ok200' htmlUTF8 . encodeString
+html200    = ok200' htmlUTF8 . encodeString
 resp204      = Response 204 [xo] "" -- no content
 resp301 url  = Response 301 [plain,xo,location url] $
                "Moved permanently to "++url

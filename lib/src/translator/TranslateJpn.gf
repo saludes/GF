@@ -20,8 +20,8 @@ concrete TranslateJpn of Translate =
   QuestionJpn,
   RelativeJpn,
   IdiomJpn,
-----  ConstructionJpn, ---- TODO
-----  DocumentationJpn, ---- TODO
+  ConstructionJpn,
+  DocumentationJpn, ---- TODO
 
   ChunkJpn,
   ExtensionsJpn [

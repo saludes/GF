@@ -64,7 +64,8 @@ instance DiffDan of DiffScand = open CommonScand, Prelude in {
         } ;
 
     relPron : Gender => Number => RCase => Str = \\g,n,c => case c of {
-      RNom | RPrep False => "som" ;
+      RNom => "der" ; --- could be som as well
+      RAcc | RPrep False => "som" ;
       RGen  => "hvis" ;
       RPrep _ => gennumForms "hvilken" "hvilket" "hvilke" ! gennum g n
       } ;
@@ -82,5 +83,19 @@ instance DiffDan of DiffScand = open CommonScand, Prelude in {
     hur_IAdv = {s = "hvor"} ;
 
     av_Prep = "af" ;
+
+    possPron : Number -> Person -> Number -> Gender -> Str = \sn,sb,on,og -> case <sn,sb,on,og> of {
+       <Sg,P1,Sg,Utr>   => "min" ;
+       <Sg,P1,Sg,Neutr> => "mit" ;
+       <Sg,P1,Pl,_>     => "mine" ;
+       <Sg,P2,Sg,Utr>   => "din" ;
+       <Sg,P2,Sg,Neutr> => "dit" ;
+       <Sg,P2,Pl,_>     => "dine" ;
+       <Pl,P1,_,_>      => "vores" ;
+       <Pl,P2,_,_>      => "jeres" ;
+       <_,_,Sg,Utr>     => "sin" ;
+       <_,_,Sg,Neutr>   => "sit" ;
+       <_,_,Pl,_>       => "sine"
+       } ;
 
 }

@@ -129,12 +129,17 @@ param
   oper
     Verb : Type = {s: VForm => Str};
     
-  mkVerb : (_,_,_,_,_,_,_ : Str) -> 
-    	Verb = \aai, aait, aaien, aaide, _, aaiden, geaaid -> {
+  mkVerb : (_,_,_,_,_,_,_ : Str) -> Verb =
+    \aai, aait, aaien, aaide, aaidet, aaiden, geaaid ->
+	  mkVerb8 aai aait aait aaien aaide aaidet aaiden geaaid ;
+
+  mkVerb8 : (_,_,_,_,_,_,_,_ : Str) -> 
+    	Verb = \aai, aaitt, aait, aaien, aaide, _, aaiden, geaaid -> {
     	s = table {
         VInf | VInfFull | VImpPl | VPresPl => aaien; -- hij/zij/het/wij aaien
     		VPresSg1 | VImp2 => aai; -- ik aai
-    		VPresSg2 | VPresSg3 | VImp3 => aait; -- jij aait
+    		VPresSg2 => aaitt ; -- jij aait
+    		VPresSg3 | VImp3 => aait; -- jij aait
     		VPastSg => aaide; -- ik aaide  --# notpresent
     		VPastPl => aaiden; -- hij/zij/het/wij aaiden --# notpresent
     		VPerf   => geaaid ; -- ik heb geaaid 
@@ -654,7 +659,7 @@ param
 
   useInfVP : Bool -> VP -> Str = \isAux,vp ->
     let vpi = infVP isAux vp in
-    "om" ++ vpi.p1 ! agrP3 Sg ++ vpi.p3 ++ vpi.p2 ; -- TODO
+    vpi.p1 ! agrP3 Sg ++ vpi.p2 ++ vpi.p3 ; -- TODO
 
   reflPron : Agr => Str = table {
     {n = Sg ; p = P1} => "me" ;

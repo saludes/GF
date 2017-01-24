@@ -2,12 +2,13 @@
 {
 {-# OPTIONS -fno-warn-overlapping-patterns #-}
 module GF.Grammar.Parser
-         ( P, runP
+         ( P, runP, runPartial
          , pModDef
          , pModHeader
+         , pTerm
          , pExp
          , pTopDef
-         , pCFRules
+         , pBNFCRules
          , pEBNFRules
          ) where
 
@@ -16,7 +17,7 @@ import GF.Infra.Option
 import GF.Data.Operations
 import GF.Grammar.Predef
 import GF.Grammar.Grammar
-import GF.Grammar.CFG
+import GF.Grammar.BNFC
 import GF.Grammar.EBNF
 import GF.Grammar.Macros
 import GF.Grammar.Lexer
@@ -30,8 +31,9 @@ import PGF(mkCId)
 %name pModDef ModDef
 %name pTopDef TopDef
 %partial pModHeader ModHeader
+%partial pTerm Exp1
 %name pExp Exp
-%name pCFRules ListCFRule
+%name pBNFCRules ListCFRule
 %name pEBNFRules ListEBNFRule
 
 -- no lexer declaration
@@ -108,6 +110,10 @@ import PGF(mkCId)
  'variants'   { T_variants  }
  'where'      { T_where     }
  'with'       { T_with      }
+ 'coercions'  { T_coercions }
+ 'terminator' { T_terminator }
+ 'separator'  { T_separator }
+ 'nonempty'   { T_nonempty  }
 
 Integer       { (T_Integer $$) }
 Double        { (T_Double  $$) }
@@ -611,14 +617,14 @@ ListDDecl
   : {- empty -}     { []       } 
   | DDecl ListDDecl { $1 ++ $2 }
 
-ListCFRule :: { [CFRule] }
+ListCFRule :: { [BNFCRule] }
 ListCFRule
   : CFRule            { $1       }
   | CFRule ListCFRule { $1 ++ $2 }
 
-CFRule :: { [CFRule] }
+CFRule :: { [BNFCRule] }
 CFRule
-  : Ident '.' Ident '::=' ListCFSymbol ';' { [CFRule (showIdent $3) $5 (CFObj (mkCId (showIdent $1)) [])]
+  : Ident '.' Ident '::=' ListCFSymbol ';' { [BNFCRule (showIdent $3) $5 (CFObj (mkCId (showIdent $1)) [])]
                                            }
   | Ident '::=' ListCFRHS ';'              { let { cat = showIdent $1;
                                                    mkFun cat its =
@@ -628,25 +634,34 @@ CFRule
                                                      };
                                                    clean sym = 
                                                      case sym of {
-                                                       Terminal    c -> filter isAlphaNum c;
-                                                       NonTerminal t -> t
+                                                       Terminal    c     -> filter isAlphaNum c;
+                                                       NonTerminal (t,_) -> t
                                                      }
-                                             } in map (\rhs -> CFRule cat rhs (CFObj (mkCId (mkFun cat rhs)) [])) $3
+                                             } in map (\rhs -> BNFCRule cat rhs (CFObj (mkCId (mkFun cat rhs)) [])) $3
                                            }
+  | 'coercions' Ident Integer ';'          { [BNFCCoercions (showIdent $2) $3]}
+  | 'terminator' NonEmpty Ident String ';' { [BNFCTerminator $2 (showIdent $3) $4] }
+  | 'separator'  NonEmpty Ident String ';' { [BNFCSeparator $2 (showIdent $3) $4] }
 
-ListCFRHS :: { [[CFSymbol]] }
+ListCFRHS :: { [[BNFCSymbol]] }
 ListCFRHS
   : ListCFSymbol                { [$1]    }
   | ListCFSymbol '|' ListCFRHS  { $1 : $3 }
 
-ListCFSymbol :: { [CFSymbol] }
+ListCFSymbol :: { [BNFCSymbol] }
 ListCFSymbol
   : {- empty -}           { []      } 
   | CFSymbol ListCFSymbol { $1 : $2 }
 
-CFSymbol :: { CFSymbol }
+CFSymbol :: { BNFCSymbol }
   : String                { Terminal $1 }
-  | Ident                 { NonTerminal (showIdent $1) }
+  | Ident                 { NonTerminal (showIdent $1, False) }
+  | '[' Ident ']'         { NonTerminal (showIdent $2, True)  }
+
+NonEmpty :: { Bool }
+NonEmpty : 'nonempty' { True }
+        | {-empty-}  { False }
+
 
 ListEBNFRule :: { [ERule] }
 ListEBNFRule

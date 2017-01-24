@@ -21,7 +21,7 @@ lin n4 =
   mkTal "cuatro" "catorce"    "cuarenta"  "cuatrocientos" 
         "cuarto" "decimocuarto" "cuadragésimo" "cuadringentesimo" ;
 lin n5 = 
-  mkTal "cinco"  "quince"     "cinquenta" "quinientos"
+  mkTal "cinco"  "quince"     "cincuenta" "quinientos"
         "quinto" "decimoquinto" "quincuagésimo" "guingentésimo" ;
 lin n6 = 
   mkTal "seis"   "dieciséis"  "sesenta"   "seiscientos"
@@ -41,6 +41,7 @@ lin pot01 =
   "décimo" "centésimo").s in
   {s =\\f,g => case <f,g> of {
      <ental pred,_> => [] ;
+     <ental _, NCard Masc> => "un" ;
      <ental _, NCard Fem> => "una" ;
      <hundra False,  NCard _> => "cien" ;
      <hundra True,  NCard Fem> => "ciento" ;

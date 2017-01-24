@@ -20,8 +20,8 @@ concrete TranslateTha of Translate =
   QuestionTha,
   RelativeTha,
   IdiomTha,
---  ConstructionTha,
---  DocumentationTha,
+  ConstructionTha,
+  DocumentationTha,
 
   ChunkTha,
   ExtensionsTha [

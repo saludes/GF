@@ -2,12 +2,15 @@ package org.grammaticalframework.ui.android;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 import android.util.Pair;
+import android.net.Uri;
 import android.view.inputmethod.CompletionInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 
+import org.grammaticalframework.sg.*;
 import org.grammaticalframework.pgf.*;
 import java.io.*;
 import java.util.*;
@@ -26,10 +29,12 @@ public class Translator {
     	new Language("bg-BG", "Bulgarian", "AppBul", R.xml.cyrillic),
         new Language("ca-ES", "Catalan", "AppCat", R.xml.qwerty),
     	new Language("cmn-Hans-CN", "Chinese", "AppChi", R.xml.qwerty),
+	//    	new Language("zh-CN", "Chinese", "AppChi", R.xml.qwerty),
 	//    	new Language("yue", "Chinese (Cantonese)", "AppChi", R.xml.qwerty),
 	//    	new Language("cmn-Hans-CN", "Chinese (Mandarin)", "AppChi", R.xml.qwerty),
         new Language("nl-NL", "Dutch", "AppDut", R.xml.qwerty),
     	new Language("en-US", "English", "AppEng", R.xml.qwerty),
+        new Language("et-EE", "Estonian","AppEst", R.xml.nordic),
         new Language("fi-FI", "Finnish", "AppFin", R.xml.nordic),
         new Language("fr-FR", "French",  "AppFre", R.xml.qwerty), ////
         new Language("de-DE", "German",  "AppGer", R.xml.qwerty),
@@ -47,10 +52,13 @@ public class Translator {
     private ConcrLoader mSourceLoader;
     private ConcrLoader mTargetLoader;
     private ConcrLoader mOtherLoader;
-    private DBManager mDBManager;
+    private SemanticGraphManager mSGManager;
 
 	private static final String SOURCE_LANG_KEY = "source_lang";
 	private static final String TARGET_LANG_KEY = "target_lang";
+	
+	public static final String WORDS     = "words";
+	public static final String SENTENCES = "sentences";
 	
 	private static final int NUM_ALT_TRANSLATIONS = 10;
 	
@@ -98,7 +106,7 @@ public class Translator {
 
         mOtherLoader = null;
 
-        mDBManager = new DBManager(context);
+        mSGManager = new SemanticGraphManager(context);
     }
 
     public List<Language> getAvailableLanguages() {
@@ -240,9 +248,9 @@ public class Translator {
     }
 
     private static String implode(String s) {
-	return s.replaceAll("\\s","");
-    } 
-	
+		return s.replaceAll("(?<!^[%*+])\\s","");
+    }
+
     private String translateWord(String input) {
 
     	String output = input.toUpperCase() ;  // if all else fails, return the word itself in upper case ///in brackets
@@ -299,8 +307,8 @@ public class Translator {
             Concr targetLang = getTargetConcr();
 
             Map<String,LiteralCallback> callbacks = new HashMap<String,LiteralCallback>();
-            callbacks.put("PN", new NercLiteralCallback(mGrammarLoader.getGrammar(), sourceLang));
-            callbacks.put("Symb", new UnknownLiteralCallback(sourceLang));
+            callbacks.put("PN", new NercLiteralCallback(mGrammarLoader.getGrammar(), sourceLang, input));
+            callbacks.put("Symb", new UnknownLiteralCallback(sourceLang, input));
 
             int count = NUM_ALT_TRANSLATIONS;
             for (ExprProb ep : sourceLang.parseWithHeuristics(getGrammar().getStartCat(), input, -1, callbacks)) {
@@ -331,11 +339,26 @@ public class Translator {
     	if (s == null)
     		s = "% ";     // make sure that we return something
 	
-	if (getTargetLanguage().getLangCode().equals("cmn-Hans-CN") ||
-	    getTargetLanguage().getLangCode().equals("ja-JP") ||
-	    getTargetLanguage().getLangCode().equals("th-TH"))
-	    return implode(s) ;
-	else return s ;
+		if (getTargetLanguage().getLangCode().equals("cmn-Hans-CN") ||
+		    getTargetLanguage().getLangCode().equals("ja-JP") ||
+		    getTargetLanguage().getLangCode().equals("th-TH"))
+		  return implode(s);
+		else
+		  return s;
+    }
+
+    public String linearizeSource(Expr expr) {
+    	Concr targetLang = getSourceConcr();
+    	String s = targetLang.linearize(expr);
+    	if (s == null)
+    		s = "% ";     // make sure that we return something
+	
+		if (getSourceLanguage().getLangCode().equals("cmn-Hans-CN") ||
+		    getSourceLanguage().getLangCode().equals("ja-JP") ||
+		    getSourceLanguage().getLangCode().equals("th-TH"))
+		  return implode(s);
+		else
+		  return s;
     }
 
     public Object[] bracketedLinearize(Expr expr) {
@@ -343,54 +366,197 @@ public class Translator {
     	return targetLang.bracketedLinearize(expr);
     }
 
-    public String generateLexiconEntry(String lemma) {
+    public String generateLexiconEntry(Expr lemma) {
         Concr sourceLang = getSourceConcr();
         Concr targetLang = getTargetConcr();
-    	String cat = getGrammar().getFunctionType(lemma).getCategory();
+        String fun = lemma.toString();
+    	String cat = getGrammar().getFunctionType(fun).getCategory();
 		
-    	Expr e1 = Expr.readExpr(lemma);
-    	Expr e2 = Expr.readExpr("MkTag (Inflection"+cat+" "+lemma+")");
+    	Expr e2 = Expr.readExpr("MkTag (Inflection"+cat+" "+fun+")");
 
     	if (targetLang.hasLinearization("Inflection"+cat)) {
-	        if (targetLang.hasLinearization(lemma))
-	        	return sourceLang.linearize(e1) + " - " + targetLang.linearize(e2) + ". " + targetLang.linearize(e1);
+	        if (targetLang.hasLinearization(fun))
+	        	return sourceLang.linearize(lemma) + " - " + targetLang.linearize(e2) + ". " + targetLang.linearize(lemma);
 	        else
-	        	return sourceLang.linearize(e1) + " " + targetLang.linearize(e2)+".";
+	        	return sourceLang.linearize(lemma) + " " + targetLang.linearize(e2)+".";
     	} else {
-    		if (targetLang.hasLinearization(lemma))
-    			return sourceLang.linearize(e1) + " - " + targetLang.linearize(e1);
+    		if (targetLang.hasLinearization(fun))
+    			return sourceLang.linearize(lemma) + " - " + targetLang.linearize(lemma);
     		else
-    			return sourceLang.linearize(e1);
+    			return sourceLang.linearize(lemma);
     	}
     }
 
-	public String getInflectionTable(String lemma) {
-		SQLiteDatabase db = mDBManager.getReadableDatabase();
-		Cursor crs = db.rawQuery("select def from defs where fun=?1", new String[] { lemma });
-		String def = "";
-		if (crs.moveToNext()) {
-			def = escapeHtml(crs.getString(0));
+	private static final Expr gloss_pred   = Expr.readExpr("gloss");
+	private static final Expr topic_pred   = Expr.readExpr("topic");
+	private static final Expr example_pred = Expr.readExpr("example");
+	
+    public Expr getDefinition(Expr lemma, boolean withExample) {
+		Expr gloss   = null;
+		Expr example = null;
+		Map<String,Uri.Builder> topics = new TreeMap<String,Uri.Builder>();
+
+		try {
+			TripleResult res = mSGManager.queryTriple(lemma, null, null);
+			while (res.hasNext()) {
+				if (res.getPredicate().equals(gloss_pred))
+					gloss = res.getObject();
+				else if (res.getPredicate().equals(topic_pred))
+					updateWordsMap(res.getObject(), topics);
+				else if (res.getPredicate().equals(example_pred))
+					example = res.getObject();
+			}
+			res.close();
+		} catch (IOException e) {
+			// nothing
+		} catch (SGError e) {
+			// nothing
 		}
-		crs.close();
 
+		Expr topic = null;
+		if (topics.size() > 0) {
+			StringBuilder builder = new StringBuilder();
+			builder.append('(');
+			buildWordsHtml(topics, builder);
+			builder.append(')');
+			topic = new Expr(builder.toString());
+		}
+		if (gloss == null)
+			return topic;
+		else {
+			if (topic == null)
+				topic = new Expr("");
+			if (withExample && example != null)
+				return new Expr("MkDefinitionEx", topic, gloss, example);
+			else
+				return new Expr("MkDefinition", topic, gloss);
+		}
+	}
+
+	private void updateWordsMap(Expr expr, Map<String,Uri.Builder> map) {
+		String word = getTargetConcr().linearize(expr);
+
+		Uri.Builder builder = map.get(word);
+		if (builder == null) {
+			builder = new Uri.Builder();
+			builder.scheme("gf-translator");
+			builder.authority(WORDS);
+			builder.appendQueryParameter("source", word);	
+			map.put(word,builder);
+		}
+		builder.appendQueryParameter("alternative", expr.toString());
+	}
+
+    private void buildWordsHtml(Map<String,Uri.Builder> map, StringBuilder sbuilder) {
+		boolean first = true;
+		for (Map.Entry<String,Uri.Builder> entry : map.entrySet()) {
+			if (first)
+				first = false;
+			else
+				sbuilder.append(", ");
+
+			sbuilder.append("<a href=\""+entry.getValue().build()+"\">"+entry.getKey()+"</a>");
+		}
+	}
+
+    public List<Expr> getTopicWords(Expr lemma) {
+		TripleResult res = null;
+		List<Expr> words = new ArrayList<Expr>();
+		try {
+			res = mSGManager.queryTriple(null, topic_pred, lemma);
+			while (res.hasNext()) {
+				words.add(res.getSubject());
+			}
+		} catch (IOException e) {
+			// nothing
+		} catch (SGError e) {
+			// nothing
+		} finally {
+			if (res != null)
+				res.close();
+		}
+		return words;
+	}
+
+    private Expr getTopicWordsHtml(Expr lemma) {
+		StringBuilder sbuilder = new StringBuilder();
+		TripleResult res = null;
+		try {
+			res = mSGManager.queryTriple(null, topic_pred, lemma);
+			Map<String,Uri.Builder> map = new TreeMap<String,Uri.Builder>();
+			while (res.hasNext()) {
+				updateWordsMap(res.getSubject(), map);
+			}
+
+			StringBuilder builder = new StringBuilder();
+			buildWordsHtml(map, builder);
+			return new Expr(builder.toString());
+		} catch (IOException e) {
+			// nothing
+		} catch (SGError e) {
+			// nothing
+		} finally {
+			if (res != null)
+				res.close();
+		}
+		return null;
+	}
+
+	public String getInflectionTable(Expr lemma) {
+		boolean withExample =
+			(getSourceLanguage().getLangCode().equals("en-US") ||
+             getTargetLanguage().getLangCode().equals("en-US"));
+		Expr def = 
+			getDefinition(lemma, withExample);
+
+		String fun = lemma.toString();
 		Concr targetLang = getTargetConcr();
-		String cat = getGrammar().getFunctionType(lemma).getCategory();
+		String cat = getGrammar().getFunctionType(fun).getCategory();
 
-		if (targetLang.hasLinearization(lemma) && 
+		if (targetLang.hasLinearization(fun) && 
 		    targetLang.hasLinearization("Inflection"+cat)) {
-			Expr e = Expr.readExpr("MkDocument \""+def+"\" (Inflection"+cat+" "+lemma+") \"\"");
+			if (def == null)
+				def = Expr.readExpr("NoDefinition");
+
+			Expr e = new Expr("MkDocument", 
+			                  def,
+			                  new Expr("Inflection"+cat,lemma),
+			                  getTopicWordsHtml(lemma));
 			String html =
-				"<html><head><meta charset=\"UTF-8\"/></head><body>" +
+				"<html><head><meta charset=\"UTF-8\"/><style>a {color: #808080;}</style></head><body>" +
 				targetLang.linearize(e) +
 				"</body>";
 			return html;
-		} else if (def != "") {
-			return "<p style=\"font-size:20px\">"+def+"</p>";
+		} else if (def != null) {
+			String html =
+				"<html><head><meta charset=\"UTF-8\"/><style>a {color: #808080;}</style></head><body>" +
+				targetLang.linearize(def) +
+				"</body>";
+			return html;
 		} else {
 			return null;
 		}
 	}
-	
+
+    public List<Expr> getTopicsOf(Expr lemma) {
+		TripleResult res = null;
+		List<Expr> topics = new ArrayList<Expr>();
+		try {
+			res = mSGManager.queryTriple(lemma, topic_pred, null);
+			while (res.hasNext()) {
+				topics.add(res.getObject());
+			}
+		} catch (IOException e) {
+			// nothing
+		} catch (SGError e) {
+			// nothing
+		} finally {
+			if (res != null)
+				res.close();
+		}
+		return topics;
+	}
+
 	private static String escapeHtml(CharSequence text) {
 		StringBuilder out = new StringBuilder();
 
@@ -423,7 +589,18 @@ public class Translator {
 	}
 
     public List<MorphoAnalysis> lookupMorpho(String sentence) {
-    	return getSourceConcr().lookupMorpho(sentence);
+		List<MorphoAnalysis> ans = getSourceConcr().lookupMorpho(sentence);
+		Collections.sort(ans, new Comparator<MorphoAnalysis>() {
+				public int compare(MorphoAnalysis a1, MorphoAnalysis a2) {
+					if (a1.getProb() > a2.getProb())
+						return 1;
+					else if (a1.getProb() < a2.getProb())
+						return -1;
+					else
+						return 0;
+				}
+			});
+    	return ans;
     }
 
     public CompletionInfo[] lookupWordPrefix(String prefix) {
@@ -553,5 +730,22 @@ public class Translator {
 		    	}
 		    }
 		}
+	}
+
+    public boolean isUpgraded(String key) {
+		int old_code = mSharedPref.getInt(key, 0);
+
+		int new_code = 0;
+		try {
+			new_code = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0).versionCode;
+		} catch (NameNotFoundException e) {
+			// Huh? Really?
+		}
+
+		SharedPreferences.Editor editor = mSharedPref.edit();
+		editor.putInt(key, new_code);
+		editor.commit();
+
+		return (old_code != new_code);
 	}
 }

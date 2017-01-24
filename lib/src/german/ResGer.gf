@@ -14,6 +14,10 @@ resource ResGer = ParamX ** open Prelude in {
   flags optimize=all ;
     coding=utf8 ;
 
+--------------------------------------------
+--PARAMETERS DEFINITIONS
+--------------------------------------------
+
 --2 For $Noun$
 
 -- These are the standard four-value case and three-value gender.
@@ -42,6 +46,7 @@ resource ResGer = ParamX ** open Prelude in {
 
   oper 
     NPNom : PCase = NPC Nom ;
+    PrepNom : Preposition = {s,s2 = "" ; isPrep = False ; c = NPNom} ; 
     prepC : PCase -> {s : Str ; c : Case} = \cp -> case cp of {
       NPC c      => {s = []   ; c = c} ;
       NPP CAnDat => {s = "an" ; c = Dat} ;
@@ -196,6 +201,10 @@ resource ResGer = ParamX ** open Prelude in {
       p = conjPerson (personAgr a) (personAgr b)
       } ;
 
+--------------------------------------------
+--TYPE DEFINITIONS + WORST-CASE CONSTRUCTORS
+--------------------------------------------
+
 -- For $Lex$.
 
 -- For conciseness and abstraction, we first define a method for
@@ -227,6 +236,14 @@ resource ResGer = ParamX ** open Prelude in {
       } ;
     g : Gender
     } ;
+
+  NP : Type = {
+     s : PCase => Str ;
+     rc : Str ; -- die Frage , [rc die ich gestellt habe]
+	 ext : Str ; -- die Frage , [sc wo sie schläft])
+	 adv : Str ; -- die Frage [a von Max]
+	 a : Agr ; 
+     isPron : Bool } ;
 
   mkN  : (x1,_,_,_,_,x6,x7 : Str) -> Gender -> Noun = 
     \Mann, Mannen, Manne, Mannes, Maenner, Maennern, Mann_, g -> {
@@ -265,10 +282,11 @@ resource ResGer = ParamX ** open Prelude in {
   Adjective : Type = {s : Degree => AForm => Str} ;
 
   mkA : (x1,_,_,x4 : Str) -> Adjective = \gut,gute,besser,best -> 
+	let besten = best + "en" in 
     {s = table {
        Posit  => adjForms gut gute ; 
        Compar => adjForms besser besser ; 
-       Superl => adjForms best best
+       Superl => adjForms ("am" ++ besten) best
        }
     } ;
 
@@ -387,6 +405,13 @@ resource ResGer = ParamX ** open Prelude in {
   appPrep : Preposition -> (PCase => Str) -> Str = \prep,arg ->
     prep.s ++ arg ! prep.c ++ prep.s2 ;
 
+  appPrepNP : Preposition -> NP -> Str = \prep,np ->
+    	prep.s ++ np.s ! prep.c ++ bigNP np ++ prep.s2 ;
+	-- revised appPrep for discontinuous NPs
+
+  	bigNP : NP -> Str = \np ->
+		np.adv ++ np.ext ++ np.rc ;
+
 -- To build a preposition from just a case.
 
   noPreposition : Case -> Preposition = \c -> 
@@ -469,6 +494,10 @@ resource ResGer = ParamX ** open Prelude in {
       caselist (teur+"e") (teur+"e") (teur+"en") (teur+"er") ! c
     } ;
 
+--------------------------------------------
+--VP CONSTRUCTION
+--------------------------------------------
+
 -- For $Verb$.
 
   VPC : Type = {
@@ -478,15 +507,17 @@ resource ResGer = ParamX ** open Prelude in {
         } 
       } ;
 
-  VP : Type = {
+   VP : Type = {
       s  : Verb ;
-      a1 : Polarity => Str ;  -- nicht
       nn : Agr => Str * Str ; -- dich/deine Frau
-      a2 : Str ;              -- heute
+      a1 : Polarity => Str ;  -- nicht = adV
+      a2 : Str ;              -- heute = adv
+      adj : Str ;             -- space for adjectival complements ("ich finde dich schön")
       isAux : Bool ;          -- is a double infinitive
       inf : Str ;             -- sagen
       ext : Str ;             -- dass sie kommt
-      infExt : Str
+      infExt : Str ;		  -- infinitival complements of inf e.g. ich hoffe [zu gehen] zu versuchen 
+	  subjc : Preposition     -- determines case of "subj"
 	} ;
 
   predV : Verb -> VP = predVGen False ;
@@ -556,13 +587,14 @@ resource ResGer = ParamX ** open Prelude in {
      } ;
 
     a1  : Polarity => Str = negation ;
+    a2  : Str = [] ;
     nn  : Agr => Str * Str = case verb.vtype of {
       VAct => \\_ => <[],[]> ;
       VRefl c => \\a => <reflPron ! a ! c,[]>
       } ;
-    a2  : Str = [] ;
     isAux = isAux ; ----
-    inf,ext,infExt : Str = []
+    inf,ext,infExt,adj : Str = [] ;
+    subjc = PrepNom
     } ;
 
   auxPerfect : Verb -> VForm => Str = \verb ->
@@ -612,7 +644,7 @@ resource ResGer = ParamX ** open Prelude in {
      prefix = [] ;
      particle = [] ;
      aux = VSein ;
-     vtype = VAct
+     vtype = VAct 
     } ;
 
   auxVV : Verb -> Verb ** {isAux : Bool} = \v -> v ** {isAux = True} ;
@@ -628,21 +660,13 @@ resource ResGer = ParamX ** open Prelude in {
 
   insertObj : (Agr => Str) -> VP -> VP = insertObjNP False ;
 
-  insertObjNP : Bool -> (Agr => Str) -> VP -> VP = \isPron, obj,vp -> {
-    s = vp.s ;
-    a1 = vp.a1 ;
+  insertObjNP : Bool -> (Agr => Str) -> VP -> VP = \isPron, obj,vp -> vp ** {
     nn = \\a => 
       let vpnn = vp.nn ! a in 
       case isPron of {
         True  => <obj ! a ++ vpnn.p1,            vpnn.p2> ;
         False => <           vpnn.p1, obj ! a ++ vpnn.p2>
-        } ;
-    a2 = vp.a2 ;
-    isAux = vp.isAux ;
-    inf = vp.inf ;
-    ext = vp.ext ;
-    infExt = vp.infExt
-	} ;
+        }} ;
 
   isLightComplement : Bool -> Preposition -> Bool = \isPron,prep -> case isPron of {
      False => False ;
@@ -652,67 +676,37 @@ resource ResGer = ParamX ** open Prelude in {
        }
      } ;
 
-  insertAdV : Str -> VP -> VP = \adv,vp -> {
-    s = vp.s ;
-    a1 = \\a => adv ++ vp.a1 ! a ; -- immer nicht
-    nn = vp.nn ;
-    a2 = vp.a2 ;
-    isAux = vp.isAux ;
-    inf = vp.inf ;
-    ext = vp.ext ;
-    infExt = vp.infExt
-    } ;
+  insertAdV : Str -> VP -> VP = \adv,vp -> vp ** {
+    a1 = \\a => adv ++ vp.a1 ! a } ; -- immer nicht
 
-  insertAdv : Str -> VP -> VP = \adv,vp -> {
-    s = vp.s ;
-    a1 = vp.a1 ;
-    nn = vp.nn ;
-    a2 = vp.a2 ++ adv ;
-    isAux = vp.isAux ;
-    inf = vp.inf ;
-    ext = vp.ext ;
-    infExt = vp.infExt 
-    } ;
+  insertAdv : Str -> VP -> VP = \adv,vp -> vp ** {
+    a2 = vp.a2 ++ adv } ;
 
-  insertExtrapos : Str -> VP -> VP = \ext,vp -> {
-    s = vp.s ;
-    a1 = vp.a1 ;
-    nn = vp.nn ;
-    a2 = vp.a2 ;
-    isAux = vp.isAux ;
-    inf = vp.inf ;
-    ext = vp.ext ++ ext ;
-    infExt = vp.infExt
-    } ;
+  insertExtrapos : Str -> VP -> VP = \ext,vp -> vp ** {
+    ext = vp.ext ++ ext } ;
 
-  insertInfExt : Str -> VP -> VP = \infExt,vp -> {
-	s = vp.s ;
-	a1 = vp.a1 ;
-	nn = vp.nn ;
-	a2 = vp.a2 ;
-	isAux = vp.isAux ;
-	inf = vp.inf ;
-	ext = vp.ext ;
-	infExt = vp.infExt ++ infExt 
-   } ;
+  insertInfExt : Str -> VP -> VP = \infExt,vp -> vp ** {
+	infExt = vp.infExt ++ infExt } ;
 
-  insertInf : Str -> VP -> VP = \inf,vp -> {
-    s = vp.s ;
-    a1 = vp.a1 ;
-    nn = vp.nn ;
-    a2 = vp.a2 ;
-    isAux = vp.isAux ; ----
-    inf = inf ++ vp.inf ;
-    ext = vp.ext ;
-    infExt = vp.infExt
-    } ;
+  insertInf : Str -> VP -> VP = \inf,vp -> vp ** {
+    inf = inf ++ vp.inf } ;
+
+  insertAdj : Str -> Str * Str -> Str -> VP -> VP = \adj,c,ext,vp -> vp ** { 
+    nn = \\a => 
+      let vpnn = vp.nn ! a in 
+		<vpnn.p1 ++ c.p1 , vpnn.p2> ;
+	adj = vp.adj ++ adj ++ c.p2 ;
+	ext = vp.ext ++ ext} ;
+
+--------------------------------------------
+--CLAUSE CONSTRUCTION
+--------------------------------------------
 
 -- For $Sentence$.
 
   Clause : Type = {
     s : Mood => Tense => Anteriority => Polarity => Order => Str
     } ;
-
 
   mkClause : Str -> Agr -> VP -> Clause = \subj,agr,vp ->  let vps = useVP vp in {
       s = \\m,t,a,b,o =>
@@ -725,8 +719,8 @@ resource ResGer = ParamX ** open Prelude in {
           neg   = vp.a1 ! b ;
           obj0  = (vp.nn ! agr).p1 ;
           obj   = (vp.nn ! agr).p2 ;
-          compl = obj0 ++ neg ++ obj ++ vp.a2 ; -- from EG 15/5
-          inf   = vp.inf ++ verb.inf ;
+          compl = obj0 ++ neg  ++ vp.adj ++ obj ++ vp.a2 ; -- adj added
+          inf   = vp.inf ++ verb.inf ; -- not used for linearisation of Main/Inv
           extra = vp.ext ;
           inffin : Str = 
             case <a,vp.isAux> of {                       
@@ -735,12 +729,9 @@ resource ResGer = ParamX ** open Prelude in {
             }                                            
         in
         case o of {
-	    Main => subj ++ verb.fin ++ compl ++ vp.infExt ++ inf ++ extra ;
-	    Inv  => verb.fin ++ subj ++ compl ++ vp.infExt ++ inf ++ extra ;
+	    Main => subj ++ verb.fin ++ compl ++ vp.infExt ++ verb.inf ++ extra ++ vp.inf ;
+	    Inv  => verb.fin ++ subj ++ compl ++ vp.infExt ++ verb.inf ++ extra ++ vp.inf ;
 	    Sub  => subj ++ compl ++ vp.infExt ++ inffin ++ extra
-  --        Main => subj ++ verb.fin ++ compl ++ "[N]" ++ vp.infExt ++ "[/N]" ++  "[I]" ++ inf ++ "[/I]" ++ "[E]" ++ extra ++ "[/E]" ;
-  --        Inv  => verb.fin ++ subj ++ compl ++ inf ++ extra ;
-  --        Sub  => subj ++ compl ++ "(n)" ++ vp.infExt ++ "(/n)" ++ "(if)" ++ inffin ++ "(/if)" ++ "(e)" ++ extra ++ "(/e)"
           }
     } ;
 
@@ -789,6 +780,38 @@ resource ResGer = ParamX ** open Prelude in {
     Ag _ Pl P3 => caselist "sie" "sich" "sich" "ihrer"
     } ;
 
+  possPron : Agr -> Number -> Gender -> Case -> Str = \a,n,g,c -> case <a,n,g> of {
+    <Ag _ Sg P1,Sg,Masc>  => caselist "mein"  "meinen" "meinem"  "meines" ! c ;
+    <Ag _ Sg P1,Sg,Fem>   => caselist "meine" "meine"  "meiner"  "meiner" ! c ;
+    <Ag _ Sg P1,Sg,Neutr> => caselist "mein"  "mein"   "meinem"  "meines" ! c ;
+    <Ag _ Sg P1,Pl,_>     => caselist "meine" "meine"  "meinen"  "meiner" ! c ;
+    <Ag _ Sg P2,Sg,Masc>  => caselist "dein"  "deinen" "deinem"  "deines" ! c ;
+    <Ag _ Sg P2,Sg,Fem>   => caselist "deine" "deine"  "deiner"  "deiner" ! c ;
+    <Ag _ Sg P2,Sg,Neutr> => caselist "dein"  "dein"   "deinem"  "deines" ! c ;
+    <Ag _ Sg P2,Pl,_>     => caselist "deine" "deine"  "deinen"  "deiner" ! c ;
+    
+    <Ag (Masc|Neutr) Sg P3,Sg,Masc>  => caselist "sein"  "seinen" "seinem"  "seines" ! c ;
+    <Ag (Masc|Neutr) Sg P3,Sg,Fem>   => caselist "seine" "seine"  "seiner"  "seiner" ! c ;
+    <Ag (Masc|Neutr) Sg P3,Sg,Neutr> => caselist "sein"  "sein"   "seinem"  "seines" ! c ;
+    <Ag (Masc|Neutr) Sg P3,Pl,_>     => caselist "seine" "seine"  "seinen"  "seiner" ! c ;
+
+    <Ag _ _ P3,Sg,Masc>  => caselist "ihr"  "ihren" "ihrem"  "ihres" ! c ;
+    <Ag _ _ P3,Sg,Fem>   => caselist "ihre" "ihre"  "ihrer"  "ihrer" ! c ;
+    <Ag _ _ P3,Sg,Neutr> => caselist "ihr"  "ihr"   "ihrem"  "ihres" ! c ;
+    <Ag _ _ P3,Pl,_>     => caselist "ihre" "ihre"  "ihren"  "ihrer" ! c ;
+
+    <Ag _ Pl P1,Sg,Masc>  => caselist "unser"  "unseren" "unserem"  "unseres" ! c ;
+    <Ag _ Pl P1,Sg,Fem>   => caselist "unsere" "unsere"  "unserer"  "unserer" ! c ;
+    <Ag _ Pl P1,Sg,Neutr> => caselist "unser"  "unser"   "unserem"  "unseres" ! c ;
+    <Ag _ Pl P1,Pl,_>     => caselist "unsere" "unsere"  "unseren"  "unserer" ! c ;
+    
+    <Ag _ Pl P2,Sg,Masc>  => caselist "euer" "euren" "eurem"  "eures" ! c ;
+    <Ag _ Pl P2,Sg,Fem>   => caselist "eure" "eure"  "eurer"  "eurer" ! c ;
+    <Ag _ Pl P2,Sg,Neutr> => caselist "euer" "euer"  "eurem"  "eures" ! c ;
+    <Ag _ Pl P2,Pl,_>     => caselist "eure" "eure"  "euren"  "eurer" ! c
+ 
+    } ;
+
   conjThat : Str = "dass" ;
 
   conjThan : Str = "als" ;
@@ -798,10 +821,11 @@ resource ResGer = ParamX ** open Prelude in {
   infPart : Bool -> Str = \b -> if_then_Str b [] "zu" ;
 
   heavyNP : 
-    {s : PCase => Str ; a : Agr} -> {s : PCase => Str ; a : Agr ; isPron : Bool} = \np ->
-    np ** {isPron = False} ;
+    {s : PCase => Str ; a : Agr} -> {s : PCase => Str ; a : Agr ; isPron : Bool ; adv,ext,rc : Str} = \np ->
+    np ** {isPron = False; adv,ext,rc = []} ; -- this could be wrong
 
   oper
+
       relPron :  RelGenNum => Case => Str = \\rgn,c =>
     case rgn of {
     RGenNum gn => 
@@ -814,5 +838,15 @@ resource ResGer = ParamX ** open Prelude in {
       } ;
     RSentence => "was"
     } ;
+
+-- Function that allows the construction of non-nominative subjects.
+	mkSubj : NP -> Preposition -> Str * Agr = \np, subjc -> 
+		let 
+		  sub = subjc ;
+		  agr = case sub.c of {
+			   NPC Nom => np.a ;
+		        _ => Ag Masc Sg P3 } ;
+          subj = appPrepNP sub np
+        in <subj , agr> ;
 
 }

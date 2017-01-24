@@ -16,8 +16,13 @@ concrete TranslateSwe of Translate =
   AdverbSwe,
   PhraseSwe,
   SentenceSwe,
-  QuestionSwe,
-  RelativeSwe,
+  QuestionSwe - [
+    QuestSlash -- replaced by QuestSlash | PiedPipingQuestSlash
+    ], 
+  RelativeSwe - [
+    RelSlash  -- replaced by RelSlash | PiedPipingRelSlash
+   ,IdRP  -- replaced by IdRP | emptyRP
+    ],
   IdiomSwe,
   ConstructionSwe,
   DocumentationSwe,
@@ -45,5 +50,10 @@ lin
    | {s = \\n,d,c => np.s ! NPPoss (gennum (ngen2gen cn.g) n) Nom ++ cn.s ! n ! DDef Indef ! c ; g = cn.g ; isMod = True} ---- overgenerating
    ;
 
+  IdRP = G.IdRP | E.emptyRP ;
+
+  RelSlash rp cls = G.RelSlash rp cls | E.PiedPipingRelSlash rp cls ;
+
+  QuestSlash ip cls = G.QuestSlash ip cls | E.PiedPipingQuestSlash ip cls ;
 
 }

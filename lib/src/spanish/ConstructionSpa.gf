@@ -1,7 +1,7 @@
 --# -path=alltenses:.:../abstract
 
 concrete ConstructionSpa of Construction = CatSpa ** 
-  open SyntaxSpa, SymbolicSpa, ParadigmsSpa, 
+  open SyntaxSpa, SymbolicSpa, ParadigmsSpa, BeschSpa,
        (L = LexiconSpa), (E = ExtraSpa), (I = IrregSpa), (R = ResSpa), (C = CommonRomance),
        Prelude in {
 flags coding=utf8 ;
@@ -10,6 +10,11 @@ flags coding=utf8 ;
 lin
   hungry_VP = E.ComplCN have_V2 (mkCN (mkN "hambre" feminine)) ;
   thirsty_VP = E.ComplCN have_V2 (mkCN (mkN "sed" feminine)) ;
+  tired_VP = mkVP stateCopula (mkAP (mkA "cansado")) ;
+  scared_VP = E.ComplCN have_V2 (mkCN (mkN "miedo")) ;
+  ill_VP = mkVP stateCopula (mkAP (mkA "enfermo")) ;
+  ready_VP = mkVP stateCopula (mkAP (mkA "listo")) ;
+
   has_age_VP card = mkVP have_V2 (mkNP <lin Card card : Card> L.year_N) ;
 
   have_name_Cl x y = mkCl x (mkV2 (reflV (mkV "llamar"))) y ;
@@ -53,6 +58,7 @@ lincat
   Year = NP ;
 oper
   noPrep : Prep = mkPrep [] ;
+  stateCopula = mkVA (mkV (estar_2 "estar")) ;
 
 lin
   weekdayPunctualAdv w = lin Adv {s = w.s ! C.Sg} ;         -- lundi

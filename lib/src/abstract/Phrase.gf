@@ -13,8 +13,8 @@ abstract Phrase = Cat ** {
 
     UttS      : S   -> Utt ;                -- John walks
     UttQS     : QS  -> Utt ;                -- is it good
-    UttImpSg  : Pol -> Imp -> Utt;          -- (don't) love yourself
-    UttImpPl  : Pol -> Imp -> Utt;          -- (don't) love yourselves
+    UttImpSg  : Pol -> Imp -> Utt ;         -- (don't) love yourself
+    UttImpPl  : Pol -> Imp -> Utt ;         -- (don't) love yourselves
     UttImpPol : Pol -> Imp -> Utt ;         -- (don't) sleep (polite)
 
 -- There are also 'one-word utterances'. A typical use of them is
@@ -36,13 +36,13 @@ abstract Phrase = Cat ** {
 -- The phrasal conjunction is optional. A sentence conjunction
 -- can also be used to prefix an utterance.
 
-    NoPConj   : PConj ;                      
+    NoPConj   : PConj ;                     -- [plain phrase without conjunction in front]
     PConjConj : Conj -> PConj ;             -- and
 
 -- The vocative is optional. Any noun phrase can be made into vocative,
 -- which may be overgenerating (e.g. "I").
 
-    NoVoc   : Voc ;
+    NoVoc   : Voc ;                         -- [plain phrase without vocative]
     VocNP   : NP -> Voc ;                   -- my friend
 
 }

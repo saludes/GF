@@ -13,6 +13,11 @@ concrete ExtraEng of ExtraEngAbs = CatEng **
       a = RAg (agrP3 nu.n)
       } ;
 
+    PiedPipingRelSlash rp slash = {
+      s = \\t,a,p,agr => 
+          slash.c2 ++ rp.s ! RPrep (fromAgr agr).g ++ slash.s ! t ! a ! p ! oDir ;
+      c = NPAcc
+      } ;
     StrandRelSlash rp slash = {
       s = \\t,a,p,ag => 
         rp.s ! RC (fromAgr ag).g NPAcc ++ slash.s ! t ! a ! p ! oDir ++ slash.c2 ;
@@ -22,6 +27,9 @@ concrete ExtraEng of ExtraEngAbs = CatEng **
       s = \\t,a,p,_ => slash.s ! t ! a ! p ! oDir ++ slash.c2 ;
       c = NPAcc
       } ;
+
+    PiedPipingQuestSlash ip slash = 
+      mkQuestion (ss (slash.c2 ++ ip.s ! NPAcc)) slash ;
 
     StrandQuestSlash ip slash = 
       {s = \\t,a,b,q => 
@@ -48,16 +56,6 @@ concrete ExtraEng of ExtraEngAbs = CatEng **
       insertObj (\\a => vpi.s ! vv.typ ! a) (predVV vv) ;
 
   lin
-    that_RP = 
-    { s = table {
-        RC _ (NCase Gen)    => "whose" ; 
-        RC _ _      => "that" ;
-        _           => "that"   ---- "in that" ?
---        RPrep Neutr => "which" ;
---        RPrep _     => "whom"
-        } ;
-      a = RNoAg
-      } ;
 
     each_Det = mkDeterminer Sg "each" ;
     any_Quant = mkQuant "any" "any" ;
@@ -89,7 +87,7 @@ concrete ExtraEng of ExtraEngAbs = CatEng **
     IAdvAdv adv = {s = "how" ++ adv.s} ;
 
     PartVP vp = {
-      s = \\a => vp.ad ! a ++ vp.prp ++ vp.s2 ! a ++ vp.ext ;
+      s = \\a => vp.ad ! a ++ vp.prp ++ vp.p ++ vp.s2 ! a ++ vp.ext ;
       isPre = vp.isSimple                 -- depends on whether there are complements
       } ;
 
@@ -276,5 +274,87 @@ lin
       } ;
 -------
 
+  lin
+    AdjAsCN ap = let cn = mkNoun "one" "one's" "ones" "ones'" ** {g = Neutr}
+      in {
+        s = \\n,c => preOrPost ap.isPre (ap.s ! agrgP3 n cn.g) (cn.s ! n ! c) ;
+        g = cn.g
+        } ;
 
-} 
+  lincat
+    RNP     = {s : Agr => Str} ;
+    RNPList = {s1,s2 : Agr => Str} ;
+
+  lin 
+    ReflRNP vps rnp = insertObjPre (\\a => vps.c2 ++ rnp.s ! a) vps ;
+    ReflPron = {s = reflPron} ;
+    ReflPoss num cn = {s = \\a => possPron ! a ++ num.s ! Nom ++ cn.s ! num.n ! Nom} ;
+    PredetRNP predet rnp = {s = \\a => predet.s ++ rnp.s ! a} ;
+
+    ConjRNP conj rpns = conjunctDistrTable Agr conj rpns ;
+
+    Base_rr_RNP x y = twoTable Agr x y ;
+    Base_nr_RNP x y = twoTable Agr {s = \\a => x.s ! NPAcc} y ;
+    Base_rn_RNP x y = twoTable Agr x {s = \\a => y.s ! NPAcc} ;
+    Cons_rr_RNP x xs = consrTable Agr comma x xs ;
+    Cons_nr_RNP x xs = consrTable Agr comma {s = \\a => x.s ! NPAcc} xs ;
+
+    
+---- TODO: RNPList construction
+
+
+------ English-only part
+
+  that_RP =
+     { s = table {
+        RC _ (NCase Gen) | RC _ NPNomPoss => "whose" ; 
+        RC Neutr _  => "that" ;
+        RC _ NPAcc    => "that" ;
+        RC _ (NCase Nom)    => "that" ;
+        RPrep Neutr => "which" ;
+        RPrep _     => "who"
+        } ;
+      a = RNoAg
+      } ;
+
+  which_who_RP =
+     { s = table {
+        RC _ (NCase Gen) | RC _ NPNomPoss => "whose" ; 
+        RC Neutr _  => "which" ;
+        RC _ NPAcc    => "whom" ;
+        RC _ (NCase Nom)    => "who" ;
+        RPrep Neutr => "which" ;
+        RPrep _     => "whom"
+        } ;
+      a = RNoAg
+      } ;
+      
+  who_RP =
+     { s = table {
+        RC _ (NCase Gen) | RC _ NPNomPoss => "whose" ; 
+        _     => "who"
+        } ;
+      a = RNoAg
+      } ;
+      
+  which_RP =
+     { s = table {
+        RC _ (NCase Gen) | RC _ NPNomPoss => "whose" ; 
+        _     => "which"
+        } ;
+      a = RNoAg
+      } ;
+
+  emptyRP =
+     { s = table {
+        RC _ (NCase Gen) | RC _ NPNomPoss => "whose" ; 
+        RC _ NPAcc    => [] ;
+        RC _ (NCase Nom)    => "that" ;
+        RPrep Neutr => "which" ;
+        RPrep _     => "who"
+        } ;
+      a = RNoAg
+      } ;
+
+
+}

@@ -189,6 +189,8 @@ oper
  
   invarA : Str -> A ;  -- e.g. äkta
 
+  irregAdv : A -> Str -> A ;  -- adverb irreg
+
 ---- Adjective with deviant adverb.
 
 ----  deviantAdvA : Str -> A -> A ; -- e.g. bra, god
@@ -526,7 +528,7 @@ oper
   regGenPN n g = {s = \\c => mkCase c n ; g = g} ** {lock_PN = <>} ;
   nounPN n = {s = n.s ! singular ! Indef ; g = n.g ; lock_PN = <>} ;
   makeNP x y n g = 
-    {s = table {NPPoss _ _ => y ; _ => x} ; a = agrP3 g n ; p = P3 ;
+    {s = table {NPPoss _ _ => y ; _ => x} ; a = agrP3 g n ; p = P3 ; isPron = False ;
      lock_NP = <>} ;
 
   mkA = overload {
@@ -581,6 +583,8 @@ oper
   compoundA adj = {s = adj.s ; isComp = True ; lock_A = <>} ;
 
   invarA s = mk3cA s s s True ;
+
+  irregAdv a adv = lin A {s = table {AAdv => adv; aform => a.s ! aform}; isComp = a.isComp} ;
 
   mkA2 a p = a ** {c2 = mkComplement p.s ; lock_A2 = <>} ;
 

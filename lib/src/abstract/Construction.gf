@@ -17,6 +17,10 @@ flags coding=utf8 ;
 fun
   hungry_VP     : VP ;                 -- x is hungry / x a faim (Fre)
   thirsty_VP    : VP ;                 -- x is thirsty / x a soif (Fre)
+  tired_VP      : VP ;                 -- x is tired / x estoy cansado (Spa)
+  scared_VP     : VP ;                 -- x is scared
+  ill_VP        : VP ;                 -- x is ill
+  ready_VP      : VP ;                 -- x is ready
   has_age_VP    : Card -> VP ;         -- x is y years old / x a y ans (Fre)
 
   have_name_Cl  : NP -> NP -> Cl ;     -- x's name is y / x s'appelle y (Fre)
@@ -38,28 +42,28 @@ fun
 
 
 -- containers
-  bottle_of_CN : NP -> CN ;       -- bottle of beer / flaska öl (Swe)
-  cup_of_CN    : NP -> CN ;       -- cup of tea / kupillinen teetä (Fin)
-  glass_of_CN  : NP -> CN ;
+  bottle_of_CN : NP -> CN ;       --- bottle of beer / flaska öl (Swe)
+  cup_of_CN    : NP -> CN ;       --- cup of tea / kupillinen teetä (Fin)
+  glass_of_CN  : NP -> CN ;       --- glass of wine / lasillinen viiniä (Fin)
 
 -- idiomatic expressions
-  few_X_short_of_Y : NP -> CN -> CN -> S ; -- NP is a few X's short of a Y / NP:llä ei ole kaikki X:t Y:ssä (Fin)
+  few_X_short_of_Y : NP -> CN -> CN -> S ; --- NP is a few X's short of a Y / NP:llä ei ole kaikki X:t Y:ssä (Fin) 
 
 {- 
 ---- postponed  
 -- spatial deixis and motion verbs
 -- verbs like `walk' or `run' can take both: there or to there
 
-  where_go_QCl   : NP -> QCl ;      -- where did X go / vart gick X (Swe)
-  where_come_from_QCl : NP -> QCl ; -- where did X come from / mistä X tuli (Fin)
+  where_go_QCl   : NP -> QCl ;      --- where did X go / vart gick X (Swe)
+  where_come_from_QCl : NP -> QCl ; --- where did X come from / mistä X tuli (Fin)
   
-  go_here_VP   : VP ;      -- X went here / X gick hit (Swe)
-  come_here_VP : VP ;      -- X came here / X tuli tänne (Fin)
-  come_from_here_VP : VP ; -- X came from here / X tuli täältä (Fin)
+  go_here_VP   : VP ;      --- X went here / X gick hit (Swe)
+  come_here_VP : VP ;      --- X came here / X tuli tänne (Fin)
+  come_from_here_VP : VP ; --- X came from here / X tuli täältä (Fin)
 
-  go_there_VP   : VP ;      -- X went here / X gick dit (Swe)
-  come_there_VP : VP ;      -- X came there / X tuli sinne (Fin)
-  come_from_there_VP : VP ; -- X came from there / X tuli sieltä (Fin)
+  go_there_VP   : VP ;      --- X went here / X gick dit (Swe)
+  come_there_VP : VP ;      --- X came there / X tuli sinne (Fin)
+  come_from_there_VP : VP ; --- X came from there / X tuli sieltä (Fin)
 
 -}
 
@@ -86,8 +90,8 @@ fun
   monthYearAdv    : Month -> Year -> Adv ;                -- in May 2013
   dayMonthYearAdv : Monthday -> Month -> Year -> Adv ;    -- on 17 May 2013
   
-  intYear     : Int -> Year ;
-  intMonthday : Int -> Monthday ;
+  intYear     : Int -> Year ;  -- (year) 1963
+  intMonthday : Int -> Monthday ; -- 31th (March)
 
 
 -- languages
@@ -99,14 +103,14 @@ fun
 
 -- coercions to RGL categories
 
-  weekdayN   : Weekday -> N ; 
-  monthN     : Month -> N ;
+  weekdayN   : Weekday -> N ; -- (this) Monday
+  monthN     : Month -> N ;   -- (this) November
 
-  weekdayPN  : Weekday -> PN ; 
-  monthPN    : Month -> PN ;
+  weekdayPN  : Weekday -> PN ; -- Monday (is free)
+  monthPN    : Month -> PN ;   -- March (is cold)
 
-  languageNP : Language -> NP ;
-  languageCN : Language -> CN ;
+  languageNP : Language -> NP ;  -- French (is easy)
+  languageCN : Language -> CN ;  -- (my) French
 
 ----------------------------------------------
 ---- lexicon of special names

@@ -5,7 +5,7 @@
 
 concrete IrregGer of IrregGerAbs = CatGer ** open 
   ParadigmsGer,
-  (M = MorphoGer)
+  (M = MorphoGer), ResGer
 in {
 
   flags optimize=values ;
@@ -43,7 +43,7 @@ in {
   lin erlöschen_V =  irregV "erlöschen" "erlischt" "erlosch" "erlösche" "erloschen" ;
   lin erkennen_V =  irregV "erkennen" "erkennt" "erkannte" "erkannte" "erkannt" ;
   lin erschrecken_V =  irregV "erschrecken" "erschrickt" "erschrak" "erschräke" "erschrocken" ;
-  lin essen_V =  irregV "essen" "ißt" "aß" "äße" "gegessen" ;
+  lin essen_V =  irregV "essen" "isst" "aß" "äße" "gegessen" ;
   lin fahren_V =  irregV "fahren" "fährt" "fuhr" "führe" "gefahren" ;
   lin fallen_V =  irregV "fallen" "fällt" "fiel" "fiele" "gefallen" ;
   lin fangen_V =  irregV "fangen" "fängt" "fing" "finge" "gefangen" ;
@@ -159,7 +159,7 @@ in {
   lin schwingen_V =  irregV "schwingen" "schwingt" "schwang" "schwänge" "geschwungen" ;
   lin schwören_V =  irregV "schwören" "schwört" "schwor" "schwüre" "geschworen" ;
   lin sehen_V =  irregV "sehen" "sieht" "sah" "sähe" "gesehen" ;
-  lin sein_V =  irregV "sein" "ist" "war" "wäre" "gewesen" ;
+  lin sein_V =  ResGer.sein_V ;
   lin senden_V =  irregV "senden" "sendet" "sandte" "sandte" "gesandt" ;
   lin sieden_V =  irregV "sieden" "siedet" "sott" "sotte" "gesotten" ;
   lin singen_V =  irregV "singen" "singt" "sang" "sänge" "gesungen" ;

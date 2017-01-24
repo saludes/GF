@@ -119,7 +119,6 @@ mkN : overload {
 
   mkN3 : N -> Prep -> Prep -> N3 ; -- noun + two prepositions
 
-
 --3 Proper names and noun phrases
 --
 -- Proper names, with an "s" genitive and other cases like the
@@ -127,21 +126,24 @@ mkN : overload {
 -- taken into account.
 
   mkPN : overload {
-    mkPN : Str -> PN ; -- regular name with genitive in "s"
+    mkPN : Str -> PN ; -- regular name with genitive in "s", masculine
+    mkPN : Str -> Gender -> PN ; -- regular name with genitive in "s"
 
 -- If only the genitive differs, two strings are needed.
 
-    mkPN : (nom,gen : Str) -> PN ;  -- name with other genitive
+    mkPN : (nom,gen : Str) -> Gender -> PN ;  -- name with other genitive
 
 -- In the worst case, all four forms are needed.
 
-    mkPN : (nom,acc,dat,gen : Str) -> PN ; -- name with all case forms
+    mkPN : (nom,acc,dat,gen : Str) -> Gender -> PN ; -- name with all case forms
 
 -- Inflection can also be inherited from the singular forms of a common noun.
 
     mkPN : N -> PN ; -- use the singular forms of a noun
 
     } ;
+
+
 
 
 
@@ -284,11 +286,11 @@ mkV2 : overload {
 -- Three-place (ditransitive) verbs need two prepositions, of which
 -- the first one or both can be absent.
 
-  accdatV3 : V -> V3 ;                  -- geben + acc + dat
-  dirV3    : V -> Prep -> V3 ;          -- senden + acc + nach
+  accdatV3 : V -> V3 ;                  -- geben + dat + acc (no prepositions)
+  dirV3    : V -> Prep -> V3 ;          -- senden + acc + nach (preposition on second arg)
 
   mkV3 : overload {
-    mkV3     : V ->                 V3 ;  -- geben + acc + dat
+    mkV3     : V ->                 V3 ;  -- geben + dat + acc
     mkV3     : V -> Prep -> Prep -> V3 ;  -- sprechen + mit + über
     } ;
 
@@ -454,21 +456,23 @@ mkV2 : overload {
 
   mkN3 = \n,p,q -> n ** {c2 = p ; c3 = q ; lock_N3 = <>} ;
 
-  mk2PN = \karolus, karoli -> 
-    {s = table {Gen => karoli ; _ => karolus} ; lock_PN = <>} ;
-  regPN = \horst -> 
-    mk2PN horst (ifTok Tok (Predef.dp 1 horst) "s" horst (horst + "s")) ;
+  mk2PN = \karolus, karoli, g -> 
+    {s = table {Gen => karoli ; _ => karolus} ; g = g ; lock_PN = <>} ;
+  regPN = \horst, g -> 
+    mk2PN horst (ifTok Tok (Predef.dp 1 horst) "s" horst (horst + "s")) g ;
 
   mkPN = overload {
-    mkPN : Str -> PN = regPN ;
-    mkPN : N -> PN = \n -> lin PN {s = n.s ! Sg} ;
-    mkPN : (nom,gen : Str) -> PN = mk2PN ;
-    mkPN : (nom,acc,dat,gen : Str) -> PN = \nom,acc,dat,gen ->
-      {s = table {Nom => nom ; Acc => acc ; Dat => dat ; Gen => gen} ; lock_PN = <>} 
+    mkPN : Str -> PN = \s -> regPN s Masc ;
+    mkPN : Str -> Gender -> PN = regPN ;
+    mkPN : N -> PN = \n -> lin PN {s = n.s ! Sg; g = n.g} ;
+    mkPN : (nom,gen : Str) -> Gender -> PN = mk2PN ;
+    mkPN : (nom,acc,dat,gen : Str) -> Gender -> PN = \nom,acc,dat,gen,g ->
+      {s = table {Nom => nom ; Acc => acc ; Dat => dat ; Gen => gen} ; 
+       g = g ; lock_PN = <>} 
     } ;
 
-  mk2PN  : (karolus, karoli : Str) -> PN ; -- karolus, karoli
-  regPN : (Johann : Str) -> PN ;  
+  mk2PN  : (karolus, karoli : Str) -> Gender -> PN ; -- karolus, karoli
+  regPN : (Johann : Str) -> Gender -> PN ;  
     -- Johann, Johanns ; Johannes, Johannes
 
 
@@ -553,22 +557,17 @@ mkV2 : overload {
   seinV v = v ** {aux = VSein} ;
   reflV v c = v ** {aux = VHaben ; vtype = VRefl (prepC c).c} ;
 
-  no_geV v = let vs = v.s in {
+  no_geV v = let vs = v.s in v ** {
     s = table {
       p@(VPastPart _) => Predef.drop 2 (vs ! p) ;
-      p => vs ! p
-      } ;
-    prefix = v.prefix ; particle = v.particle ; lock_V = v.lock_V ; aux = v.aux ; vtype = v.vtype
-    } ;
+      p => vs ! p }};
 
-  fixprefixV s v = let vs = v.s in {
+  fixprefixV s v = let vs = v.s in v ** {
     s = table {
       VInf True => "zu" ++ (s + vs ! VInf False) ;
       p@(VPastPart _) => s + Predef.drop 2 (vs ! p) ;
       p => s + vs ! p
-      } ;
-    prefix = v.prefix ; particle = v.particle ; lock_V = v.lock_V ; aux = v.aux ; vtype = v.vtype
-    } ;
+      }} ;
 
   haben_V = MorphoGer.haben_V ** {particle = [] ; lock_V = <>} ;
   sein_V = MorphoGer.sein_V ** {particle = [] ; lock_V = <>} ;
@@ -586,7 +585,7 @@ mkV2 : overload {
     } ;
 
   dirV3 v p = mkV3 v (mkPrep [] accusative) p ;
-  accdatV3 v = dirV3 v (mkPrep [] dative) ; 
+  accdatV3 v = mkV3 v (mkPrep [] dative) (mkPrep [] accusative) ; 
 
   mkVS v = v ** {lock_VS = <>} ;
   mkVQ v = v ** {lock_VQ = <>} ;

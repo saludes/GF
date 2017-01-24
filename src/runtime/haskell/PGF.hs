@@ -122,14 +122,16 @@ module PGF(
            -- ** Visualizations
            graphvizAbstractTree,
            graphvizParseTree,
+           graphvizParseTreeDep,
            graphvizDependencyTree,
            graphvizBracketedString,
            graphvizAlignment,
            gizaAlignment,
            GraphvizOptions(..),
            graphvizDefaults,
+           conlls2latexDoc,
            -- extra:
-           getDepLabels,
+           Labels, getDepLabels,
  
            -- * Probabilities
            Probabilities,

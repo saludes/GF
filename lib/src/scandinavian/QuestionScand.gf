@@ -1,5 +1,5 @@
 incomplete concrete QuestionScand of Question = 
-  CatScand ** open CommonScand, ResScand in {
+  CatScand ** open CommonScand, ResScand, Prelude in {
 
   flags optimize=all_subs ;
 
@@ -26,15 +26,16 @@ incomplete concrete QuestionScand of Question =
         cl.s ! t ! a ! b ! somo.p2
       } ;   
 
+-- preposition stranding, default since 5/6/2016; for pied piping, see ExtraScand
     QuestSlash ip slash = {
       s = \\t,a,p => 
             let 
-              agr = agrP3 ip.g ip.n ;
-              cls : Order => Str = \\o => slash.s ! t ! a ! p ! o ++ slash.n3 ! agr ;
-              who = slash.c2.s ++ ip.s ! accusative --- stranding in ExtScand 
+              cls = slash.s ! t ! a ! p ;
+              who = ip.s ! accusative ;
+	      agr = agrP3 ip.g ip.n ;
             in table {
-              QDir   => who ++ cls ! Inv ;
-              QIndir => who ++ cls ! Sub
+              QDir   => who ++ cls ! Inv ++ slash.n3 ! agr ++ slash.c2.s ;
+              QIndir => who ++ cls ! Sub ++ slash.n3 ! agr ++ slash.c2.s
               }
       } ;
 

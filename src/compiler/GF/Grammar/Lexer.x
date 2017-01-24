@@ -2,7 +2,7 @@
 {
 module GF.Grammar.Lexer
          ( Token(..), Posn(..)
-         , P, runP, lexer, getPosn, failLoc
+         , P, runP, runPartial, token, lexer, getPosn, failLoc
          , isReservedWord
          ) where
 
@@ -16,6 +16,7 @@ import qualified Data.ByteString.Internal as BS(w2c)
 import qualified Data.ByteString.UTF8 as UTF8
 import qualified Data.Map as Map
 import Data.Word(Word8)
+import Data.Char(readLitChar)
 --import Debug.Trace(trace)
 }
 
@@ -39,7 +40,7 @@ $white+ ;
 \' ([. # [\' \\ \n]] | (\\ (\' | \\)))+ \' { tok (T_Ident . identS . unescapeInitTail . unpack) }
 (\_ | $l)($l | $d | \_ | \')*   { tok ident }
 
-\" ([$u # [\" \\ \n]] | (\\ (\" | \\ | \' | n | t)))* \" { tok (T_String . unescapeInitTail . unpack) }
+\" ([$u # [\" \\ \n]] | (\\ (\" | \\ | \' | n | t | $d+)))* \" { tok (T_String . unescapeInitTail . unpack) }
 
 (\-)? $d+                       { tok (T_Integer . read . unpack) }
 (\-)? $d+ \. $d+ (e (\-)? $d+)? { tok (T_Double  . read . unpack) }
@@ -50,7 +51,6 @@ unpack = UTF8.toString
 
 ident = res T_Ident . identC . rawIdentC
 
---tok :: (String->Token) -> Posn -> String -> Token
 tok f p s = f s
 
 data Token
@@ -123,6 +123,10 @@ data Token
  | T_variants
  | T_where
  | T_with
+ | T_coercions
+ | T_terminator
+ | T_separator
+ | T_nonempty
  | T_String  String          -- string literals
  | T_Integer Int             -- integer literals
  | T_Double  Double          -- double precision float literals
@@ -211,19 +215,21 @@ resWords = Map.fromList
  , b "variants"   T_variants
  , b "where"      T_where
  , b "with"       T_with
+ , b "coercions"  T_coercions
+ , b "terminator" T_terminator
+ , b "separator"  T_separator
+ , b "nonempty"   T_nonempty
  ]
  where b s t = (identS s, t)
 
 unescapeInitTail :: String -> String
 unescapeInitTail = unesc . tail where
   unesc s = case s of
-    '\\':c:cs | elem c ['\"', '\\', '\''] -> c : unesc cs
-    '\\':'n':cs  -> '\n' : unesc cs
-    '\\':'t':cs  -> '\t' : unesc cs
+    []         -> []
     '\"':[]    -> []
     '\'':[]    -> []
-    c:cs      -> c : unesc cs
-    _         -> []
+    _          -> case readLitChar s of
+                    [(c,cs)] -> c:unesc cs
 
 -------------------------------------------------------------------
 -- Alex wrapper code.
@@ -232,6 +238,7 @@ unescapeInitTail = unesc . tail where
 
 data Posn = Pn {-# UNPACK #-} !Int
                {-# UNPACK #-} !Int
+            deriving (Eq,Show)
 
 alexMove :: Posn -> Char -> Posn
 alexMove (Pn l c) '\n' = Pn (l+1) 1
@@ -243,58 +250,71 @@ alexGetByte (AI p _ s) =
     Nothing  -> Nothing
     Just (w,s) ->
              let p' = alexMove p c
-                 c = BS.w2c w
+                 c  = BS.w2c w
               in p' `seq` Just (w, (AI p' c s))
-
+{-
+-- Not used by this lexer:
 alexInputPrevChar :: AlexInput -> Char
 alexInputPrevChar (AI p c s) = c
-
+-}
 data AlexInput = AI {-# UNPACK #-} !Posn            -- current position,
                     {-# UNPACK #-} !Char            -- previous char
                     {-# UNPACK #-} !BS.ByteString   -- current input string
 
+type AlexInput2 = (AlexInput,AlexInput)
+
 data ParseResult a
-  = POk a
+  = POk AlexInput2 a
   | PFailed Posn	-- The position of the error
             String      -- The error message
 
-newtype P a = P { unP :: AlexInput -> ParseResult a }
+newtype P a = P { unP :: AlexInput2 -> ParseResult a }
 
 instance Functor P where
-  fmap = (<$>)
+  fmap = liftA
 
 instance Applicative P where
   pure = return
   (<*>) = ap
 
 instance Monad P where
-  return a    = a `seq` (P $ \s -> POk a)
+  return a    = a `seq` (P $ \s -> POk s a)
   (P m) >>= k = P $ \ s -> case m s of
-                             POk a         -> unP (k a) s
+                             POk s a          -> unP (k a) s
                              PFailed posn err -> PFailed posn err
-  fail msg    = P $ \(AI posn _ _) -> PFailed posn msg
+  fail msg    = P $ \(_,AI posn _ _) -> PFailed posn msg
 
 runP :: P a -> BS.ByteString -> Either (Posn,String) a
-runP (P f) txt =
-  case f (AI (Pn 1 0) ' ' txt) of
-    POk x           -> Right x
+runP p bs = snd <$> runP' p (Pn 1 0,bs)
+
+runPartial p s = conv <$> runP' p (Pn 1 0,UTF8.fromString s)
+  where conv ((pos,rest),x) = (UTF8.toString rest,x)
+
+runP' (P f) (pos,txt) =
+  case f (dup (AI pos ' ' txt)) of
+    POk (AI pos _ rest,_) x  -> Right ((pos,rest),x)
     PFailed pos msg -> Left  (pos,msg)
+
+dup x = (x,x)
 
 failLoc :: Posn -> String -> P a
 failLoc pos msg = P $ \_ -> PFailed pos msg
 
 lexer :: (Token -> P a) -> P a
-lexer cont = P go
+lexer cont = cont=<<token
+
+token :: P Token
+token = P go
   where
   --cont' t = trace (show t) (cont t)
-    go inp@(AI pos _ str) =
+    go ai2@(_,inp@(AI pos _ str)) =
       case alexScan inp 0 of
-        AlexEOF                -> unP (cont T_EOF) inp
+        AlexEOF                -> POk (inp,inp) T_EOF
         AlexError (AI pos _ _) -> PFailed pos "lexical error"
-        AlexSkip  inp' len     -> {-trace (show len) $-} go inp'
-        AlexToken inp' len act -> unP (cont (act pos ({-UTF8.toString-} (UTF8.take len str)))) inp'
+        AlexSkip  inp' len     -> {-trace (show len) $-} go (inp,inp')
+        AlexToken inp' len act -> POk (inp,inp') (act pos ({-UTF8.toString-} (UTF8.take len str)))
 
 getPosn :: P Posn
-getPosn = P $ \inp@(AI pos _ _) -> POk pos
+getPosn = P $ \ai2@(_,inp@(AI pos _ _)) -> POk ai2 pos
 
 }

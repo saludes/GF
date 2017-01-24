@@ -154,6 +154,63 @@ pgf_jit_predicate(PgfReader* rdr, PgfAbstr* abstr,
 
 	abscat->predicate = (PgfFunction) jit_get_ip().ptr;
 
+	if (strcmp(abscat->name, "String") == 0) {
+#ifdef PGF_JIT_DEBUG
+		gu_printf(out, err, "    MK_STRING\n");
+#endif
+
+		jit_prepare(2);
+		jit_pusharg_p(JIT_VCLOS);
+		jit_pusharg_p(JIT_VSTATE);
+		jit_finish(pgf_reasoner_mk_string);
+
+#ifdef PGF_JIT_DEBUG
+		gu_puts("    RET\n", out, err);
+#endif
+		// compile RET
+		jit_bare_ret();
+		
+		return;
+	}
+
+	if (strcmp(abscat->name, "Int") == 0) {
+#ifdef PGF_JIT_DEBUG
+		gu_printf(out, err, "    MK_INT\n");
+#endif
+
+		jit_prepare(2);
+		jit_pusharg_p(JIT_VCLOS);
+		jit_pusharg_p(JIT_VSTATE);
+		jit_finish(pgf_reasoner_mk_int);
+
+#ifdef PGF_JIT_DEBUG
+		gu_puts("    RET\n", out, err);
+#endif
+		// compile RET
+		jit_bare_ret();
+		
+		return;
+	}
+
+	if (strcmp(abscat->name, "Float") == 0) {
+#ifdef PGF_JIT_DEBUG
+		gu_printf(out, err, "    MK_FLOAT\n");
+#endif
+
+		jit_prepare(2);
+		jit_pusharg_p(JIT_VCLOS);
+		jit_pusharg_p(JIT_VSTATE);
+		jit_finish(pgf_reasoner_mk_float);
+
+#ifdef PGF_JIT_DEBUG
+		gu_puts("    RET\n", out, err);
+#endif
+		// compile RET
+		jit_bare_ret();
+		
+		return;
+	}
+
 	PgfAbsFun* absfun = NULL;
 	PgfAbsFun* next_absfun = NULL;
 
@@ -242,7 +299,7 @@ pgf_jit_predicate(PgfReader* rdr, PgfAbstr* abstr,
 					pgf_jit_make_space(rdr, JIT_CODE_WINDOW);
 					jit_patch_movi(ref,jit_get_label());
 				} else {
-					jit_patch_movi(ref,pgf_reasoner_complete);
+					jit_patch_movi(ref,abstr->eval_gates->complete);
 				}
 			}
 		} else {
@@ -351,7 +408,9 @@ pgf_jit_gates(PgfReader* rdr)
 	jit_getarg_p(JIT_VCLOS,  closure_arg);
 	jit_stxi_p(offsetof(PgfReasoner, enter_stack_ptr), JIT_VSTATE, JIT_SP);
 	jit_ldr_p(JIT_R0, JIT_VCLOS);
+	jit_pushr_i(JIT_R0);    // this is just for stack alignment on System V
 	jit_callr(JIT_R0);
+	jit_popr_i(JIT_R0);     // this is just for stack alignment on System V
 	jit_movr_p(JIT_RET, JIT_VHEAP);
 	jit_ret();
 
@@ -456,7 +515,7 @@ pgf_jit_gates(PgfReader* rdr)
 	jit_movr_p(JIT_FP, JIT_SP);
 	jit_movi_p(JIT_R1, gates->update_closure);
 	jit_pushr_p(JIT_R1);
-	jit_retval(JIT_VCLOS);
+	jit_retval_p(JIT_VCLOS);
 	jit_patch(ref);
 	jit_ldr_p(JIT_R0, JIT_VCLOS);
 	jit_jmpr(JIT_R0);
@@ -594,6 +653,15 @@ pgf_jit_gates(PgfReader* rdr)
 	jit_pusharg_p(JIT_VSTATE);
 	jit_finish(pgf_reasoner_combine2);
 	jit_bare_ret();
+
+	pgf_jit_make_space(rdr, JIT_CODE_WINDOW);
+
+	gates->complete = (void*) jit_get_ip().ptr;
+	jit_prepare(2);
+	jit_pusharg_p(JIT_VCLOS);
+	jit_pusharg_p(JIT_VSTATE);
+	jit_finish(pgf_reasoner_complete);
+	jit_ret();
 
 	gates->fin.fn = pgf_jit_finalize_cafs;
 	gates->cafs = NULL;

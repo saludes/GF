@@ -1,6 +1,6 @@
 import Distribution.Simple
 import Distribution.Simple.LocalBuildInfo
-import Distribution.Simple.BuildPaths
+import Distribution.Simple.BuildPaths(exeExtension)
 import Distribution.Simple.Utils
 import Distribution.Simple.Setup
 import Distribution.PackageDescription hiding (Flag)
@@ -12,7 +12,7 @@ import Data.Maybe(listToMaybe)
 import qualified Control.Exception as E
 import System.Process(readProcess)
 import System.FilePath
-import System.Directory
+import System.Directory(createDirectoryIfMissing,copyFile,doesDirectoryExist,getDirectoryContents)
 --import System.Exit
 --import Control.Concurrent(forkIO)
 --import Control.Concurrent.Chan(newChan,writeChan,readChan)
@@ -209,6 +209,7 @@ langsCoding = [
   (("estonian", "Est"),""),
   (("finnish",  "Fin"),""),
   (("french",   "Fre"),""),
+  (("ancient_greek","Grc"),""),
   (("greek",    "Gre"),""),
   (("hebrew",   "Heb"),""),
   (("hindi",    "Hin"),"to_devanagari"),
@@ -250,7 +251,7 @@ langsPresent = langsLang `except` ["Afr","Chi","Gre","Heb","Jpn","Mlt","Mon","Ne
 -- languages for which to compile Try
 langsAPI  = langsLang `except` langsIncomplete -- ["Ina","Amh","Ara"]
 
-langsIncomplete = ["Amh","Ara","Heb","Ina","Lat","Tur"]
+langsIncomplete = ["Amh","Ara","Grc","Heb","Ina","Lat","Tur"]
 
 -- languages for which to compile Symbolic
 langsSymbolic  = langsAPI `except` ["Afr","Jpn","Mon","Nep"]
@@ -392,18 +393,18 @@ extractDarcsVersion distFlag =
     versionModulePath = autogenPath</>"DarcsVersion_gf.hs"
     modname = "DarcsVersion_gf"
 
-    askDarcs =
-      do flip unless (fail "no _darcs") =<< doesDirectoryExist "_darcs"
-         tags <- lines `fmap` readProcess "darcs" ["show","tags"] ""
-         let from = case tags of
-                      [] -> []
-                      tag:_ -> ["--from-tag="++tag]
-         dates <- patches `fmap` readProcess "darcs" ("changes":from) ""
---       let dates = init' (filter ((`notElem` [""," "]).take 1) changes)
-         whatsnew <- tryIOE $ lines `fmap` readProcess "darcs" ["whatsnew","-s"] ""
-         return (listToMaybe tags,listToMaybe dates,
-                 length dates,either (const 0) length whatsnew)
-
+askDarcs =
+  do flip unless (fail "no _darcs") =<< doesDirectoryExist "_darcs"
+     tags <- lines `fmap` readProcess "darcs" ["show","tags"] ""
+     let from = case tags of
+                  [] -> []
+                  tag:_ -> ["--from-tag="++tag]
+     dates <- (init' . patches) `fmap` readProcess "darcs" ("changes":from) ""
+--   let dates = init' (filter ((`notElem` [""," "]).take 1) changes)
+     whatsnew <- tryIOE $ lines `fmap` readProcess "darcs" ["whatsnew","-s"] ""
+     return (listToMaybe tags,listToMaybe dates,
+             length dates,either (const 0) length whatsnew)
+  where
     init' [] = []
     init' xs = init xs
 

@@ -1,10 +1,12 @@
---# -path=.:../abstract:../common:../prelude
+--# -path=.:../abstract:../common:../api
 
 concrete LangTha of Lang = 
   GrammarTha,
   LexiconTha
+  ,ConstructionTha
+  ,DocumentationTha --# notpresent
   ** {
 
-flags startcat = Phr ; unlexer = concat ; lexer = text ;
+
 
 } ;

@@ -6,14 +6,19 @@ concrete VerbDut of Verb = CatDut ** open Prelude, ResDut in {
     UseV = predV ;
 
     ComplVV v vp = 
-      let 
-        vpi = infVP v.isAux vp 
+      let
+        vpv = predVGen v.isAux vp.negPos (v2v v) ;
+        vpi = infVP v.isAux vp ;
       in
-      insertExtrapos vpi.p3 (
+      vpv ** {n2 = vpi.p1 ; inf = <vpi.p2, True> ; ext = vpi.p3} ; ----
+
+{-
+      in
+      insertInf vpi.p3 (
         insertInf vpi.p2 (
           insertObj vpi.p1 (
             predVGen v.isAux vp.negPos (v2v v)))) ; ---- subtyp
-
+-}
     ComplVS v s = 
       insertExtrapos (conjThat ++ s.s ! Sub) (predV v) ;
     ComplVQ v q = 
@@ -70,7 +75,9 @@ concrete VerbDut of Verb = CatDut ** open Prelude, ResDut in {
 
     UseCopula = predV zijn_V; 
 
-    CompCN cn = {s = \\a => cn.s ! Strong ! NF a.n Nom} ;
+    CompCN cn = {s = \\a => case a.n of {
+                                 Sg => "een" ++ cn.s ! Strong ! NF Sg Nom ;
+                                 Pl => cn.s ! Strong ! NF Pl Nom }} ;
     CompAP ap = {s = \\_ => ap.s ! APred} ;
     CompNP np = {s = \\_ => np.s ! NPNom} ;
     CompAdv a = {s = \\_ => a.s} ;

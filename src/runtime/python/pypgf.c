@@ -74,6 +74,9 @@ Expr_unpack(ExprObject* self, PyObject *args);
 static PyObject*
 Expr_visit(ExprObject* self, PyObject *args);
 
+static PyObject*
+Expr_reduce_ex(ExprObject* self, PyObject *args);
+
 static int
 Expr_init(ExprObject *self, PyObject *args, PyObject *kwds)
 {
@@ -149,6 +152,9 @@ static PyMethodDef Expr_methods[] = {
      "e.visit(self) calls method self.on_f(a1,..an). "
      "If the method doesn't exist then the method self.default(e) "
      "is called."
+    },
+    {"__reduce_ex__", (PyCFunction)Expr_reduce_ex, METH_VARARGS,
+     "This method allows for transparent pickling/unpickling of expressions."
     },
     {NULL}  /* Sentinel */
 };
@@ -539,6 +545,36 @@ Expr_visit(ExprObject* self, PyObject *args)
 }
 
 static PyObject*
+Expr_reduce_ex(ExprObject* self, PyObject *args)
+{
+	int protocol;
+	if (!PyArg_ParseTuple(args, "i", &protocol))
+		return NULL;
+
+	PyObject* myModule = PyImport_ImportModule("pgf");
+	if (myModule == NULL)
+		return NULL;
+	PyObject* py_readExpr = PyObject_GetAttrString(myModule, "readExpr");
+	Py_DECREF(myModule);
+	if (py_readExpr == NULL)
+		return NULL;
+
+	PyObject* py_str = Expr_repr(self);
+	if (py_str == NULL) {
+		Py_DECREF(py_readExpr);
+		return NULL;
+	}
+
+	PyObject* py_tuple =
+		Py_BuildValue("O(O)", py_readExpr, py_str);
+
+	Py_DECREF(py_str);
+	Py_DECREF(py_readExpr);
+
+	return py_tuple;
+}
+
+static PyObject*
 Expr_getattro(ExprObject *self, PyObject *attr_name) {
 	const char* name = PyString_AsString(attr_name);
 
@@ -919,9 +955,42 @@ fail:
 	return res;
 }
 
+static PyObject*
+Type_reduce_ex(TypeObject* self, PyObject *args)
+{
+	int protocol;
+	if (!PyArg_ParseTuple(args, "i", &protocol))
+		return NULL;
+
+	PyObject* myModule = PyImport_ImportModule("pgf");
+	if (myModule == NULL)
+		return NULL;
+	PyObject* py_readType = PyObject_GetAttrString(myModule, "readType");
+	Py_DECREF(myModule);
+	if (py_readType == NULL)
+		return NULL;
+
+	PyObject* py_str = Type_repr(self);
+	if (py_str == NULL) {
+		Py_DECREF(py_readType);
+		return NULL;
+	}
+
+	PyObject* py_tuple =
+		Py_BuildValue("O(O)", py_readType, py_str);
+
+	Py_DECREF(py_str);
+	Py_DECREF(py_readType);
+
+	return py_tuple;
+}
+
 static PyMethodDef Type_methods[] = {
     {"unpack", (PyCFunction)Type_unpack, METH_VARARGS,
      "Decomposes a type into its components"
+    },
+    {"__reduce_ex__", (PyCFunction)Type_reduce_ex, METH_VARARGS,
+     "This method allows for transparent pickling/unpickling of types."
     },
     {NULL}  /* Sentinel */
 };
@@ -1211,11 +1280,11 @@ pypgf_literal_callback_match(PgfLiteralCallback* self, PgfConcr* concr,
 		gu_container(self, PyPgfLiteralCallback, callback);
 
 	PyObject* result =
-		PyObject_CallFunction(callback->pycallback, "isi", 
-		                      lin_idx, sentence, *poffset);
+		PyObject_CallFunction(callback->pycallback, "ii",
+		                      lin_idx, *poffset);
 	if (result == NULL)
 		return NULL;
-	
+
 	if (result == Py_None) {
 		Py_DECREF(result);
 		return NULL;
@@ -1360,6 +1429,9 @@ Concr_parse(ConcrObject* self, PyObject *args, PyObject *keywds)
 		pypgf_new_callbacks_map(self->concr, py_callbacks, pyres->pool);
 	if (callbacks == NULL)
 		return NULL;
+
+	sentence = gu_string_copy(sentence, pyres->pool);
+
 	pyres->res =
 		pgf_parse_with_heuristics(self->concr, catname, sentence, 
 		                          heuristics, callbacks, parse_err,
@@ -1892,6 +1964,100 @@ Concr_bracketedLinearize(ConcrObject* self, PyObject *args)
 }
 
 static PyObject*
+Iter_fetch_bracketedLinearization(IterObject* self)
+{
+    GuPool* tmp_pool = gu_local_pool();
+    GuExn* err = gu_exn(tmp_pool);
+
+restart:;
+
+    PgfCncTree ctree = gu_next(self->res, PgfCncTree, tmp_pool); 
+    if (gu_variant_is_null(ctree)) {
+	gu_pool_free(tmp_pool);
+	return NULL;
+    }
+
+    PyObject* list = PyList_New(0);
+    ctree = pgf_lzr_wrap_linref(ctree, tmp_pool);
+
+    ConcrObject* pyconcr = (ConcrObject*) self->container; 
+
+    PgfBracketLznState state;
+    state.funcs = &pgf_bracket_lin_funcs;
+    state.stack = gu_new_buf(PyObject*, tmp_pool);
+    state.list  = list;
+    pgf_lzr_linearize(pyconcr->concr, ctree, 0, &state.funcs, tmp_pool);
+
+    if (!gu_ok(err)) {
+	if (gu_exn_caught(err, PgfLinNonExist)) {
+	    // encountered nonExist. Unfortunately there
+	    // might be some output printed already. The
+	    // right solution should be to use GuStringBuf.
+	    gu_exn_clear(err);
+	    goto restart;
+	}
+	else if (gu_exn_caught(err, PgfExn)) {
+	    GuString msg = (GuString) gu_exn_caught_data(err);
+	    PyErr_SetString(PGFError, msg);
+	    gu_pool_free(tmp_pool);
+	    return NULL;
+	} else {
+	    PyErr_SetString(PGFError, "The abstract tree cannot be linearized");
+	    gu_pool_free(tmp_pool);
+	    return NULL;
+	}
+    }
+
+    gu_pool_free(tmp_pool);
+    return list;
+}
+    
+static PyObject*
+Concr_bracketedLinearizeAll(ConcrObject* self, PyObject *args, PyObject *keywds)
+{
+	static char *kwlist[] = {"expression", "n", NULL};
+	ExprObject* pyexpr = NULL;
+	int max_count = -1;
+
+	if (!PyArg_ParseTupleAndKeywords(args, keywds, "O!|i", kwlist,
+	                                 &pgf_ExprType, &pyexpr, &max_count))
+		return NULL;
+
+	GuPool* pool = gu_new_pool();
+	GuExn* err = gu_exn(pool);
+	
+	GuEnum* cts = 
+		pgf_lzr_concretize(self->concr, pyexpr->expr, err, pool);
+	if (!gu_ok(err)) {
+		if (gu_exn_caught(err, PgfExn)) {
+			GuString msg = (GuString) gu_exn_caught_data(err);
+			PyErr_SetString(PGFError, msg);
+		} else {
+			PyErr_SetString(PGFError, "The abstract tree cannot be concretized");
+		}
+		return NULL;
+	}
+
+	IterObject* pyres = (IterObject*) pgf_IterType.tp_alloc(&pgf_IterType, 0);
+	if (pyres == NULL) {
+		gu_pool_free(pool);
+		return NULL;
+	}
+
+	pyres->source = (PyObject*)pyexpr;
+	Py_INCREF(pyres->source);
+	pyres->container = (PyObject*)self;
+	Py_INCREF(pyres->container);
+	pyres->pool = pool;
+	pyres->max_count = max_count;
+	pyres->counter   = 0;
+	pyres->fetch     = Iter_fetch_bracketedLinearization;
+	pyres->res       = cts;
+
+	return (PyObject*)pyres;
+}
+
+static PyObject*
 Concr_hasLinearization(ConcrObject* self, PyObject *args)
 {
 	PgfCId id;
@@ -2091,13 +2257,13 @@ Concr_load(ConcrObject* self, PyObject *args)
 	// Read the PGF grammar.
 	pgf_concrete_load(self->concr, in, err);
 	if (!gu_ok(err)) {
+		fclose(infile);
 		if (gu_exn_caught(err, GuErrno)) {
 			errno = *((GuErrno*) gu_exn_caught_data(err));
 			PyErr_SetFromErrnoWithFilename(PyExc_IOError, fpath);
 		} else if (gu_exn_caught(err, PgfExn)) {
 			GuString msg = (GuString) gu_exn_caught_data(err);
 			PyErr_SetString(PGFError, msg);
-			return NULL;
 		} else {
 			PyErr_SetString(PGFError, "The language cannot be loaded");
 		}
@@ -2105,6 +2271,8 @@ Concr_load(ConcrObject* self, PyObject *args)
 	}
 
 	gu_pool_free(tmp_pool);
+
+	fclose(infile);
 
 	Py_RETURN_NONE;
 }
@@ -2162,6 +2330,9 @@ static PyMethodDef Concr_methods[] = {
 	},
     {"bracketedLinearize", (PyCFunction)Concr_bracketedLinearize, METH_VARARGS,
      "Takes an abstract tree and linearizes it to a bracketed string"
+    },
+    {"bracketedLinearizeAll", (PyCFunction)Concr_bracketedLinearizeAll, METH_VARARGS | METH_KEYWORDS,
+     "Takes an abstract tree and linearizes all variants into bracketed strings"
     },
     {"hasLinearization", (PyCFunction)Concr_hasLinearization, METH_VARARGS,
      "hasLinearization(f) returns true if the function f has linearization in the concrete syntax"

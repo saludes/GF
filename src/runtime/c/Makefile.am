@@ -1,7 +1,7 @@
-lib_LTLIBRARIES = libgu.la libpgf.la
+lib_LTLIBRARIES = libgu.la libpgf.la libsg.la
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libgu.pc libpgf.pc
+pkgconfig_DATA = libgu.pc libpgf.pc libsg.pc
 
 configincludedir = $(libdir)/libgu/include
 
@@ -35,6 +35,10 @@ pgfinclude_HEADERS = \
 	pgf/literals.h \
 	pgf/graphviz.h \
 	pgf/pgf.h
+
+sgincludedir=$(includedir)/sg
+sginclude_HEADERS = \
+	sg/sg.h
 
 libgu_la_SOURCES = \
 	gu/assert.c \
@@ -83,6 +87,11 @@ libpgf_la_SOURCES = \
 libpgf_la_LDFLAGS = "-no-undefined"
 libpgf_la_LIBADD = libgu.la
 
+libsg_la_SOURCES = \
+	sg/sqlite3Btree.c \
+	sg/sg.c
+libsg_la_LIBADD = libgu.la libpgf.la
+
 bin_PROGRAMS = \
 	utils/pgf-print \
 	utils/pgf-translate \
@@ -105,4 +114,5 @@ EXTRA_DIST = \
 	Doxyfile \
 	DoxygenLayout.xml \
 	libgu.pc.in \
-	libpgf.pc.in
+	libpgf.pc.in \
+	libsg.pc.in

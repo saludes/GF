@@ -4,7 +4,7 @@
 
 abstract ExtraSweAbs = ExtraScandAbs -[FocAP] ** {
 flags coding=utf8;
-cat ReflNP ; 
+cat ReflNP ; ---- should be merged with Extra.RNP AR 7/6/2016
     PronAD ; -- relational pronouns which can act like adjectives and
              -- determiners. 'fler'
     PronAQ ; -- relational pronouns which can act like adjectives and
@@ -44,8 +44,8 @@ fun
   it8utr_Pron   : Pron ;
   this8denna_Quant : Quant ;
   
-  ReflCN : Num -> CN -> ReflNP ;
-  ReflSlash : VPSlash -> ReflNP -> VP ;
+  ReflCN : Num -> CN -> ReflNP ;   ---- should be merged with Extra.RNP AR 7/6/2016
+  ReflSlash : VPSlash -> ReflNP -> VP ; ---- should be merged with Extra.RNP AR 7/6/2016
   
   
   SupCl  : NP -> VP -> Pol -> S ; -- när jag sovit
@@ -60,7 +60,6 @@ fun
    
 
   AdvComp : Comp -> Adv -> Comp ; -- jag är redan här
-
 
 ----------------- Predeterminers,Quantifiers,Determiners
 

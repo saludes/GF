@@ -103,6 +103,12 @@ abstract ResourceDemo = Lexicon, Numeral, Grammar [
     QuestIComp,
     CompIAdv,
 
+    UseRCl,   -- Tense -> Pol -> RCl -> RS,
+    RelVP   , -- RP -> VP -> QCl,       -- who walks
+    RelSlash, -- RP -> ClSlash -> QCl,  -- who does she walk with
+    RelCN, -- CN -> RS -> CN 
+    IdRP, -- RP
+
     SubjCl, -- Cl -> Subj -> S -> Cl,     -- she walks because we run
 
     PrepNP , -- Prep -> NP -> Adv, -- in the house
@@ -147,19 +153,19 @@ fun
    CompCN  : CN -> VP ;
    CompNP  : NP -> VP ;
    CompAdv : Adv -> VP ;
-   ConjS   : Conj -> S  -> S  -> S ;
-   ConjAP  : Conj -> AP -> AP -> AP ;
-   ConjNP  : Conj -> NP -> NP -> NP ;
+   RConjS  : Conj -> S  -> S  -> S ;
+   RConjAP : Conj -> AP -> AP -> AP ;
+   RConjNP : Conj -> NP -> NP -> NP ;
    a_Det, the_Det, aPl_Det, thePl_Det : Det ; 
    this_Det, these_Det : Det ;
    that_Det, those_Det : Det ;
    possDet : Pron -> Det ;
    numeralDet : Numeral -> Det ;
-   i_Pron, youSg_Pron, he_Pron, she_Pron, we_Pron, youPl_Pron, they_Pron : Pron ;
-   SubjS   : Subj -> S -> S -> S ;     -- if she walks we run
+   i_Pron, youSg_Pron, youPol_Pron, he_Pron, she_Pron, we_Pron, youPl_Pron, they_Pron : Pron ;
+   RSubjS   : Subj -> S -> S -> S ;     -- if she walks we run
    SlashV2 : NP -> V2 -> ClSlash ;   -- she loves
    SlashPrep : Cl -> Prep -> ClSlash ; -- she walks with
-   AdvCN : CN -> Prep -> NP -> CN ; -- man in the city
+   RAdvCN : CN -> Prep -> NP -> CN ; -- man in the city
 
 
 }

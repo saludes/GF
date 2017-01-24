@@ -20,7 +20,7 @@ module GF.Data.Operations (
 		   lookupErr,
 
 		   -- ** Error monad class
-		   ErrorMonad(..), checks, doUntil, --allChecks, checkAgain,
+		   ErrorMonad(..), checks, --doUntil, allChecks, checkAgain,
                    liftErr,
 		   
 		   -- ** Checking
@@ -38,7 +38,7 @@ module GF.Data.Operations (
                    tree2list,
  
 		   -- ** Printing
-		   indent, (+++), (++-), (++++), (+++++),
+		   indent, (+++), (++-), (++++), (+++-), (+++++),
 		   prUpper, prReplicate, prTList, prQuotedString, prParenth, prCurly, 
 		   prBracket, prArgList, prSemicList, prCurlyList, restoreEscapes,
 		   numberedParagraphs, prConjList, prIfEmpty, wrapLines,
@@ -160,12 +160,19 @@ tree2list = Map.toList
 indent :: Int -> String -> String
 indent i s = replicate i ' ' ++ s
 
-(+++), (++-), (++++), (+++++) :: String -> String -> String
+(+++), (++-), (++++), (+++-), (+++++) :: String -> String -> String
 a +++ b   = a ++ " "    ++ b
+
 a ++- ""  = a 
 a ++- b   = a +++ b
+
 a ++++ b  = a ++ "\n"   ++ b
+
+a +++- "" = a
+a +++- b  = a ++++ b
+
 a +++++ b = a ++ "\n\n" ++ b
+
 
 prUpper :: String -> String
 prUpper s = s1 ++ s2' where
@@ -363,10 +370,11 @@ allChecks :: ErrorMonad m => [m a] -> m [a]
 allChecks ms = case ms of
   (m: ms) -> let rs = allChecks ms in handle_ (liftM2 (:) m rs) rs
   _ -> return []
--}
+
 doUntil :: ErrorMonad m => (a -> Bool) -> [m a] -> m a
 doUntil cond ms = case ms of
   a:as -> do
     v <- a
     if cond v then return v else doUntil cond as
   _ -> raise "no result"
+-}
