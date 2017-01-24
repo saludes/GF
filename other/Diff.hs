@@ -17,7 +17,7 @@ import System.Process
 data TreeFamily :: * -> * -> * where
   EVar' :: TreeFamily Tree Nil -- (Cons Int Nil)
   ETyped' :: TreeFamily Tree (Cons Tree Nil) -- (Cons P.Type Nil))
-  EFun' :: TreeFamily Tree Nil -- (Cons CId  Nil)
+  EFun' :: TreeFamily Tree (Cons CId  Nil)
   EApp' :: TreeFamily Tree (Cons Tree (Cons Tree Nil))
   ELit' :: TreeFamily Tree Nil -- (Cons Literal Nil)
   EMeta' :: TreeFamily Tree Nil -- (Cons MetaId Nil)
@@ -27,8 +27,8 @@ data TreeFamily :: * -> * -> * where
   --Int'      :: Int -> TreeFamily Int Nil
   --Double'   :: Double -> TreeFamily Double Nil
   -- String'   :: String -> TreeFamily String Nil
-  --CId'      :: TreeFamily CId Nil -- (Cons BS.ByteString Nil)
-  --ByteString' :: BS.ByteString -> TreeFamily BS.ByteString Nil
+  CId'      :: TreeFamily CId (Cons BS.ByteString Nil)
+  ByteString' :: BS.ByteString -> TreeFamily BS.ByteString Nil
   --LStr' :: TreeFamily Literal (Cons String Nil)
   --LInt' :: TreeFamily Literal (Cons Int Nil)
   --LFlt' :: TreeFamily Literal (Cons Double Nil)
@@ -42,23 +42,24 @@ instance Family TreeFamily where
   decEq EFun'  EFun'  = Just (Refl, Refl)
   decEq ELit'  ELit'  = Just (Refl, Refl)
   decEq EMeta' EMeta' = Just (Refl, Refl)
+  decEq CId' CId'     = Just (Refl, Refl)
   --decEq LStr' LStr'   = Just (Refl, Refl)
   --decEq LInt' LInt'   = Just (Refl, Refl)
   --decEq LFlt' LFlt'   = Just (Refl, Refl)
   decEq EAbs'  EAbs'  = Just (Refl, Refl)
+  decEq (ByteString' a) (ByteString' b) | a == b  = Just (Refl, Refl)
+    | otherwise                                  = Nothing
   {- decEq (Int' x) (Int' y) | x == y     = Just (Refl, Refl)
     | otherwise                       = Nothing
    decEq (Double' x) (Double' y) | x == y     = Just (Refl, Refl)
    | otherwise                       = Nothing
-  decEq (ByteString' a) (ByteString' b) | a == b  = Just (Refl, Refl)
-    | otherwise                          = Nothing
   decEq (String' a) (String' b) | a == b  = Just (Refl, Refl)
     | otherwise = Nothing
     -}
   decEq _      _      = Nothing
 
   fields EVar' (EVar i)     = Just CNil -- (CCons i CNil)
-  fields EFun' (EFun c)  = Just CNil -- (CCons c CNil)
+  fields EFun' (EFun c)  = Just (CCons c CNil)
   fields EApp' (EApp f x)  = Just (CCons f (CCons x CNil))
   fields ELit' (ELit l)     = Just CNil -- (CCons l CNil)
   fields EMeta' (EMeta m)   = Just CNil -- (CCons m CNil)
@@ -69,8 +70,8 @@ instance Family TreeFamily where
   --fields Implicit' _        = Just CNil
   --fields (Int' _)  _        = Just CNil
   --fields (Double' _)  _     = Just CNil
-  --fields (String' _)  _     = Just CNil
-  --fields CId' (CId bs)      =  Just CNil -- (CCons bs CNil)
+  fields (ByteString' _)  _   = Just CNil
+  fields CId' (CId bs)      =  Just (CCons bs CNil)
   --fields LStr' (LStr s)     = Just (CCons s CNil)
   --fields LInt' (LInt i)     = Just (CCons i CNil)
   --fields LFlt' (LFlt x)     = Just (CCons x CNil)
@@ -78,7 +79,7 @@ instance Family TreeFamily where
   fields _ _ = Nothing
 
   apply EVar' CNil                       = EVar 0
-  apply EFun'  CNil                      = EFun undefined
+  apply EFun'  (CCons f CNil)            = EFun f
   apply EApp' (CCons f (CCons x CNil))   = EApp f x
   apply ELit' CNil                       = ELit undefined
   apply ETyped' (CCons e CNil)           = ETyped e undefined
@@ -88,8 +89,9 @@ instance Family TreeFamily where
   --apply Implicit' _                     = Implicit
   --apply (Int' i) CNil                   = i
   apply EAbs' (CCons t CNil) = EAbs undefined undefined t
+  apply CId' (CCons c CNil)  = CId c
   --apply (Double' x) CNil                = x
-  --apply (String' s) CNil                = s
+  apply (ByteString' bs) CNil             = bs
   --apply LStr' (CCons s CNil)            = LStr s
   --apply LInt' (CCons i CNil)            = LInt i
   --apply LFlt' (CCons x CNil)            = LFlt x
@@ -101,6 +103,8 @@ instance Family TreeFamily where
   string EFun' = "Fun"
   string ELit' = "Lit"
   string EMeta' = "Meta"
+  string CId'   = "CId"
+  string (ByteString' bs) = "'" ++ BS.unpack bs
   string _ = undefined
 
 
@@ -108,14 +112,16 @@ instance Family TreeFamily where
 instance Type TreeFamily Expr where
   constructors = [Concr EApp', Concr ETyped', Concr ELit', Concr EFun', Concr EMeta', Concr EAbs', Concr EVar', Concr EImplArg']
 
-{-instance Type TreeFamily Int where
-  constructors = [Abstr Int']
-
 instance Type TreeFamily CId where
   constructors = [Concr CId']
 
 instance Type TreeFamily BS.ByteString where
   constructors = [Abstr ByteString']
+
+{-instance Type TreeFamily Int where
+  constructors = [Abstr Int']
+
+
 
 instance Type TreeFamily Literal where
   constructors = [Concr LStr', Concr LInt', Concr LFlt']
