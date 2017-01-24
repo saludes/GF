@@ -1,5 +1,5 @@
 name: gf
-version: 3.7-darcs
+version: 3.8-darcs
 
 cabal-version: >= 1.10
 build-type: Custom
@@ -11,7 +11,7 @@ description: GF, Grammatical Framework, is a programming language for multilingu
 homepage: http://www.grammaticalframework.org/
 bug-reports: http://code.google.com/p/grammatical-framework/issues/list
 maintainer: Thomas Hallgren
-tested-with: GHC==7.4.2, GHC==7.6.3, GHC==7.8.3
+tested-with: GHC==7.6.3, GHC==7.8.3, GHC==7.10.2, GHC==8.0.1
 
 data-dir: src
 data-files: tools/gf.el
@@ -19,6 +19,7 @@ data-files: tools/gf.el
 	    tools/dark-filetypes.GF.conf
 	    tools/light-filetypes.GF.conf
 	    www/*.html
+	    www/*.css
 	    www/P/*.png
 	    www/gfse/*.html
 	    www/gfse/*.css
@@ -71,9 +72,10 @@ flag c-runtime
 
 Library
   default-language:    Haskell2010
-  build-depends: base >= 4.3 && <5,
+  build-depends: base >= 4.5 && <5,
                  array,
                  containers,
+                 gdiff,
                  bytestring,
                  utf8-string,
                  random,
@@ -103,18 +105,21 @@ Library
 
   exposed-modules: 
     PGF
+    PGF.ByteCode
+    PGF.CId
+    PGF.Expr
     PGF.Internal
     PGF.Lexing
+    PGF.LexingAGreek
     PGF.Utilities
     PGF.Haskell
+
   other-modules:
     PGF.Data
     PGF.Macros
     PGF.Binary
     PGF.Optimize
     PGF.Printer
-    PGF.CId
-    PGF.Expr
     PGF.Generate
     PGF.Linearize
     PGF.Morphology
@@ -128,17 +133,17 @@ Library
     PGF.Forest
     PGF.TrieMap
     PGF.VisualizeTree
-    PGF.ByteCode
     PGF.OldBinary
 
   if flag(c-runtime)
-    exposed-modules:     PGF2
-    other-modules:       PGF2.FFI
-    hs-source-dirs:      src/runtime/haskell-bind
-    build-tools:         hsc2hs
-    extra-libraries:     gu pgf
-    c-sources:           src/runtime/haskell-bind/utils.c
-    cc-options:          -std=c99
+    exposed-modules: PGF2
+    other-modules:   PGF2.FFI PGF2.Expr
+                     GF.Interactive2 GF.Command.Commands2
+    hs-source-dirs:  src/runtime/haskell-bind
+    build-tools:     hsc2hs
+    extra-libraries: gu pgf
+    c-sources:       src/runtime/haskell-bind/utils.c
+    cc-options:      -std=c99
 
 ---- GF compiler as a library:
 
@@ -161,7 +166,11 @@ Library
 
     DarcsVersion_gf
     GF.Command.Abstract
+    GF.Command.CommandInfo
     GF.Command.Commands
+    GF.Command.CommonCommands
+    GF.Command.SourceCommands
+    GF.Command.Help
     GF.Command.Importing
     GF.Command.Interpreter
     GF.Command.Messages
@@ -171,7 +180,7 @@ Library
     GF.Compile.CheckGrammar
     GF.Compile.Compute.AppPredefined
     GF.Compile.Compute.ConcreteNew
-    GF.Compile.Compute.ConcreteNew1
+--  GF.Compile.Compute.ConcreteNew1
     GF.Compile.Compute.Predef
     GF.Compile.Compute.Value
     GF.Compile.ExampleBased
@@ -212,6 +221,7 @@ Library
     GF.Grammar.Binary
     GF.Grammar.CFG
     GF.Grammar.EBNF
+    GF.Grammar.BNFC
     GF.Grammar.Grammar
     GF.Grammar.Lexer
     GF.Grammar.Lockfield
@@ -249,11 +259,11 @@ Library
     GF.Speech.SRGS_XML
     GF.Speech.VoiceXML
     GF.System.Catch
+    GF.System.Concurrency
     GF.System.Console
     GF.System.Directory
     GF.System.Process
     GF.System.Signal
---  GF.System.UseSignal
     GF.Text.Clitics
     GF.Text.Coding
     GF.Text.Lexing
@@ -325,8 +335,8 @@ Executable gf
 
 
 executable pgf-shell
-  if !flag(c-runtime)
-    buildable: False
+--if !flag(c-runtime)
+  buildable: False
   main-is:             pgf-shell.hs
   hs-source-dirs:      src/runtime/haskell-bind/examples
   build-depends:       gf, base, containers, mtl, lifted-base
