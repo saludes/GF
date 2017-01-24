@@ -1,0 +1,6 @@
+*.gfo
+*.pgf
+*.hi
+*.o
+dist/
+other/*.png
